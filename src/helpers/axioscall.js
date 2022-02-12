@@ -26,6 +26,14 @@ export default function axioscall(countryName) {
     return result;
   }
 
+  function validCapital(input) {
+    const badCapital = "Washington, D.C.";
+    if (input === badCapital) {
+      return "Washington";
+    }
+    return input; 
+  }
+
   const validatedUrl = validUrl(countryName);
   const api_ninja_country = `https://api.api-ninjas.com/v1/country?name=${validatedUrl}`;
   //const api_country_flag = `https://countryflagsapi.com/:png/${countryName}`;
@@ -47,11 +55,12 @@ export default function axioscall(countryName) {
       },
     })
     .then((res) => {
-      return axios.get(`http://api.weatherapi.com/v1/current.json?key=${weather_api_key}&q=${res.data[0].capital}`)
+      return axios.get(`http://api.weatherapi.com/v1/current.json?key=${weather_api_key}&q=${validCapital(res.data[0].capital)}`)
     })
     .then((res) => {
       console.log(res.data[0]);
     });
 
-    
+    axios
+
 }
