@@ -1,12 +1,12 @@
 import "./App.css";
 import Note from "./components/Note";
 import Search from "./components/Search";
-import { render } from "@testing-library/react";
+
 
 function App() {
   return (
     <div>
-      <Search />
+      <Search placeholder="Type your destination..." />
       <hr />
       <Note />
     </div>
