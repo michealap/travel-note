@@ -1,5 +1,7 @@
-import { useState, useEffect } from "react";
-export default function Search() {
+import { useState } from "react";
+import axioscall from "../helpers/axioscall";
+
+export default function Search({placeholder}) {
   const [userInput, setUserInput] = useState("");
 
   const handleChange = (e) => {
@@ -8,14 +10,14 @@ export default function Search() {
 
   return (
     <div className="App">
-      <form onSubmit={(event) => event.preventDefault()} autoComplete="off">
-        <input
-          placeholder="Type your destination..."
+        <input id='search'
+          placeholder={placeholder}
           value={userInput}
           onChange={handleChange}
+          onSubmit={setUserInput}
         />
-        <button type="button">{"Search"}</button>
-      </form>
+        <button type='button' onClick={()=>axioscall(userInput)}>search</button>
     </div>
   );
+  
 }
