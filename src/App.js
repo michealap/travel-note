@@ -3,6 +3,7 @@ import Note from "./components/Note";
 import Search from "./components/Search";
 import NavBar from "./components/NavBar";
 import NoteModal from "./components/NoteModal";
+import BasicStats from "./components/BasicStats";
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <Note />
       <NavBar placeholder="Search ..."/>
       <NoteModal />
+      {/* <BasicStats /> */}
     </div>
   );
 }

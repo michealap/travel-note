@@ -35,7 +35,6 @@ export default function Note() {
     }
   };
   return (
-  <body>
     <div className="App">
         <div className="allNotes">
           {notes &&
@@ -51,6 +50,5 @@ export default function Note() {
             ))}
         </div>
     </div>
-  </body>
   );
 }
