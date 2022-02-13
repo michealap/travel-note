@@ -1,4 +1,4 @@
-.Searchbar {
+.searchbarandbutton {
   width: device-width, initial-scale=0.9, user-scalable=no;
   height: 500px;
   background-image: url("../images/background_beach.png");
@@ -8,8 +8,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border: none;
 }
-.SearchbarAndButton {
+.searchbar {
   transform: scale(2);
 }
 .logo {
@@ -25,4 +26,30 @@
   left: 0px;
   top: 0px;
   z-index: 1;
+}
+
+button {
+  border: none;
+  background: transparent;
+}
+
+#search {
+  display:inline-flex;
+  padding:10px 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: white;
+}
+
+#button:hover{
+  color:#eb8200;
+}
+
+input {
+  border: none;
+  padding-right:30px;
+}
+
+input:focus {
+  outline: none;
 }

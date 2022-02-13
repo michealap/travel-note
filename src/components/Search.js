@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axioscall from "../helpers/axioscall";
 import "./Search.css";
+import SearchIcon from '@mui/icons-material/Search';
 
 export default function Search({ placeholder }) {
   const [userInput, setUserInput] = useState("");
@@ -10,18 +11,19 @@ export default function Search({ placeholder }) {
   };
 
   return (
-    <div className="Searchbar">
-      <div className="SearchbarAndButton">
+    <div className="searchbarandbutton">
+    <div className="searchbar">
+        <div id="search">
         <input
-          id="search"
           placeholder={placeholder}
           value={userInput}
           onChange={handleChange}
           onSubmit={setUserInput}
         />
         <button type="button" onClick={() => axioscall(userInput)}>
-          search
+        <SearchIcon id="button" />
         </button>
+        </div>
       </div>
       <div className="logo"></div>
     </div>
