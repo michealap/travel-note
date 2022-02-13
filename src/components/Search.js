@@ -1,7 +1,8 @@
 import { useState } from "react";
 import axioscall from "../helpers/axioscall";
+import "./Search.css";
 
-export default function Search({placeholder}) {
+export default function Search({ placeholder }) {
   const [userInput, setUserInput] = useState("");
 
   const handleChange = (e) => {
@@ -9,15 +10,20 @@ export default function Search({placeholder}) {
   };
 
   return (
-    <div className="App">
-        <input id='search'
+    <div className="Searchbar">
+      <div className="SearchbarAndButton">
+        <input
+          id="search"
           placeholder={placeholder}
           value={userInput}
           onChange={handleChange}
           onSubmit={setUserInput}
         />
-        <button type='button' onClick={()=>axioscall(userInput)}>search</button>
+        <button type="button" onClick={() => axioscall(userInput)}>
+          search
+        </button>
+      </div>
+      <div className="logo"></div>
     </div>
   );
-  
 }
