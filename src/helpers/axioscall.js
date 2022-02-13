@@ -24,7 +24,7 @@ export default function axioscall(countryName) {
   const validatedUrl = validUrl(countryName);
   const api_ninja_country = `https://api.api-ninjas.com/v1/country?name=${validatedUrl}`;
 
-    return axios
+    let countryStats = axios
       .get(api_ninja_country, {
         headers: {
           "X-Api-Key": ninja_api_key,
@@ -32,5 +32,9 @@ export default function axioscall(countryName) {
       })
       .then((res) => {
         console.log(res.data[0]);
-      });
+      }).catch(err => {
+        console.log(err);
+      })
+
+      return countryStats;
 }
