@@ -9,7 +9,7 @@ import BasicStats from "./components/BasicStats";
 function App() {
   return (
     <div>
-      <Search placeholder="Your dream adventure starts" />
+      <Search placeholder="Adventure starts here..." />
       <hr />
       <Note />
       <NavBar placeholder="Search ..."/>
