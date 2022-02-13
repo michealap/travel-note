@@ -13,7 +13,7 @@ function App() {
       <hr />
       <Note />
       <NavBar placeholder="Search ..."/>
-      <NoteModal />
+      {/* <NoteModal /> */}
       {/* <BasicStats /> */}
     </div>
   );
