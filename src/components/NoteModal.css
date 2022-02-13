@@ -1,3 +1,23 @@
 #note-modal {
   color: white;
 }
+
+#grid {
+  display: grid;
+  grid-template-columns: 300px;
+  grid-template-rows: repeat(3, 1fr);
+  justify-content: center;
+  padding-top: 50px;
+  font-size: large;
+}
+
+textarea {
+  resize: none;
+  overflow: hidden;
+  font-size: medium;
+}
+
+#item2 {
+  grid-row: 2 / 4;
+  height: 150px;
+}

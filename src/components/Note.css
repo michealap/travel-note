@@ -3,6 +3,7 @@ body {
   font-family: "Lato";
   /* background: #666; */
   color: #fff;
+  padding-bottom: 90px;
 }
 
 * {
@@ -81,22 +82,6 @@ li { */
   margin: 1em;
 }
 
-#grid {
-  display: grid;
-  grid-template-columns: 300px;
-  grid-template-rows: repeat(3, 1fr);
-  justify-content: center;
-  padding-top: 50px;
-  font-size: large;
-}
-
-textarea {
-  resize: none;
-  overflow: hidden;
-  font-size: medium;
-}
-
-#item2 {
-  grid-row: 2 / 4;
-  height: 150px;
+button:hover {
+  color: white;
 }
