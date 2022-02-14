@@ -1,17 +1,27 @@
 const axios = require("axios");
 
-export default function axioscall(countryName) {
+export default async function axioscall(countryName) {
+  if (!countryName) {
+    return;
+  }
+
   const ninja_api_key = process.env.REACT_APP_NINJA_API_KEY;
   const weather_api_key = process.env.REACT_APP_WEATHER_KEY;
   //console.log("Weather api key", weather_api_key);
-  let countryStats = [];
-  let city;
+  let countryStats = {};
+  let weatherStats = {};
+  //let city;
+
   function standardize(input) {
+    if(!input) {
+      return;
+    }
     let i = input.trim().toLowerCase();
     return i;
   }
 
   function validUrl(input) {
+    console.log("The input", input);
     let sInput = standardize(input);
     let result = "";
     for (let i = 0; i < sInput.length; i++) {
@@ -36,50 +46,27 @@ export default function axioscall(countryName) {
   const api_ninja_country = `https://api.api-ninjas.com/v1/country?name=${validatedUrl}`;
   
     //WORKING country api-call
-     axios
+    const res = await axios
       .get(api_ninja_country, {
         headers: {
           "X-Api-Key": ninja_api_key,
         },
       })
-      .then((res) => {
-        
-        countryStats = res.data[0];
-        city = res.data[0].capital;
-        //console.log("capital", res.data[0].capital);
-        //console.log("Country Stats", countryStats)
-      }).catch(err => {
-        console.log(err);
-      }) 
     
+    countryStats = res.data[0];
+    let city = validCapital(countryStats.capital);
 
     //WORKING weather api-call
-    axios
-      .get(api_ninja_country, {
-        headers: {
-          "X-Api-Key": ninja_api_key,
-        },
-      })
-      .then((res) => {
-        //console.log("ninja data", res.data[0].capital);
-        //console.log("weather api key", weather_api_key);
-        let city = validCapital(res.data[0].capital);
-        console.log("City", city);
-        return axios.get(`http://api.weatherapi.com/v1/current.json?key=${weather_api_key}&q=${city}`)
-        .then((res) => {
-          console.log("weather data", res.data.location);
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-      })
+    const weatherRes = await axios.get(`http://api.weatherapi.com/v1/current.json?key=${weather_api_key}&q=${city}`)
+    weatherStats = weatherRes.data;
+        
+      
 
     
       
 
      // WORKS: http://api.weatherapi.com/v1/current.json?key=c353a72ace5742e490d191454221202&q=$Ottawa
-
-    return countryStats;
-
-    
+      console.log("country stats", countryStats);
+      console.log("Weather stats", weatherStats);
+    return {countryStats, weatherStats};  
 }

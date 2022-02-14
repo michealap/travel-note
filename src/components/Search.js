@@ -1,20 +1,27 @@
 import { useState } from "react";
-import axioscall from "../helpers/axioscall";
+//import axioscall from "../helpers/axioscall";
 import "./Search.css";
 import SearchIcon from '@mui/icons-material/Search';
 import BasicStats from './BasicStats';
 
-export default function Search({ placeholder }) {
+export default function Search (props) {
+  
   const [userInput, setUserInput] = useState("");
-  const [active, setActive] = useState("");
+  //const [active, setActive] = useState("");
 
   const handleChange = (e) => {
+    //console.log("e.target.value", e.target.value);
     setUserInput(e.target.value);
   };
 
-  function search() {
+  /* function search() {
     axioscall(userInput);
-    setActive('basicStats');
+    //setActive('basicStats');
+  } */
+
+  function onSearch() {
+    props.search(userInput);
+    setUserInput("");
   }
 
   return (
@@ -23,19 +30,20 @@ export default function Search({ placeholder }) {
     <div className="searchbar">
         <div id="search">
         <input
-          placeholder={placeholder}
+          id="clear"
+          placeholder={props.placeholder}
           value={userInput}
           onChange={handleChange}
-          onSubmit={setUserInput}
+          //onSubmit={setUserInput}
         />
-        <button type="button" onClick={() => search()}>
+        <button type="button" onClick={() => onSearch()}>
         <SearchIcon id="button" />
         </button>
         </div>
       </div>
       <div className="logo"></div>
     </div>
-    {active === "basicStats" && <BasicStats />}
+    {/* {active === "basicStats" && <BasicStats />} */}
     </div>
   );
 }
