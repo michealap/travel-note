@@ -21,6 +21,7 @@ const style = {
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
+  justifyContent: 'center',
 };
 
 export default function TransitionsModal() {
@@ -89,7 +90,6 @@ export default function TransitionsModal() {
             </div>
             </Typography>
             <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-              Add Note to this destination.
             </Typography>
           </Box>
         </Fade>

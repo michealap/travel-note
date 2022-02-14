@@ -1,6 +1,9 @@
 #note-modal {
   color: rgb(255, 160, 160);
 }
+#transition-modal-description {
+  align-content: center;
+}
 
 #grid {
   display: grid;
@@ -20,4 +23,8 @@ textarea {
 #item2 {
   grid-row: 2 / 4;
   height: 150px;
+}
+
+#item3:hover {
+  color: rgb(255, 160, 160);
 }

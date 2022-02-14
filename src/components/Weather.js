@@ -7,7 +7,6 @@ export default function Weather({ weatherStats }) {
   return (
     <div>
       <p>Current Weather</p>
-      <p>----------------------</p>
       {/* <p>{weatherStats.condition.text}</p>
       <p>Temperature {weatherStats.temp_c} C / {weatherStats.temp_f} F</p>
       <p>Humidity {weatherStats.humidity}</p>      */}
