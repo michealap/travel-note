@@ -7,9 +7,10 @@ export default async function axioscall(countryName) {
 
   const ninja_api_key = process.env.REACT_APP_NINJA_API_KEY;
   const weather_api_key = process.env.REACT_APP_WEATHER_KEY;
-  //console.log("Weather api key", weather_api_key);
+  
   let countryStats = {};
   let weatherStats = {};
+  let flag = {};
 
   function standardize(input) {
     if(!input) {
@@ -58,10 +59,14 @@ export default async function axioscall(countryName) {
     //WORKING weather api-call
     const weatherRes = await axios.get(`http://api.weatherapi.com/v1/current.json?key=${weather_api_key}&q=${city}`)
     weatherStats = weatherRes.data.current;
+    
+    //NOT WORKING flag api-call
+    const flagRes = await axios.get(`https://countryflagsapi.com/:png/${countryName}`);
+    flag = flagRes.data;
         
       
      // WORKS: http://api.weatherapi.com/v1/current.json?key=c353a72ace5742e490d191454221202&q=$Ottawa
       console.log("country stats", countryStats);
       console.log("Weather stats", weatherStats);
-    return {countryStats, weatherStats};  
+    return {countryStats, weatherStats, flag};  
 }

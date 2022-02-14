@@ -12,13 +12,16 @@ import { useState } from 'react';
 function App() {
   const [countryData, setCountryData] = useState({});
   const [weatherData, setWeatherData] = useState({});
+  const [flagData, setFlagData] = useState({});
 
   async function search(userInput) {
-    let {countryStats, weatherStats} = await axioscall(userInput);
+    let {countryStats, weatherStats, flag} = await axioscall(userInput);
     // console.log("Country Data", countryStats);
     setCountryData(countryStats);
     // console.log("Weather Data", weatherStats)
     setWeatherData(weatherStats);
+    //console.log("Flag data", flag)
+    setFlagData(flag);
   }
 
   return (
@@ -30,6 +33,7 @@ function App() {
       {countryData && <BasicStats countryStats={countryData}/>}
       <hr />
       {weatherData && <Weather weatherStats={weatherData}/>}
+      {flagData && <Flag flag={flagData}/>}
     </div>
   );
 }
