@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ReactComponent as Logo } from '../images/logo.png';
+// import { ReactComponent as Logo } from '../images/logo.png';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import NoteModal from './NoteModal';

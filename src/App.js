@@ -2,8 +2,8 @@ import "./App.css";
 import Note from "./components/Note";
 import Search from "./components/Search";
 import NavBar from "./components/NavBar";
-import NoteModal from "./components/NoteModal";
 import BasicStats from "./components/BasicStats";
+import Weather from "./components/Weather"
 import axioscall from "./helpers/axioscall";
 import { useState } from 'react';
 
@@ -13,16 +13,12 @@ function App() {
   const [countryData, setCountryData] = useState({});
   const [weatherData, setWeatherData] = useState({});
 
-  console.log("countryData", countryData);
   async function search(userInput) {
-    
     let {countryStats, weatherStats} = await axioscall(userInput);
-    
-    console.log("Country Data", countryStats);
+    // console.log("Country Data", countryStats);
     setCountryData(countryStats);
-    console.log("Weather Data", weatherStats)
+    // console.log("Weather Data", weatherStats)
     setWeatherData(weatherStats)
-
   }
 
   return (
@@ -31,8 +27,9 @@ function App() {
       <hr />
       <Note />
       <NavBar placeholder="Search ..."/>
-      {/* <NoteModal /> */}
       {countryData && <BasicStats countryStats={countryData}/>}
+      <hr />
+      {weatherData && <Weather weatherStats={weatherData}/>}
     </div>
   );
 }
