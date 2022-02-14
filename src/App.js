@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar";
 import BasicStats from "./components/BasicStats";
 import Weather from "./components/Weather"
 import axioscall from "./helpers/axioscall";
+import Flag from './components/Flag';
 import { useState } from 'react';
 
 
@@ -15,13 +16,13 @@ function App() {
   const [flagData, setFlagData] = useState({});
 
   async function search(userInput) {
-    let {countryStats, weatherStats, flag} = await axioscall(userInput);
-    // console.log("Country Data", countryStats);
+    let {countryStats, weatherStats} = await axioscall(userInput);
+    console.log("Country Data", countryStats);
     setCountryData(countryStats);
     // console.log("Weather Data", weatherStats)
     setWeatherData(weatherStats);
     //console.log("Flag data", flag)
-    setFlagData(flag);
+    setFlagData(countryStats);
   }
 
   return (
@@ -33,7 +34,7 @@ function App() {
       {countryData && <BasicStats countryStats={countryData}/>}
       <hr />
       {weatherData && <Weather weatherStats={weatherData}/>}
-      {flagData && <Flag flag={flagData}/>}
+      {countryData && <Flag flag={countryData}/>}
     </div>
   );
 }

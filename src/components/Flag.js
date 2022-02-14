@@ -3,10 +3,10 @@ export default function Flag({ flag }) {
   if(!flag) {
     return <></>;
   }
-
+  console.log("Flag name", flag.name);
   return (
     <div>
-      <img src={flag} alt="Country Flag" width="500" />
+      <img src={`https://countryflagsapi.com/png/${flag.name}`} alt="Country Flag" width="500" />
     </div>
   )
 }
