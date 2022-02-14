@@ -1,36 +1,28 @@
 import "./App.css";
-import Note from "./components/Note";
-import Search from "./components/Search";
-import NavBar from "./components/NavBar";
-import BasicStats from "./components/BasicStats";
-import Weather from "./components/Weather"
-import axioscall from "./helpers/axioscall";
-import { useState } from 'react';
-
-
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Home from "./Pages/Home";
+import User from "./Pages/User";
+import Login from "./Pages/Login";
+import Register from "./Pages/Register";
+import ErrorPage from "./Pages/ErrorPage";
 
 function App() {
-  const [countryData, setCountryData] = useState({});
-  const [weatherData, setWeatherData] = useState({});
-
-  async function search(userInput) {
-    let {countryStats, weatherStats} = await axioscall(userInput);
-    // console.log("Country Data", countryStats);
-    setCountryData(countryStats);
-    // console.log("Weather Data", weatherStats)
-    setWeatherData(weatherStats);
-  }
-
   return (
-    <div>
-      <Search placeholder="Adventure starts here..." search={search} />
-      <hr />
-      <Note />
-      <NavBar placeholder="Search ..."/>
-      {countryData && <BasicStats countryStats={countryData}/>}
-      <hr />
-      {weatherData && <Weather weatherStats={weatherData}/>}
-    </div>
+    <Router>
+      <nav>
+        <Link to="/"> Home </Link>
+        <Link to="login"> Login </Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        {/* <Routes path="/logout" element={Logout} /> */}
+        {/* <Route path="/user:id/notes:id" element={User} /> */}
+        <Route path="register" element={<Register />} />
+        <Route path="login" element={<Login />} />
+        <Route path="user/:id" element={<User />} />
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
+    </Router>
   );
 }
 
