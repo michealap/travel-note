@@ -11,9 +11,9 @@ import { useState } from 'react';
 
 
 function App() {
-  const [countryData, setCountryData] = useState({});
-  const [weatherData, setWeatherData] = useState({});
-  const [flagData, setFlagData] = useState({});
+  const [countryData, setCountryData] = useState();
+  const [weatherData, setWeatherData] = useState();
+  const [flagData, setFlagData] = useState();
 
   async function search(userInput) {
     let {countryStats, weatherStats} = await axioscall(userInput);
@@ -33,8 +33,8 @@ function App() {
       <NavBar placeholder="Search ..."/>
       {countryData && <BasicStats countryStats={countryData}/>}
       <hr />
-      {weatherData && <Weather weatherStats={weatherData}/>}
-      {countryData && <Flag flag={countryData}/>}
+      {weatherData && <Weather weatherStats={weatherData} countryStats={countryData}/>}
+      {countryData && <Flag flag={flagData}/>}
     </div>
   );
 }
