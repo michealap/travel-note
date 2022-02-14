@@ -3,10 +3,12 @@ import { useNavigate, useParams } from "react-router-dom";
 
 function User() {
   let navigate = useNavigate();
-  let { id } = useParams();
+  let { userId } = useParams();
+  console.log(useParams());
+
   return (
     <div>
-      This is the profile page for user with id of {id}
+      This is the profile page for user with id of {userId}
       <hr />
       <button
         onClick={() => {
