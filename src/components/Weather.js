@@ -13,9 +13,9 @@ export default function Weather({ weatherStats, countryStats }) {
   
   return (
     <div>
-      <h2>{countryStats.name}'s Capital - {countryStats.capital} weather</h2>
+      <h2>{countryStats.name} Capital - {countryStats.capital}'s' weather</h2>
       {/*<p>Condition {weatherStats.condition}</p>  */}
-      <p>It's  outside </p>
+      <p>It's {weatherCondition.text} outside </p>
       <p>Temperature {weatherStats.temp_c} C / {weatherStats.temp_f} F</p>
       <p>But it feels more like {weatherStats.feelslike_c} C / {weatherStats.feelslike_f} F with the wind.</p>
       
