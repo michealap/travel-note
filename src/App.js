@@ -18,7 +18,7 @@ function App() {
     // console.log("Country Data", countryStats);
     setCountryData(countryStats);
     // console.log("Weather Data", weatherStats)
-    setWeatherData(weatherStats)
+    setWeatherData(weatherStats);
   }
 
   return (

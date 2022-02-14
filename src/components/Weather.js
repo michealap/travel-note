@@ -6,10 +6,10 @@ export default function Weather({ weatherStats }) {
   }
   return (
     <div>
-      <p>Current Weather</p>
-      {/* <p>{weatherStats.condition.text}</p>
+      <h2>Current Weather</h2>
+      {/* <p>{weatherStats.condition.text}</p> this one doesnt allow page to load similar to currency code*/}
       <p>Temperature {weatherStats.temp_c} C / {weatherStats.temp_f} F</p>
-      <p>Humidity {weatherStats.humidity}</p>      */}
+      <p>Humidity {weatherStats.humidity}</p>
     </div>
   )
 }
