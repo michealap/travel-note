@@ -48,7 +48,7 @@ export default async function axioscall(countryName) {
 
   const validatedUrl = validUrl(countryName);
   const api_ninja_country = `https://api.api-ninjas.com/v1/country?name=${validatedUrl}`;
-  const youtube_api_call = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&order=date&q=${validatedUrl}&key=${youtube_api_key}`;
+  const youtube_api_call = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&order=date&q=${validatedUrl}+vacation&key=${youtube_api_key}`;
   const news_api_call = `https://newsapi.org/v2/everything?q=${validatedUrl}+vacation&from=2021-02-15&to=2022-02-15&sortBy=popularity&pageSize=5&apiKey=${news_api_key}`
   
     //WORKING country api-call
