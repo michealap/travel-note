@@ -2,7 +2,6 @@ import { useState } from "react";
 //import axioscall from "../helpers/axioscall";
 import "./Search.css";
 import SearchIcon from '@mui/icons-material/Search';
-import BasicStats from './BasicStats';
 
 export default function Search (props) {
   

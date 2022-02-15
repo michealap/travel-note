@@ -11,7 +11,7 @@ export default function Weather({ weatherStats, countryStats }) {
     <div>
       <h2>{countryStats.name} Capital - {countryStats.capital}'s weather</h2>
       {/*<p>Condition {weatherStats.condition}</p>  */}
-      <p>It's {weatherCondition.text} outside today</p><img src={weatherCondition.icon} />
+      <p>It's {weatherCondition.text} outside today</p><img src={weatherCondition.icon} alt="" />
       <p>The temperature in {countryStats.capital} is {weatherStats.temp_c} C / {weatherStats.temp_f} F</p>
       <p>But it feels more like {weatherStats.feelslike_c} C / {weatherStats.feelslike_f} F with the wind.</p>
       
