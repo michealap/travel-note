@@ -11,12 +11,14 @@ import Users from "./Pages/Users";
 
 import Register from "./Pages/Register";
 import ErrorPage from "./Pages/ErrorPage";
+import NavBar from "./components/NavBar"
 
 function App(props) {
   // console.log(props.match);
   // console.log(props.match.path);
   return (
     <Router>
+      <NavBar placeholder="Search ..." />
       <nav>
         <Link to="/"> Home </Link>
         <Link to="login"> Login </Link>
