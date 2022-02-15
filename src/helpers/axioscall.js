@@ -94,4 +94,3 @@ export default async function axioscall(countryName) {
 //https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&order=date&q=united+states&key=
 
 //News call
-//https://newsapi.org/v2/everything?q=canada+vacation&from=2022-01-15&to=2022-02-15&sortBy=popularity&pageSize=5&apiKey=
