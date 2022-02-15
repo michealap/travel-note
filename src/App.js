@@ -22,6 +22,7 @@ function App(props) {
       <nav>
         <Link to="/"> Home </Link>
         <Link to="login"> Login </Link>
+        <Link to="register"> Register </Link>
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />

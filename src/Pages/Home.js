@@ -18,7 +18,7 @@ import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
+import { purple } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -59,10 +59,10 @@ function Home() {
       <hr />
       <Note />
       {countryData &&
-      <Card sx={{ maxWidth: 1000, margin: 30 }}>
+      <Card sx={{ maxWidth: 1280, margin: 40 }}>
       <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="destination">
+          <Avatar sx={{ bgcolor: purple[400] }} aria-label="destination">
             {countryData.name.charAt(0).toUpperCase()}
           </Avatar>
         }
