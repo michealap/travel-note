@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { supabase } from "../client";
 import fetchNotes from './Note';
 import "./NoteModal.css";
+import BorderColorIcon from '@mui/icons-material/BorderColor';
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
@@ -55,7 +56,7 @@ export default function TransitionsModal() {
 
   return (
     <div>
-      <Button id="note-modal" onClick={handleOpen}>Add Note</Button>
+      <Button id="note-modal" onClick={handleOpen}><BorderColorIcon /></Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"

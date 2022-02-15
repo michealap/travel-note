@@ -2,3 +2,12 @@
   text-align: center;
 }
 
+#links:hover {
+  text-decoration: 'none';
+  color: rgb(255, 160, 160);
+}
+#links:focus, #links:active, #links {
+  text-decoration: none;
+  color: inherit;
+}
+

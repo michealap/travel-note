@@ -11,7 +11,7 @@ import Flag from '../components/Flag';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
+// import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Collapse from '@mui/material/Collapse';
@@ -29,7 +29,7 @@ function Home() {
   const [countryData, setCountryData] = useState();
   const [weatherData, setWeatherData] = useState();
   const [flagData, setFlagData] = useState();
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = React.useState(true);
   
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -74,12 +74,7 @@ function Home() {
         title={countryData.name}
         // subheader={Date.now()}
       />
-      <CardMedia
-        component="img"
-        height="194"
-        alt="Popular Places"
-        image="Popular Places"
-      />
+      <Flag flag={flagData}/> 
       <CardContent>
         <Typography variant="body2" color="text.secondary">
           
@@ -104,7 +99,7 @@ function Home() {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>
-            <Flag flag={flagData}/>   
+            {/* <Flag flag={flagData}/>    */}
           </Typography>
           <Typography paragraph>
             <BasicStats countryStats={countryData}/>
