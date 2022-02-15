@@ -2,22 +2,14 @@ import { useState } from "react";
 //import axioscall from "../helpers/axioscall";
 import "./Search.css";
 import SearchIcon from '@mui/icons-material/Search';
-import BasicStats from './BasicStats';
+
 
 export default function Search (props) {
-  
   const [userInput, setUserInput] = useState("");
-  //const [active, setActive] = useState("");
-
+  
   const handleChange = (e) => {
-    //console.log("e.target.value", e.target.value);
     setUserInput(e.target.value);
   };
-
-  /* function search() {
-    axioscall(userInput);
-    //setActive('basicStats');
-  } */
 
   function onSearch() {
     props.search(userInput);
@@ -43,7 +35,6 @@ export default function Search (props) {
       </div>
       <div className="logo"></div>
     </div>
-    {/* {active === "basicStats" && <BasicStats />} */}
     </div>
   );
 }
