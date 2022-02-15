@@ -69,7 +69,7 @@ export default async function axioscall(countryName) {
     
         
       
-      console.log("youtube res", youtubeRes);
+      //console.log("youtube res", youtubeRes);
       console.log("country stats", countryStats);
       console.log("Weather stats", weatherStats);
       
