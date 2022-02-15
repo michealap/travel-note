@@ -1,41 +1,43 @@
 import "./App.css";
-import Note from "./components/Note";
-import Search from "./components/Search";
-import NavBar from "./components/NavBar";
-import BasicStats from "./components/BasicStats";
-import Weather from "./components/Weather"
-import axioscall from "./helpers/axioscall";
-import Flag from './components/Flag';
-import { useState } from 'react';
+
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Home from "./Pages/Home";
+import User from "./Pages/User";
+import Login from "./Pages/Login";
+import Logout from "./Pages/Logout";
+import Notes from "./Pages/Notes";
+import Users from "./Pages/Users";
 
 
+import Register from "./Pages/Register";
+import ErrorPage from "./Pages/ErrorPage";
 
-function App() {
-  const [countryData, setCountryData] = useState();
-  const [weatherData, setWeatherData] = useState();
-  const [flagData, setFlagData] = useState();
-
-  async function search(userInput) {
-    let {countryStats, weatherStats} = await axioscall(userInput);
-    console.log("Country Data", countryStats);
-    setCountryData(countryStats);
-    // console.log("Weather Data", weatherStats)
-    setWeatherData(weatherStats);
-    //console.log("Flag data", flag)
-    setFlagData(countryStats);
-  }
-
+function App(props) {
+  // console.log(props.match);
+  // console.log(props.match.path);
   return (
-    <div>
-      <Search placeholder="Adventure starts here..." search={search} />
-      <hr />
-      <Note />
-      <NavBar placeholder="Search ..."/>
-      {countryData && <BasicStats countryStats={countryData}/>}
-      <hr />
-      {weatherData && <Weather weatherStats={weatherData} countryStats={countryData}/>}
-      {countryData && <Flag flag={flagData}/>}
-    </div>
+    <Router>
+      <nav>
+        <Link to="/"> Home </Link>
+        <Link to="login"> Login </Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="register" element={<Register />} />
+        <Route path="login" element={<Login />} />
+          
+        <Route path="/users" element={<Users />}></Route>
+
+        <Route path={"/users/:userId"} element={<User />}></Route>
+        <Route
+          path={"/users/:userId/notes/:noteId"}
+          element={<Notes />}
+        ></Route>
+
+        <Route path="logout" element={<Logout />} />
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
+    </Router>
   );
 }
 
