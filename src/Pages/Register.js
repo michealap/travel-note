@@ -28,8 +28,8 @@ function Register() {
         <TextField
           required
           id="outlined-required"
-          label="email"
-          defaultValue="example@example.com"
+          label="Email"
+          defaultValue=""
         />
         <TextField
           required
@@ -45,9 +45,9 @@ function Register() {
           type="password"
           defaultValue=""
         />
-        <Button href="#text-buttons"
+        <Button
         onClick={() => {
-          navigate("/register");
+          navigate("/user");
         }}>Register</Button>
         </Box>
     </div>

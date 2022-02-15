@@ -33,7 +33,7 @@ function Login() {
           defaultValue=""
           autoComplete="current-password"
         />
-        <Button href="#text-buttons"
+        <Button
         onClick={() => {
           navigate("/user");
         }}>Login</Button>
