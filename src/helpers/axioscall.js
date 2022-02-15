@@ -8,12 +8,12 @@ export default async function axioscall(countryName) {
   const ninja_api_key = process.env.REACT_APP_NINJA_API_KEY;
   const weather_api_key = process.env.REACT_APP_WEATHER_KEY;
   const youtube_api_key = process.env.REACT_APP_YOUTUBE_API_KEY;
-  const news_api_key = process.env.REACT_APP_NEWS_API_KEY;
+  //const news_api_key = process.env.REACT_APP_NEWS_API_KEY;
   
   let countryStats = {};
   let weatherStats = {};
   let videoList = {};
-  let newsList = {};
+  //let newsList = {};
   
 
   function standardize(input) {
@@ -49,7 +49,7 @@ export default async function axioscall(countryName) {
   const validatedUrl = validUrl(countryName);
   const api_ninja_country = `https://api.api-ninjas.com/v1/country?name=${validatedUrl}`;
   const youtube_api_call = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&order=date&q=${validatedUrl}%2bvacation&key=${youtube_api_key}`;
-  const news_api_call = `https://newsapi.org/v2/everything?q=${validatedUrl}+vacation&from=2021-02-15&to=2022-02-15&sortBy=popularity&pageSize=5&apiKey=${news_api_key}`
+  //const news_api_call = 'https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/search/TrendingNewsAPI';
   
     //WORKING country api-call
     const res = await axios
@@ -73,16 +73,23 @@ export default async function axioscall(countryName) {
     videoList = youtubeRes.data;
     
     //News api-call
-    const newsRes = await axios
-      .get(news_api_call)
-      .catch((err) => {
-        console.log("News Error", err);
-      })
+    /* var options = {
+      method: 'GET',
+      url: news_api_call,
+      params: {pageNumber: '1', pageSize: '10', withThumbnails: 'false', location: 'us'},
+      headers: {
+        'x-rapidapi-host': 'contextualwebsearch-websearch-v1.p.rapidapi.com',
+        'x-rapidapi-key': news_api_key
+      }
+    };
 
-    newsList = newsRes;
+    const newsRes = await axios
+      .get(options)
+
+    newsList = newsRes; */
   
         
-    console.log("News res", newsList);
+    //console.log("News res", newsList);
     console.log("youtube res", videoList); 
     console.log("country stats", countryStats);
     console.log("Weather stats", weatherStats);
@@ -91,6 +98,6 @@ export default async function axioscall(countryName) {
 }
 
 //YOUTUBE Call WORKS - regular validation works 
-//https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&order=date&q=united+states&key=
+//https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&order=date&q=united+states+vacation&key=
 
-//News call
+
