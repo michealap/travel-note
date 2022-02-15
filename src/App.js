@@ -34,7 +34,7 @@ function App() {
       {countryData && <BasicStats countryStats={countryData}/>}
       <hr />
       {weatherData && <Weather weatherStats={weatherData} countryStats={countryData}/>}
-      {countryData && <Flag flag={flagData}/>}
+      {countryData && <Flag flag={flagData} countryStats={countryData}/>}
     </div>
   );
 }
