@@ -7,7 +7,7 @@ export default async function axioscall(countryName) {
 
   const ninja_api_key = process.env.REACT_APP_NINJA_API_KEY;
   const weather_api_key = process.env.REACT_APP_WEATHER_KEY;
-  //const youtube_api_key = process.env.REACT_APP_YOUTUBE_API_KEY;
+  const youtube_api_key = process.env.REACT_APP_YOUTUBE_API_KEY;
   
   let countryStats = {};
   let weatherStats = {};
@@ -46,7 +46,7 @@ export default async function axioscall(countryName) {
 
   const validatedUrl = validUrl(countryName);
   const api_ninja_country = `https://api.api-ninjas.com/v1/country?name=${validatedUrl}`;
-  const youtube_api_call = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&order=relevance&q=${validatedUrl}%2Bvacation&key=${youtube_api_key}`;
+  const youtube_api_call = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&order=date&q=${validatedUrl}&key=${youtube_api_key}`;
   
     //WORKING country api-call
     const res = await axios
@@ -66,7 +66,7 @@ export default async function axioscall(countryName) {
     const youtubeRes = await axios
       .get(youtube_api_call)
       
-    videoList = youtubeRes.items;  
+    videoList = youtubeRes.data;  
   
         
       
@@ -76,3 +76,6 @@ export default async function axioscall(countryName) {
       
     return {countryStats, weatherStats};  
 }
+
+//YOUTUBE Call WORKS - regular validation works 
+//https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&order=date&q=united+states&key=AIzaSyCxO_rOknln-AUTynFHJu93gP8jeSoFxCE
