@@ -5,6 +5,7 @@ import "./Note.css";
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default function Note() {
   const [loading, setLoading] = useState(true);
@@ -23,7 +24,7 @@ export default function Note() {
 
   // If Loading
   if (loading) {
-    return <div>....Loading</div>;
+    return <div><CircularProgress color="success" /></div>;
   }
 
   const deleteNote = async (noteId) => {

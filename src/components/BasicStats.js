@@ -1,6 +1,5 @@
 import React from "react";
 export default function BasicStats({ countryStats }) {
-  // console.log("Country stats", countryStats);
   if(!countryStats) {
     return <></>;
   }

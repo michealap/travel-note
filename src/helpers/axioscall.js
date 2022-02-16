@@ -8,10 +8,12 @@ export default async function axioscall(countryName) {
   const ninja_api_key = process.env.REACT_APP_NINJA_API_KEY;
   const weather_api_key = process.env.REACT_APP_WEATHER_KEY;
   const youtube_api_key = process.env.REACT_APP_YOUTUBE_API_KEY;
+  const news_api_key = process.env.REACT_APP_NEWS_API_KEY;
   
   let countryStats = {};
   let weatherStats = {};
   let videos = [];
+  let newsList = {};
   
 
   function standardize(input) {
@@ -68,9 +70,22 @@ export default async function axioscall(countryName) {
      .get(youtube_api_call)
      
     videos = youtubeRes.data.items;
+
+
+    //News api-call
+    const params = {
+      access_key: news_api_key
+    };
+
+    const newsRes = axios.get('http://api.mediastack.com/v1/news', {params})
+    
+    newsRes.then((res) => {
+      newsList = res.data.data;
+      //console.log("Final list", newsList);
+    });
   
       console.log("country stats", countryStats);
       console.log("Weather stats", weatherStats);
       console.log('Video List', videos);
-    return {countryStats, weatherStats, videos};  
+    return {countryStats, weatherStats, videos, newsList};  
 }

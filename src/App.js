@@ -11,6 +11,7 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 
+
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./Pages/Home";
 import User from "./Pages/User";
@@ -95,6 +96,7 @@ function App(props) {
           <Box
           sx={{
           display: 'flex',
+          m:1.5,
           flexGrow: -1,
           alignItems: 'center',
           width: 'fit-content',
@@ -102,7 +104,7 @@ function App(props) {
           padding: '5px',
           borderRadius: 1,
           color: 'text.white',
-          fontSize: '22px',
+          fontSize: '20px',
           '& svg': {
             m: 2,
           },
