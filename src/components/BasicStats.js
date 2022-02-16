@@ -15,10 +15,6 @@ export default function BasicStats({ countryStats }) {
       <p>And the region it can be found in is {countryStats.region}</p>
       <p>{countryStats.name}'s has a population of: {countryStats.population}</p>
       <Divider />
-      <h2>Currency Converter</h2>
-      <p></p>
-      <Divider />
-
     </Box>
   )
 }

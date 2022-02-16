@@ -10,6 +10,7 @@ import Flag from '../components/Flag';
 import VideoList from "../components/VideoList";
 import VideoDetail from "../components/VideoDetail";
 import News from "../components/News";
+import Currency from "../components/Currency";
 
 // Material UI
 import { styled } from '@mui/material/styles';
@@ -132,7 +133,8 @@ function Home() {
         </ExpandMore>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-      <BasicStats countryStats={countryData} currency={currencyData}/>
+      <BasicStats countryStats={countryData} />
+      <Currency currency={currencyData} />
       </Collapse>
       <h2>This Week's Popular Videos</h2>
       <Stack

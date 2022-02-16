@@ -14,6 +14,7 @@ export default async function axioscall(countryName) {
   let weatherStats = {};
   let videos = [];
   let newsList = {};
+  let currencyConvert = {};
   
 
   function standardize(input) {
@@ -49,7 +50,7 @@ export default async function axioscall(countryName) {
   const validatedUrl = validUrl(countryName);
   const api_ninja_country = `https://api.api-ninjas.com/v1/country?name=${validatedUrl}`;
   const youtube_api_call = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&order=date&q=${validatedUrl}+vacation&key=${youtube_api_key}`;
-  
+  const news_api_call = 'http://api.mediastack.com/v1/news';
   
     //WORKING country api-call
     const res = await axios
@@ -73,20 +74,47 @@ export default async function axioscall(countryName) {
      
     videos = youtubeRes.data.items;
 
+    if(countryStats) {
+      const params = {
+        access_key: news_api_key,
+        languages: 'en',
+        limit: 10,
+        categories: 'general'
+      };
 
-    //News api-call
-    const params = {
-      access_key: news_api_key
+      await axios.get(news_api_call, {params})
+      .then((res) => {
+      newsList = res.data.data;
+      });
+
+      let exchangeCurrency = countryStats.currency.code;
+      const currency_api_call = `https://api.api-ninjas.com/v1/convertcurrency?have=CAD&want=${exchangeCurrency}&amount=1`;
+
+      await axios
+      .get(currency_api_call, {
+        headers: {
+          "X-Api-Key": ninja_api_key,
+        }
+      })
+      .then((res) => {
+        currencyConvert = res.data;
+      })
+    }
+    //WORKING News api-call
+    /* const params = {
+      access_key: news_api_key,
+      languages: 'en',
+      limit: 10,
+      categories: 'general'
     };
 
-    const newsRes = axios.get('http://api.mediastack.com/v1/news', {params})
-    
+    const newsRes = axios.get(news_api_call, {params})
     newsRes.then((res) => {
       newsList = res.data.data;
-      //console.log("Final list", newsList);
     });
 
-    let exchangeCurrency;
+    //WORKING Currency api call
+    
     
     if(countryStats) {
       exchangeCurrency = countryStats.currency.code;
@@ -103,12 +131,13 @@ export default async function axioscall(countryName) {
 
     if(currencyConvert) {
       currencyConvert = currencyConvert.data;
-    }
+    } */
+
       
-    
+      console.log("News list", newsList);
       console.log("Currency convert", currencyConvert);
       console.log("country stats", countryStats);
       console.log("Weather stats", weatherStats);
       console.log('Video List', videos);
-    return {countryStats, weatherStats, videos, currencyConvert};  
+    return {countryStats, weatherStats, videos, currencyConvert, newsList};  
 }
