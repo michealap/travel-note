@@ -3,6 +3,7 @@ import "./App.css";
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import NoteModal from './components/NoteModal';
+import search from './Pages/Home'
 
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
@@ -25,6 +26,12 @@ import Register from "./Pages/Register";
 import ErrorPage from "./Pages/ErrorPage";
 
 function App(props) {
+  // const handleKeyDown = function(e) {
+  //   if (e.key === 'Enter') {
+  //     console.log('do validate');
+  //     search();
+  //   }
+  // }
 
 
   const Search = styled('div')(({ theme }) => ({
@@ -82,7 +89,7 @@ function App(props) {
                 {/* home page */}
                 <Link id="links" to="/"> TravelNotes </Link>
           </Typography>
-          <Typography sx= {{ flexGrow: 0 }}><NoteModal /></Typography>
+          <NoteModal />
             <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -90,6 +97,7 @@ function App(props) {
             <StyledInputBase
               placeholder="Search..."
               inputProps={{ 'aria-label': 'search' }}
+              // onKeyDown={handleKeyDown}
             />
           </Search>
         

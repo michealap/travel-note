@@ -42,8 +42,6 @@ function Home() {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-  
-  
 
   async function search(userInput) {
     let { countryStats, weatherStats, videos } = await axioscall(userInput);
