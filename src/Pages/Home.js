@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import axioscall from "../helpers/axioscall";
 import Note from "../components/Note";
+import NoteModal from "../components/NoteModal";
 import Search from "../components/Search";
 import BasicStats from "../components/BasicStats";
 import Weather from "../components/Weather";
@@ -130,14 +131,7 @@ function Home() {
         </ExpandMore>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <Stack 
-        sx={{ width: '100%', mb: 10 }}
-        direction="row"
-        alignItems="flex-start"
-        columnGap={30}>
-          <BasicStats countryStats={countryData}/>
-          {/* <Weather weatherStats={weatherData} countryStats={countryData} /> */}
-        </Stack>
+      <BasicStats countryStats={countryData}/>
       </Collapse>
       <h2>This Week's Popular Videos</h2>
       <Stack
@@ -151,6 +145,12 @@ function Home() {
         <VideoList sx={{}} videos={videosData} setSelectedVideo={setSelectedVideo}/>
         </Stack>
         <News />
+        <hr />
+        <h1>Destination Notes</h1>
+          <Note />
+          <Typography variant="h5" color="text.secondary">
+          Visited here? Please share your experience<NoteModal />
+        </Typography>
       </Card>
       }
     </div>
