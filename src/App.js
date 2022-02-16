@@ -25,7 +25,7 @@ import Register from "./Pages/Register";
 import ErrorPage from "./Pages/ErrorPage";
 
 function App(props) {
-  const { auth } = useContext(authContext);
+  const { auth, logout } = useContext(authContext);
   // console.log(props.match);
   // console.log(props.match.path);
 
@@ -73,87 +73,93 @@ function App(props) {
 
   return (
     <div className="App">
-      {!auth && <Login />}
-      {auth && (
-        <Router>
-          <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
-              <Toolbar>
-                <Typography
-                  variant="h4"
-                  noWrap
-                  component="div"
-                  sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-                >
-                  {/* home page */}
-                  <Link id="links" to="/">
-                    {" "}
-                    TravelNotes{" "}
-                  </Link>
-                </Typography>
-                <Typography sx={{ flexGrow: 0 }}>
-                  <NoteModal />
-                </Typography>
-                <Search>
-                  <SearchIconWrapper>
-                    <SearchIcon />
-                  </SearchIconWrapper>
-                  <StyledInputBase
-                    placeholder="Search..."
-                    inputProps={{ "aria-label": "search" }}
-                  />
-                </Search>
+      <Router>
+        <Box sx={{ flexGrow: 1 }}>
+          <AppBar position="static">
+            <Toolbar>
+              <Typography
+                variant="h4"
+                noWrap
+                component="div"
+                sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+              >
+                {/* home page */}
+                <Link id="links" to="/">
+                  {" "}
+                  TravelNotes{" "}
+                </Link>
+              </Typography>
+              <Typography sx={{ flexGrow: 0 }}>
+                <NoteModal />
+              </Typography>
+              <Search>
+                <SearchIconWrapper>
+                  <SearchIcon />
+                </SearchIconWrapper>
+                <StyledInputBase
+                  placeholder="Search..."
+                  inputProps={{ "aria-label": "search" }}
+                />
+              </Search>
 
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexGrow: -1,
-                    alignItems: "center",
-                    width: "fit-content",
-                    border: (theme) => `8px solid ${theme.palette.divider}`,
-                    padding: "5px",
-                    borderRadius: 1,
-                    color: "text.white",
-                    fontSize: "22px",
-                    "& svg": {
-                      m: 2,
-                    },
-                    "& hr": {
-                      mx: 0.5,
-                    },
-                  }}
-                >
+              <Box
+                sx={{
+                  display: "flex",
+                  flexGrow: -1,
+                  alignItems: "center",
+                  width: "fit-content",
+                  border: (theme) => `8px solid ${theme.palette.divider}`,
+                  padding: "5px",
+                  borderRadius: 1,
+                  color: "text.white",
+                  fontSize: "22px",
+                  "& svg": {
+                    m: 2,
+                  },
+                  "& hr": {
+                    mx: 0.5,
+                  },
+                }}
+              >
+                {!auth && (
                   <Link id="links" to="login">
                     {" "}
                     Login{" "}
                   </Link>
-                  <Divider orientation="vertical" flexItem />
-                  <Link id="links" to="register">
+                )}
+                {auth && (
+                  <Link id="links" to="login" onClick={logout}>
                     {" "}
-                    Register{" "}
+                    Logout{" "}
                   </Link>
-                </Box>
-              </Toolbar>
-            </AppBar>
-          </Box>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="register" element={<Register />} />
-            <Route path="login" element={<Login />} />
+                )}
 
-            <Route path="/users" element={<Users />}></Route>
+                <Divider orientation="vertical" flexItem />
+                <Link id="links" to="register">
+                  {" "}
+                  Register{" "}
+                </Link>
+              </Box>
+            </Toolbar>
+          </AppBar>
+        </Box>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="register" element={<Register />} />
+          <Route path="login" element={<Login />} />
 
-            <Route path={"/users/:userId"} element={<User />}></Route>
-            <Route
-              path={"/users/:userId/notes/:noteId"}
-              element={<Notes />}
-            ></Route>
+          <Route path="/users" element={<Users />}></Route>
 
-            <Route path="logout" element={<Logout />} />
-            <Route path="*" element={<ErrorPage />} />
-          </Routes>
-        </Router>
-      )}
+          <Route path={"/users/:userId/*"} element={<User />}></Route>
+          <Route
+            path={"/users/:userId/notes/:noteId"}
+            element={<Notes />}
+          ></Route>
+
+          <Route path="logout" element={<Logout />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
