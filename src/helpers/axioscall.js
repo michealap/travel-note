@@ -80,7 +80,8 @@ export default async function axioscall(countryName) {
         languages: 'en',
         limit: 10,
         categories: 'general',
-        search: countryStats.name
+        search: countryStats.name,
+        sort: 'published_desc'
       };
 
       await axios.get(news_api_call, {params})
