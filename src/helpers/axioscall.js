@@ -87,7 +87,7 @@ export default async function axioscall(countryName) {
     }); */
     newsRes.then((res) => {
       newsList = res.data.data;
-      //console.log("Final list", newsList);
+      console.log("Final list", newsList);
     });
     
     //console.log("News response", newsRes);
@@ -120,7 +120,7 @@ export default async function axioscall(countryName) {
     newsList = newsRes; */
   
         
-    //console.log("News res", newsList);
+    console.log("News res", newsList);
     console.log("youtube res", videoList); 
     console.log("country stats", countryStats);
     console.log("Weather stats", weatherStats);
