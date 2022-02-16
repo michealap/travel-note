@@ -36,6 +36,7 @@ function Home() {
   const [weatherData, setWeatherData] = useState();
   const [expanded, setExpanded] = React.useState(true);
   const [videosData, setVideosData] = useState();
+  const [currencyData, setCurrencyData] = useState();
   const [selectedVideo, setSelectedVideo] = useState();
   const [loading, setLoading] = useState(true);
   
@@ -44,11 +45,13 @@ function Home() {
   };
 
   async function search(userInput) {
-    let { countryStats, weatherStats, videos } = await axioscall(userInput);
+    let { countryStats, weatherStats, videos, currencyConvert } = await axioscall(userInput);
     setCountryData(countryStats);
     setWeatherData(weatherStats);
     setVideosData(videos);
     setSelectedVideo(videos[0]);
+    setCurrencyData(currencyConvert);
+    
     // aim to get this to work
     if(loading) {
       setTimeout(() => {
@@ -129,7 +132,7 @@ function Home() {
         </ExpandMore>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-      <BasicStats countryStats={countryData}/>
+      <BasicStats countryStats={countryData} currency={currencyData}/>
       </Collapse>
       <h2>This Week's Popular Videos</h2>
       <Stack

@@ -110,5 +110,5 @@ export default async function axioscall(countryName) {
       console.log("country stats", countryStats);
       console.log("Weather stats", weatherStats);
       console.log('Video List', videos);
-    return {countryStats, weatherStats, videos, newsList, currencyConvert};  
+    return {countryStats, weatherStats, videos, currencyConvert};  
 }
