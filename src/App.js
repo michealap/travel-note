@@ -24,8 +24,7 @@ import Register from "./Pages/Register";
 import ErrorPage from "./Pages/ErrorPage";
 
 function App(props) {
-  // console.log(props.match);
-  // console.log(props.match.path);
+
 
   const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -80,10 +79,10 @@ function App(props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}> 
                 {/* home page */}
-                <Link id="links" to="/"> TravelNotes </Link> 
+                <Link id="links" to="/"> TravelNotes </Link>
           </Typography>
           <Typography sx= {{ flexGrow: 0 }}><NoteModal /></Typography>
-          <Search>
+            <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
@@ -138,5 +137,4 @@ function App(props) {
     </Router>
   );
 }
-
 export default App;

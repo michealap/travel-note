@@ -6,7 +6,7 @@ import SearchIcon from '@mui/icons-material/Search';
 export default function Search (props) {
   
   const [userInput, setUserInput] = useState("");
-  //const [active, setActive] = useState("");
+  // const [selected, setSelected] = useState();
 
   const handleChange = (e) => {
     //console.log("e.target.value", e.target.value);

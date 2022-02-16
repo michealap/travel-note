@@ -6,12 +6,14 @@ import Search from "../components/Search";
 import BasicStats from "../components/BasicStats";
 import Weather from "../components/Weather";
 import Flag from '../components/Flag';
+import VideoList from "../components/VideoList";
+import VideoDetail from "../components/VideoDetail";
 
 // Material UI
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
-// import CardMedia from '@mui/material/CardMedia';
+import Stack from '@mui/material/Stack';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Collapse from '@mui/material/Collapse';
@@ -28,18 +30,21 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 function Home() {
   const [countryData, setCountryData] = useState();
   const [weatherData, setWeatherData] = useState();
-  const [flagData, setFlagData] = useState();
   const [expanded, setExpanded] = React.useState(true);
+  const [videosData, setVideosData] = useState();
+  const [selectedVideo, setSelectedVideo] = useState();
   
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
+
   async function search(userInput) {
-    let { countryStats, weatherStats } = await axioscall(userInput);
+    let { countryStats, weatherStats, videos } = await axioscall(userInput);
     setCountryData(countryStats);
     setWeatherData(weatherStats);
-    setFlagData(countryStats);
+    setVideosData(videos);
+    setSelectedVideo(videos[0]);
   }
 
   const ExpandMore = styled((props) => {
@@ -59,7 +64,7 @@ function Home() {
       <hr />
       <Note />
       {countryData &&
-      <Card sx={{ maxWidth: 1280, margin: 40 }}>
+      <Card sx={{ maxWidth: 1280, margin: 10 }}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: purple[400] }} aria-label="destination">
@@ -74,7 +79,7 @@ function Home() {
         title={countryData.name}
         // subheader={Date.now()}
       />
-      <Flag flag={flagData}/> 
+      <Flag flag={countryData}/> 
       <CardContent>
         <Typography variant="body2" color="text.secondary">
           
@@ -98,20 +103,21 @@ function Home() {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>
-            {/* <Flag flag={flagData}/>    */}
-          </Typography>
-          <Typography paragraph>
-            <BasicStats countryStats={countryData}/>
-          </Typography>
-          <Typography paragraph>
-            <Weather weatherStats={weatherData} countryStats={countryData} />  
-          </Typography>
-          <Typography>
-          </Typography>
+          <BasicStats countryStats={countryData}/>
+          <Weather weatherStats={weatherData} countryStats={countryData} />
         </CardContent>
       </Collapse>
-      {/* <hr /> */}
+      <h2>This Week's Popular Videos</h2>
+      <Stack
+        sx={{ width: '100%', mb: 1 }}
+        direction="row"
+        alignItems="flex-start"
+        columnGap={1}
+      >
+        <VideoDetail video={selectedVideo}/>
+      
+        <VideoList sx={{}} videos={videosData} setSelectedVideo={setSelectedVideo}/>
+        </Stack>
       </Card>
       }
     </div>

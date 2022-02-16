@@ -38,13 +38,13 @@ function Register() {
           type="password"
           defaultValue=""
         />
-        <TextField
+        {/* <TextField
           required
           id="outlined-password-input"
           label="Repeat password"
           type="password"
           defaultValue=""
-        />
+        /> */}
         <Button
         onClick={() => {
           navigate("/user");
