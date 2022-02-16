@@ -79,7 +79,8 @@ export default async function axioscall(countryName) {
         access_key: news_api_key,
         languages: 'en',
         limit: 10,
-        categories: 'general'
+        categories: 'general',
+        search: countryStats.name
       };
 
       await axios.get(news_api_call, {params})
@@ -139,5 +140,8 @@ export default async function axioscall(countryName) {
       console.log("country stats", countryStats);
       console.log("Weather stats", weatherStats);
       console.log('Video List', videos);
-    return {countryStats, weatherStats, videos, currencyConvert, newsList};  
+      if(countryStats && weatherStats && videos && currencyConvert && newsList) {
+        return {countryStats, weatherStats, videos, currencyConvert, newsList}; 
+      }
+    
 }

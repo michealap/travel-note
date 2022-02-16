@@ -134,8 +134,8 @@ function Home() {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
       <BasicStats countryStats={countryData} />
-      <Currency currency={currencyData} />
       </Collapse>
+      <Currency currency={currencyData} />
       <h2>This Week's Popular Videos</h2>
       <Stack
         sx={{ width: '100%', mb: 1 }}
