@@ -56,16 +56,13 @@ function Home(props) {
     setNewsListData(newsList);
     setSelectedVideo(videos[0]);
     setCurrencyData(currencyConvert);
-  }
-  
-  // aim to get this to work
-  if(loading) {
-    setTimeout(() => {
-      setLoading(false); 
-    }, 5000);
+    setLoading(false);
+}
+
+  // If Loading
+  if (loading) {
     return <div><CircularProgress color="success" /></div>;
   }
-
   const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
     return <IconButton {...other} />;
