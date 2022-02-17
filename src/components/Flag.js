@@ -7,10 +7,8 @@ export default function Flag({ flag }) {
   }
   //console.log("Flag name", flag.name);
   return (
-    <div>
-      <Paper elevation="20">
+      <Paper elevation={20}>
       <img src={`https://countryflagsapi.com/png/${flag.name}`} alt="Country Flag" width="500" />
       </Paper>
-    </div>
   )
 }
