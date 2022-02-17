@@ -8,7 +8,7 @@ export default function NewsList({ newsList, setSelectedArticle }) {
   
   const news = newsList && newsList.map((article) => {
     return (
-    <NewsArticle key={article.published_at} article={article.url} setSelectedArticle={()=> setSelectedArticle(article)} />
+    <NewsArticle key={article.id} article={article.url} setSelectedArticle={()=> setSelectedArticle(article)} />
   )})
     return (
       <Box sx={{ width: "90%", m: "5%", }}>
