@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import axioscall from "../helpers/axioscall";
+import getSearchResult from "../helpers/getSearchResult";
 import Note from "../components/Note";
 import NoteModal from "../components/NoteModal";
 import Search from "../components/Search";
@@ -46,7 +46,7 @@ function Home() {
   };
 
   async function search(userInput) {
-    let { countryStats, weatherStats, videos, currencyConvert } = await axioscall(userInput);
+    let { countryStats, weatherStats, videos, currencyConvert } = await getSearchResult(userInput);
     setCountryData(countryStats);
     setWeatherData(weatherStats);
     setVideosData(videos);

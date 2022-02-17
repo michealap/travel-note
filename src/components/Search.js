@@ -1,5 +1,4 @@
 import { useState } from "react";
-//import axioscall from "../helpers/axioscall";
 import "./Search.css";
 import SearchIcon from '@mui/icons-material/Search';
 
@@ -12,11 +11,6 @@ export default function Search (props) {
     //console.log("e.target.value", e.target.value);
     setUserInput(e.target.value);
   };
-
-  /* function search() {
-    axioscall(userInput);
-    //setActive('basicStats');
-  } */
 
   function onSearch() {
     props.search(userInput);
