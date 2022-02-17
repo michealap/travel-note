@@ -2,8 +2,6 @@ import "./App.css";
 // Navigation bar styles
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
-import NoteModal from './components/NoteModal';
-import search from './Pages/Home'
 
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
@@ -89,7 +87,7 @@ function App(props) {
                 {/* home page */}
                 <Link id="links" to="/"> TravelNotes </Link>
           </Typography>
-          <NoteModal />
+          
             <Search>
             <SearchIconWrapper>
               <SearchIcon />
