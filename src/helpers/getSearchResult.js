@@ -74,8 +74,11 @@ export default async function getSearchResult(countryName) {
      
     videos = youtubeRes.data.items;
 
-    let country = countryStats.name;
+    
+
     if(countryStats) {
+      let country = countryStats.name;
+
       const params = {
         access_key: news_api_key,
         languages: 'en',
