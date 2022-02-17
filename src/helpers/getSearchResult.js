@@ -74,8 +74,11 @@ export default async function getSearchResult(countryName) {
      
     videos = youtubeRes.data.items;
 
-    let country = countryStats.name;
+    
+
     if(countryStats) {
+      let country = countryStats.name;
+
       const params = {
         access_key: news_api_key,
         languages: 'en',
@@ -103,39 +106,6 @@ export default async function getSearchResult(countryName) {
         currencyConvert = res.data;
       })
     }
-    //WORKING News api-call
-    /* const params = {
-      access_key: news_api_key,
-      languages: 'en',
-      limit: 10,
-      categories: 'general'
-    };
-
-    const newsRes = axios.get(news_api_call, {params})
-    newsRes.then((res) => {
-      newsList = res.data.data;
-    });
-
-    //WORKING Currency api call
-    
-    
-    if(countryStats) {
-      exchangeCurrency = countryStats.currency.code;
-    }
-    const currency_api_call = `https://api.api-ninjas.com/v1/convertcurrency?have=CAD&want=${exchangeCurrency}&amount=1`;
-    
-
-    let currencyConvert = await axios
-      .get(currency_api_call, {
-        headers: {
-          "X-Api-Key": ninja_api_key,
-        }
-    })
-
-    if(currencyConvert) {
-      currencyConvert = currencyConvert.data;
-    } */
-
       
       console.log("News list", newsList);
       console.log("Currency convert", currencyConvert);

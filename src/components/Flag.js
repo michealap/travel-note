@@ -1,4 +1,6 @@
 import React from "react";
+import Paper from "@mui/material/Paper";
+
 export default function Flag({ flag }) {
   if(!flag) {
     return <></>;
@@ -6,7 +8,9 @@ export default function Flag({ flag }) {
   //console.log("Flag name", flag.name);
   return (
     <div>
+      <Paper elevation="20">
       <img src={`https://countryflagsapi.com/png/${flag.name}`} alt="Country Flag" width="500" />
+      </Paper>
     </div>
   )
 }
