@@ -33,8 +33,8 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 
 
-function Home() {
-  const [countryData, setCountryData] = useState();
+function Home(props) {
+  const { countryData, setCountryData } = props;
   const [weatherData, setWeatherData] = useState();
   const [expanded, setExpanded] = React.useState(true);
   const [currencyData, setCurrencyData] = useState();
@@ -56,17 +56,15 @@ function Home() {
     setNewsListData(newsList);
     setSelectedVideo(videos[0]);
     setCurrencyData(currencyConvert);
-    
-    // aim to get this to work
-    if(loading) {
-      setTimeout(() => {
-        setLoading(false); 
-      }, 5000);
-      return <div><CircularProgress color="success" /></div>;
-    }
-
   }
-
+  
+  // aim to get this to work
+  if(loading) {
+    setTimeout(() => {
+      setLoading(false); 
+    }, 5000);
+    return <div><CircularProgress color="success" /></div>;
+  }
 
   const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
@@ -113,7 +111,6 @@ function Home() {
           <Flag flag={countryData}/>
           <div width="100%"></div>
           <Weather sx={{display:'flex', justifyContent: 'right'}} weatherStats={weatherData} countryStats={countryData} />
-          {/* <BasicStats countryStats={countryData}/> */}
         </Stack>
       <CardContent>
         <Typography variant="body2" color="text.secondary">

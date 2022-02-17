@@ -1,7 +1,9 @@
 import "./App.css";
 // Navigation bar styles
+import React, { useState } from "react";
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
+import "./components/Search.css";
 
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
@@ -30,6 +32,11 @@ function App(props) {
   //     search();
   //   }
   // }
+  
+  const [countryData, setCountryData] = useState();
+  function resetCountryData() {
+    setCountryData();
+  }
 
 
   const Search = styled('div')(({ theme }) => ({
@@ -85,7 +92,8 @@ function App(props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}> 
                 {/* home page */}
-                <Link id="links" to="/"> TravelNotes </Link>
+                <Link id="links" to="/" onClick={resetCountryData}> TravelNotes
+                 </Link>
           </Typography>
           
             <Search>
@@ -127,7 +135,7 @@ function App(props) {
       </AppBar>
     </Box>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home countryData={countryData} setCountryData={setCountryData}/>}/>
         <Route path="register" element={<Register />} />
         <Route path="login" element={<Login />} />
           
