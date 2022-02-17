@@ -77,14 +77,14 @@ export default async function getSearchResult(countryName) {
     
 
     if(countryStats) {
-      let country = countryStats.name;
+      let country = countryStats.iso2;
 
       const params = {
         access_key: news_api_key,
         languages: 'en',
         limit: 5,
         categories: 'general',
-        search: country,
+        countries: country,
         sort: 'published_desc'
       };
 
