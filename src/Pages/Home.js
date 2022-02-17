@@ -9,7 +9,8 @@ import Weather from "../components/Weather";
 import Flag from '../components/Flag';
 import VideoList from "../components/VideoList";
 import VideoDetail from "../components/VideoDetail";
-import News from "../components/News";
+import NewsList from "../components/NewsList";
+import NewsDetail from "../components/NewsDetail";
 import Currency from "../components/Currency";
 
 // Material UI
@@ -36,9 +37,11 @@ function Home() {
   const [countryData, setCountryData] = useState();
   const [weatherData, setWeatherData] = useState();
   const [expanded, setExpanded] = React.useState(true);
-  const [videosData, setVideosData] = useState();
   const [currencyData, setCurrencyData] = useState();
+  const [videosData, setVideosData] = useState();
   const [selectedVideo, setSelectedVideo] = useState();
+  const [newsListData, setNewsListData] = useState();
+  const [selectedArticle, setSelectedArticle] = useState();
   const [loading, setLoading] = useState(true);
   
   const handleExpandClick = () => {
@@ -46,10 +49,11 @@ function Home() {
   };
 
   async function search(userInput) {
-    let { countryStats, weatherStats, videos, currencyConvert } = await getSearchResult(userInput);
+    let { countryStats, weatherStats, videos, currencyConvert, newsList } = await getSearchResult(userInput);
     setCountryData(countryStats);
     setWeatherData(weatherStats);
     setVideosData(videos);
+    setNewsListData(newsList);
     setSelectedVideo(videos[0]);
     setCurrencyData(currencyConvert);
     
@@ -134,8 +138,10 @@ function Home() {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
       <BasicStats countryStats={countryData} />
-      </Collapse>
       <Currency currency={currencyData} />
+      <NewsDetail article={selectedArticle} />
+      <NewsList newsList={newsListData} setSelectedArticle={setSelectedArticle}/>
+      </Collapse>
       <h2>This Week's Popular Videos</h2>
       <Stack
         sx={{ width: '100%', mb: 1 }}
@@ -147,7 +153,6 @@ function Home() {
       
         <VideoList sx={{}} videos={videosData} setSelectedVideo={setSelectedVideo}/>
         </Stack>
-        <News />
         <hr />
         <h1>Destination Notes</h1>
           <Note />

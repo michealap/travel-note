@@ -74,13 +74,14 @@ export default async function getSearchResult(countryName) {
      
     videos = youtubeRes.data.items;
 
+    let country = countryStats.name;
     if(countryStats) {
       const params = {
         access_key: news_api_key,
         languages: 'en',
-        limit: 10,
+        limit: 5,
         categories: 'general',
-        search: countryStats.name,
+        search: country,
         sort: 'published_desc'
       };
 
