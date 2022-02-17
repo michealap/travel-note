@@ -21,7 +21,7 @@ export default function Weather({ weatherStats, countryStats }) {
   if(!weatherStats) { //starting state is false
     return <></>;
   }
-  console.log("weather stats", weatherStats);
+  //console.log("weather stats", weatherStats);
   let weatherCondition = weatherStats.condition;
   
   return (
