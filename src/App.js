@@ -1,7 +1,7 @@
 import "./App.css";
 // Navigation bar styles
 import React, { useState } from "react";
-import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
+import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
 import Typography from "@mui/material/Typography";
 
 import "./components/Search.css";
@@ -14,6 +14,7 @@ import Logout from "./components/Pages/Logout";
 import Notes from "./components/Pages/Notes";
 import SignUp from "./components/Pages/SignUp";
 import ErrorPage from "./components/Pages/ErrorPage";
+import Profile from "./components/Pages/Profile";
 
 function App(props) {
   const [countryData, setCountryData] = useState();
@@ -25,29 +26,35 @@ function App(props) {
     <Router>
       <div>
         <div id="left">
-       <Typography
+          <Typography
             variant="h4"
             noWrap
             component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}> 
-                {/* home page */}
-                <a id="links" href="/" onClick={resetCountryData}> 
-                TravelNotes<DoubleArrowIcon />
-                 </a>
+            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+          >
+            {/* home page */}
+            <a id="links" href="/" onClick={resetCountryData}>
+              TravelNotes
+              <DoubleArrowIcon />
+            </a>
           </Typography>
-          </div>
-          <div id="right"></div>
         </div>
+        <div id="right"></div>
+      </div>
       <Routes>
-        <Route path="/" element={
-          <>
-        <NavBar/>
-        <Home countryData={countryData} setCountryData={setCountryData}/>
-        </>
-      }/>
+        <Route
+          path="/"
+          element={
+            <>
+              <NavBar />
+              <Home countryData={countryData} setCountryData={setCountryData} />
+            </>
+          }
+        />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
-          
+        <Route path="profile" element={<Profile />} />
+
         <Route path="/user" element={<User />}></Route>
 
         <Route
