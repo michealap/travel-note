@@ -3,13 +3,14 @@ import { useNavigate } from "react-router-dom";
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import Grid from '@mui/material/Grid';
 
-function Register() {
+function Login() {
   let navigate = useNavigate();
 
   return (
-    <div>
-      <h1>Register</h1>
+    <div >
+      <h1>Login</h1>
       <Box
       component="form"
       sx={{
@@ -19,39 +20,32 @@ function Register() {
       autoComplete="off"
       type="submit"
       > 
+      <Grid container spacing={0}>
+      <Grid item xs={12}>
         <TextField
           required
           id="outlined-required"
           label="Username"
           defaultValue=""
         />
-        <TextField
-          required
-          id="outlined-required"
-          label="Email"
-          defaultValue=""
-        />
+        </Grid>
+        <Grid item xs={12}>
         <TextField
           required
           id="outlined-password-input"
           label="Password"
           type="password"
           defaultValue=""
+          autoComplete="current-password"
         />
-        {/* <TextField
-          required
-          id="outlined-password-input"
-          label="Repeat password"
-          type="password"
-          defaultValue=""
-        /> */}
-        <Button
-        onClick={() => {
-          navigate("/user");
-        }}>Register</Button>
+        </Grid>
+        <Button variant="contained" href="profile" onClick={() => {navigate("/user")}}>
+          Login
+        </Button>
+        </Grid>
         </Box>
     </div>
-  )
+  );
 }
 
-export default Register;
+export default Login;

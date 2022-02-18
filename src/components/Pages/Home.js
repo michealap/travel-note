@@ -1,17 +1,17 @@
 import React from "react";
 import { useState } from "react";
-import getSearchResult from "../helpers/getSearchResult";
-import Note from "../components/Note";
-import NoteModal from "../components/NoteModal";
-import Search from "../components/Search";
-import BasicStats from "../components/BasicStats";
-import Weather from "../components/Weather";
-import Flag from '../components/Flag';
-import VideoList from "../components/VideoList";
-import VideoDetail from "../components/VideoDetail";
-import NewsList from "../components/NewsList";
-import NewsDetail from "../components/NewsDetail";
-import Currency from "../components/Currency";
+import getSearchResult from "../../helpers/getSearchResult";
+import Note from "../Note";
+import NoteModal from "../NoteModal";
+import Search from "../Search";
+import BasicStats from "../SearchResults/BasicStats";
+import Weather from "../SearchResults/Weather";
+import Flag from '../SearchResults/Flag';
+import VideoList from "../SearchResults/VideoList";
+import VideoDetail from "../SearchResults/VideoDetail";
+import NewsList from "../SearchResults/NewsList";
+import NewsDetail from "../SearchResults/NewsDetail";
+import Currency from "../SearchResults/Currency";
 
 // Material UI
 import { styled } from '@mui/material/styles';
@@ -19,7 +19,6 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import Stack from '@mui/material/Stack';
-import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
@@ -29,7 +28,6 @@ import { purple } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 
 
@@ -42,7 +40,7 @@ function Home(props) {
   const [selectedVideo, setSelectedVideo] = useState();
   const [newsListData, setNewsListData] = useState();
   const [selectedArticle, setSelectedArticle] = useState();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -92,11 +90,11 @@ function Home(props) {
             {countryData.name.charAt(0).toUpperCase()}
           </Avatar>
         }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
+        // action={
+        //   <IconButton rubik-label="settings">
+        //     <MoreVertIcon />
+        //   </IconButton>
+        // }
         title={countryData.name}
         // subheader={Date.now()}
       />
@@ -109,11 +107,6 @@ function Home(props) {
           <div width="100%"></div>
           <Weather sx={{display:'flex', justifyContent: 'right'}} weatherStats={weatherData} countryStats={countryData} />
         </Stack>
-      <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          
-        </Typography>
-      </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />

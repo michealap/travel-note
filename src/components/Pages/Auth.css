@@ -1,0 +1,54 @@
+section {
+  height: 100vh;
+  line-height: 150%;
+}
+
+.container {
+  display: grid;
+}
+
+.left-half {
+  grid-column: 1;
+  background-image: url("../../images/bg_flush_left.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.right-half {
+  grid-column: 2;
+  border-bottom: 1px solid black;
+}
+
+p {
+  font-family: Rubik;
+  width:90%;
+  margin: 5%;
+}
+
+img {
+  justify-content: center;
+}
+
+#form {
+  display: flex;
+  width:90%;
+  margin: 5%;
+  border: none;
+  justify-content: center;
+}
+
+.logo-auth {
+  display: block;
+  position: absolute;
+  transform: scale(0.5);
+  width: 500px;
+  height: 800px;
+  background-repeat: no-repeat;
+  background-position: bottom -1px left 10px; 
+  z-index: 1;
+}
+
+#left {
+  background: transparent;
+  position: absolute;
+}

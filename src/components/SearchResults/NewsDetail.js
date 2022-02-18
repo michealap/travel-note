@@ -1,19 +1,19 @@
 import React from "react";
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-// import Skeleton from '@mui/material/Skeleton';
-// import Card from '@mui/material/Card';
-// import CardContent from '@mui/material/CardContent';
+import Skeleton from '@mui/material/Skeleton';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
 
 export default function NewsDetail({ article }) {
   if(!article) { //starting state is false
     return <>
-    {/* <Card sx={{ width: 200 }}>
+    <Card sx={{ width: 200 }}>
     <CardContent>
     <Skeleton sx={{ height: 100 }} animation="wave" variant="rectangular" />
     <Skeleton animation="wave" height={100} width="100%" />
     </CardContent>
-    </Card> */}
+    </Card>
     </>;
   }
 

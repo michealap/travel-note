@@ -1,7 +1,7 @@
 .searchbarandbutton {
   width: device-width, initial-scale=0.9, user-scalable=no;
   margin: 0px;
-  height: 520px;
+  height: 500px;
   background-image: url("../images/background_beach.png");
   background-position: center;
   background-repeat: no-repeat;
@@ -16,7 +16,8 @@
 }
 .logo {
   /* display: flex; */
-  display: block;
+  display: flex;
+  flex-direction: row;
   position: absolute;
   background-image: url("../images/logo.png");
   transform: scale(0.5);
