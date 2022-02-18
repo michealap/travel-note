@@ -1,9 +1,10 @@
 .App {
-  margin: 20px auto;
+  margin: 0px auto;
   font-family: "Lato";
   /* background: #666; */
   color: #fff;
   padding-bottom: 90px;
+  background: linear-gradient(#edb75a,#9aed5a);
 }
 
 * {

@@ -85,6 +85,7 @@ export default async function getSearchResult(countryName) {
         limit: 5,
         categories: 'general',
         countries: country,
+        keywords: 'vacation',
         sort: 'published_desc'
       };
 
