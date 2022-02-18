@@ -81,8 +81,10 @@ function Register() {
             },
           }
         );
-      } catch (err) {
-        console.log("err: ", err);
+        if (error) throw error;
+        alert("logged in");
+      } catch (error) {
+        alert(error.message);
         // setError(true);
         // setErrorMsg(err.msg);
         // return (
