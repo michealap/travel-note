@@ -1,6 +1,6 @@
 import "./App.css";
 // Navigation bar styles
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import "./components/Search.css";
@@ -11,6 +11,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
@@ -26,14 +27,34 @@ import Register from "./Pages/Register";
 import ErrorPage from "./Pages/ErrorPage";
 
 function App(props) {
-  // const handleKeyDown = function(e) {
-  //   if (e.key === 'Enter') {
-  //     console.log('do validate');
-  //     search();
-  //   }
-  // }
-  
   const [countryData, setCountryData] = useState();
+
+  const [mainLoading, setMainLoading] = useState(false);
+  const [searchField, setSearchField] = useState("");
+  const searchRef = useRef("");
+
+ 
+
+  // pass down value directly to async function in Home
+  const getSearchValue = (userInput) => {
+    setSearchField(userInput);   
+    
+  }
+  const handleEnter = (event) => {
+    event.preventDefault();
+    setSearchField(searchRef.current.value);
+    
+    // getSearchValue(searchField);
+  }
+  // const handleChange = (e) => {
+  //   console.log("e.target.value- handlechange", e.target.value);
+  //   setSearchField(e.target.value);
+  //   // setKey((prev)=> prev+1);
+  // };
+  if(mainLoading){
+    return <div><CircularProgress color="success" /></div>;
+  }
+  // when home link is clicked reset countryData from api to null
   function resetCountryData() {
     setCountryData();
   }
@@ -96,16 +117,25 @@ function App(props) {
                  </Link>
           </Typography>
           
-            <Search>
+          {/* NavBar search */}
+          {/* <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
               placeholder="Search..."
-              inputProps={{ 'aria-label': 'search' }}
-              // onKeyDown={handleKeyDown}
+              // value={searchField}
+              inputProps={{ 'aria-label': 'search', value : searchField, onInput: (e)=>handleKeyDown(e)}}
+              // onKeyDown={(e)=>handleKeyDown(e)}
             />
-          </Search>
+          </Search> */}
+          <form>
+          <label>
+            Search...
+          </label>
+          <input type="text" name="name" ref={searchRef} />
+          <input type="submit" value="submit" onClick={(event)=>handleEnter(event)} />
+        </form>
         
           <Box
           sx={{
@@ -135,7 +165,10 @@ function App(props) {
       </AppBar>
     </Box>
       <Routes>
-        <Route path="/" element={<Home countryData={countryData} setCountryData={setCountryData}/>}/>
+        <Route path="/" element={<Home countryData={countryData} setCountryData={setCountryData} getSearchValue={(inputValue)=>getSearchValue(inputValue)} searchField={searchField}
+        mainLoading={mainLoading} setMainLoading={setMainLoading}/>}/>
+
+
         <Route path="register" element={<Register />} />
         <Route path="login" element={<Login />} />
           

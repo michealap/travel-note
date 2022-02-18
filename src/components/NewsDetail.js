@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 
 export default function NewsDetail({ article }) {
   if(!article) { //starting state is false
-    return <>
+    return <>NOthing to display
     {/* <Card sx={{ width: 200 }}>
     <CardContent>
     <Skeleton sx={{ height: 100 }} animation="wave" variant="rectangular" />

@@ -13,7 +13,7 @@ export default function BasicStats({ countryStats }) {
       <Divider />
       <p>{countryStats.name}'s capital city is {countryStats.capital}</p>
       <p>And the region it can be found in is {countryStats.region}</p>
-      <p>{countryStats.name}'s has a population of: {countryStats.population}</p>
+      <p>{countryStats.name}'s has a population of {countryStats.population}</p>
       <Divider />
     </Box>
   )

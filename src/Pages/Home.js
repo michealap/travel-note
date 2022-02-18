@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import getSearchResult from "../helpers/getSearchResult";
 import Note from "../components/Note";
 import NoteModal from "../components/NoteModal";
@@ -12,6 +12,7 @@ import VideoDetail from "../components/VideoDetail";
 import NewsList from "../components/NewsList";
 import NewsDetail from "../components/NewsDetail";
 import Currency from "../components/Currency";
+import "../components/Search.css";
 
 // Material UI
 import { styled } from '@mui/material/styles';
@@ -35,6 +36,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 function Home(props) {
   const { countryData, setCountryData } = props;
+  const { mainLoading, setMainLoading } = props;
   const [weatherData, setWeatherData] = useState();
   const [expanded, setExpanded] = React.useState(true);
   const [currencyData, setCurrencyData] = useState();
@@ -42,27 +44,41 @@ function Home(props) {
   const [selectedVideo, setSelectedVideo] = useState();
   const [newsListData, setNewsListData] = useState();
   const [selectedArticle, setSelectedArticle] = useState();
-  const [loading, setLoading] = useState(true);
+  // const [searchNav, setSearchNav] = useState();
+  // const {loading, setLoading } = props;
   
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
+  
+
   async function search(userInput) {
+    console.log("this inside search component:", userInput);
+    props.getSearchValue(userInput);
+    // setMainLoading(true); 
     let { countryStats, weatherStats, videos, currencyConvert, newsList } = await getSearchResult(userInput);
+    console.log("inside home:",countryStats);
     setCountryData(countryStats);
     setWeatherData(weatherStats);
     setVideosData(videos);
     setNewsListData(newsList);
     setSelectedVideo(videos[0]);
     setCurrencyData(currencyConvert);
-    setLoading(false);
-}
+    // props.getSearchValue(userInput);
+  }
+  useEffect(()=> {
+    setMainLoading(true); 
+    search(props.searchField);
+    setMainLoading(false);
+  }, [props.searchField])
+
 
   // If Loading
-  if (loading) {
+  if (mainLoading) {
     return <div><CircularProgress color="success" /></div>;
   }
+
   const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
     return <IconButton {...other} />;
@@ -133,8 +149,15 @@ function Home(props) {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
       <BasicStats countryStats={countryData} />
       <Currency currency={currencyData} />
+      <Stack
+        sx={{ width: '100%', mb: 1 }}
+        direction="row"
+        alignItems="flex-start"
+        columnGap={0}
+      >
       <NewsDetail article={selectedArticle} />
       <NewsList newsList={newsListData} setSelectedArticle={setSelectedArticle}/>
+      </Stack>
       </Collapse>
       <h2>This Week's Popular Videos</h2>
       <Stack

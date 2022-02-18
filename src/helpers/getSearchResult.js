@@ -51,7 +51,7 @@ export default async function getSearchResult(countryName) {
   const api_ninja_country = `https://api.api-ninjas.com/v1/country?name=${validatedUrl}`;
   const youtube_api_call = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&order=date&q=${validatedUrl}+vacation&key=${youtube_api_key}`;
   const news_api_call = 'http://api.mediastack.com/v1/news';
-  
+
     //WORKING country api-call
     const res = await axios
       .get(api_ninja_country, {
@@ -77,14 +77,14 @@ export default async function getSearchResult(countryName) {
     
 
     if(countryStats) {
-      let country = countryStats.iso2;
+      let country = countryStats.name;
 
       const params = {
         access_key: news_api_key,
         languages: 'en',
         limit: 5,
         categories: 'general',
-        countries: country,
+        search: country,
         sort: 'published_desc'
       };
 
@@ -112,6 +112,7 @@ export default async function getSearchResult(countryName) {
       console.log("country stats", countryStats);
       console.log("Weather stats", weatherStats);
       console.log('Video List', videos);
+
       if(countryStats && weatherStats && videos && currencyConvert && newsList) {
         return {countryStats, weatherStats, videos, currencyConvert, newsList}; 
       }
