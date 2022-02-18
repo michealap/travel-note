@@ -8,7 +8,7 @@ export default function BasicStats({ countryStats }) {
   }
   
   return (
-    <Box sx={{ width: "90%", m: "5%", }}>
+    <Box sx={{ width: "90%", m: "5%", }} class="stats-box">
       <h2>Common Knowledge</h2>
       <Divider />
       <p>{countryStats.name}'s capital city is {countryStats.capital}</p>
