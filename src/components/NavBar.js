@@ -9,6 +9,8 @@ import Button from "@mui/material/Button";
 import { useAuth } from "../providers/Auth";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
+import "./NavBar.css"
+
 
 export default function NavBar(props) {
   const [userInput, setUserInput] = useState("");
@@ -35,30 +37,31 @@ export default function NavBar(props) {
     setUserInput("");
   }
 
-  return (
+return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" color="">
-        <Toolbar sx={{ justifyContent: "space-evenly" }}>
-          <form onSubmit={navSearch}>
-            <SearchIcon />
-            <input
-              id="clear"
-              placeholder="Search ..."
-              value={userInput}
-              onChange={handleChange}
-            />
-          </form>
-
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 0, display: { xs: "none", sm: "block" } }}
-          >
-            <a id="links" href="about">
+      <AppBar position="static" color="" >
+        <Toolbar sx={{ justifyContent: 'space-evenly'}}>
+        <form id="nav-form">
+        <SearchIcon/>
+        <input
+          id="nav-input"
+          placeholder="Search ..."
+          value={userInput}
+          onChange={handleChange}
+          onSubmit={navSearch}
+        />
+        </form>
+         
+         
+        <Typography
+          variant="h6"
+          component="div"
+          sx={{ flexGrow: 0, display: { xs: 'none', sm: 'block' } }}>
+           <a id="links" href="about">
               {" "}
               About{" "}
             </a>
-          </Typography>
+        </Typography>
 
           <Typography
             variant="h6"
@@ -77,6 +80,7 @@ export default function NavBar(props) {
               </Link>
             )}
           </Typography>
+
           {!user && (
             <Box
               sx={{

@@ -50,104 +50,85 @@ export default function SignUp() {
   return (
     <section className="container">
       <div className="left-half">
-        <Typography
-          sx={{ width: "80%", m: "10%", pt: 6, backgroundColor: "transparent" }}
-          variant="h4"
-        >
-          Your direct information source for common knowledge and current
-          affairs by location. Your next adventure starts here.
-        </Typography>
+      <Typography sx={{ width: "80%", m: "10%",
+        backgroundColor: "transparent", fontFamily: "Ruda"}} variant="h4">
+          <i>Your direct</i> information source <i>for</i> common knowledge<i> and </i>current affairs<i> by </i>location. <i>Your next adventure starts here.</i>
+          </Typography>
       </div>
       <div className="right-half">
         <div id="form">
-          {" "}
-          <Grid container spacing={3} p={5} pt={10} pl={20}>
-            <div>
-              <div>
-                <Typography variant="h3">Create Account</Typography>
-                <Button>
-                  <img
-                    src="https://d3bz3ebxl8svne.cloudfront.net/production/static/svg/icon-google.svg"
-                    alt="google"
-                    width="16px"
-                  ></img>
-                  <Typography variant="h6" justifyContent="center">
-                    Continue with Google
-                  </Typography>
-                </Button>
-              </div>
-              <span>-----------------------or----------------------</span>
-            </div>
-            <Box
-              component="form"
-              sx={{
-                "& .MuiTextField-root": { m: 1, width: "25ch" },
-              }}
-              noValidate
-              autoComplete="off"
-              type="submit"
-              onSubmit={handleSubmit}
-            >
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  id="outlined-required-firstname-input"
-                  label="First Name"
-                  defaultValue=""
-                  inputRef={firstNameRef}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  id="outlined-required-lastname-input"
-                  label="Last Name"
-                  defaultValue=""
-                  inputRef={lastNameRef}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  id="outlined-required-email-input"
-                  label="Email"
-                  defaultValue=""
-                  inputRef={emailRef}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  id="outlined-password-input"
-                  label="Password"
-                  type="password"
-                  defaultValue=""
-                  autoComplete="current-password"
-                  inputRef={passwordRef}
-                />
-                <Grid pt={5} item xs={12}>
-                  <Button
-                    variant="contained"
-                    // href="profile"
-                    type="submit"
-                    // onClick={() => {
-                    //   navigate("/user");
-                    // }}
-                  >
-                    Create New Account
-                  </Button>
-                </Grid>
-              </Grid>{" "}
-            </Box>
+           {" "}
+        <Grid container spacing={3} p={5} pt={10} pl={20}>
+          <div>
+          <div>
+          <Typography pb={5} variant="h3">Create Account</Typography>
+          <Button variant="outlined">
+            <img src="https://d3bz3ebxl8svne.cloudfront.net/production/static/svg/icon-google.svg" alt="google" width="20px"></img>
+            <Typography pl={2} variant="h6" justifyContent="center">Continue with Google</Typography>
+          </Button>
+          </div>
+          <Typography mt={2} variant="h6" justifyContent="center"><hr class="hr-text" data-content="OR"/>  </Typography>          
+          </div>
+          <Grid item xs={12}>
+          <TextField
+          style ={{width: '40%'}}
+          inputProps={{style: {fontSize: 20}}} 
+          InputLabelProps={{style: {fontSize: 20}}} 
+          required
+          id="outlined-required-firstname-input"
+          label="First Name"
+          defaultValue=""
+          inputRef={firstNameRef}
+          />
           </Grid>
-        </div>
-        <div>
-          {/* <p>
-            Do you already have an account? Then <a href="/login">Sign in</a>
-          </p> */}
-          <p>
-            Already have an account? <Link to="/login">Log In</Link>
-          </p>
+          <Grid item xs={12}>
+            <TextField
+            style ={{width: '40%'}}
+            inputProps={{style: {fontSize: 20}}} 
+            InputLabelProps={{style: {fontSize: 20}}} 
+            required
+            id="outlined-required-lastname-input"
+            label="Last Name"
+            defaultValue=""
+            inputRef={lastNameRef}
+          />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+            style ={{width: '40%'}}
+            inputProps={{style: {fontSize: 20}}} 
+            InputLabelProps={{style: {fontSize: 20}}} 
+            required
+            id="outlined-required-email-input"
+            label="Email"
+            defaultValue=""
+            inputRef={emailRef}
+          />
+          </Grid>
+          <Grid item xs={12}>
+          <TextField
+            style ={{width: '40%'}}
+            inputProps={{style: {fontSize: 20}}} 
+            InputLabelProps={{style: {fontSize: 20}}} 
+            required
+            id="outlined-password-input"
+            label="Password"
+            type="password"
+            defaultValue=""
+            inputRef={passwordRef}
+          />
+          <Grid pt={5} item xs={12}>
+          <Button  style ={{width: '40%', fontSize: 18}} variant="contained" href="profile" onClick={() => {navigate("/user")}}
+            type="submit">
+            Create New Account
+          </Button>
+          </Grid>{" "}
+          </Grid>
+          </Grid>
+      </div>
+        <Typography pl={20} variant="h6">
+          Already have an account? <Link to="/login">Log In</Link>
+          </Typography>
         </div>
       </div>
     </section>

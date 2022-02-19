@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useAuth } from "../../providers/Auth";
 import { useContext } from "react";
 import { useRef } from "react";
+import "./Auth.css"
 
 function Login() {
   const emailRef = useRef();
@@ -48,64 +49,73 @@ function Login() {
   // };
 
   return (
-    <div>
-      <h1>Login</h1>
-      {/* {!auth && ( */}
-      {/* <form onSubmit={handleSubmit}> */}
-      <Box
-        component="form"
-        sx={{
-          "& .MuiTextField-root": { m: 1, width: "25ch" },
-        }}
-        noValidate
+    <section className="container">
+      <div className="left-half">
+      <Typography sx={{ width: "80%", m: "10%",
+       backgroundColor: "transparent", fontFamily: "Ruda"}} variant="h4">
+          <i>Your direct</i> information source <i>for</i> common knowledge<i> and </i>current affairs<i> by </i>location. <i>Your next adventure starts here.</i>
+          </Typography>
+      </div>
+      <div className="right-half">
+        <div id="form" 
         autoComplete="off"
         type="submit"
-        onSubmit={handleSubmit}
-      >
-        <Grid container spacing={0}>
-          <Grid item xs={12}>
-            <TextField
-              required
-              id="outlined-required"
-              label="Email"
-              defaultValue=""
-              type="email"
-              name="email"
-              inputRef={emailRef}
-              // value={email}
-              // onChange={(event) => setEmail(event.target.value)}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              required
-              id="outlined-password-input"
-              label="Password"
-              type="password"
-              defaultValue=""
-              autoComplete="current-password"
-              name="password"
-              inputRef={passwordRef}
-              // value={password}
-              // onChange={(event) => setPassword(event.target.value)}
-            />
-          </Grid>
-          <Button
-            variant="contained"
+        onSubmit={handleSubmit}>
+        <Grid container spacing={3} p={5} pt={25} pl={20}>
+          <div>
+          <div>
+           {/* {!auth && ( */}
+          {/* <form onSubmit={handleSubmit}> */}
+          <Typography pb={5} variant="h3">Login</Typography>
+          <Button variant="outlined">
+            <img src="https://d3bz3ebxl8svne.cloudfront.net/production/static/svg/icon-google.svg" alt="google" width="20px"></img>
+            <Typography pl={2} variant="h6" justifyContent="center">Sign in with Google</Typography>
+          </Button>
+          </div>
+          <Typography mt={2} variant="h6" justifyContent="center">
+            <hr class="hr-text" data-content="OR"/></Typography>        
+          </div>
+      <Grid item xs={12}>
+        <TextField
+          style ={{width: '40%'}}
+          required
+          id="outlined-required"
+          label="Email"
+          defaultValue=""
+          type="email"
+          name="email"
+          inputRef={emailRef}
+          inputProps={{style: {fontSize: 20}}} // font size of input text
+          InputLabelProps={{style: {fontSize: 20}}} // font size of input label
+        />
+        </Grid>
+        <Grid item xs={12}>
+        <TextField
+          style ={{width: '40%'}}
+          inputProps={{style: {fontSize: 20}}} 
+          InputLabelProps={{style: {fontSize: 20}}} 
+          required
+          id="outlined-password-input"
+          label="password"
+          type="password"
+          defaultValue=""
+          autoComplete="current-password"
+          inputRef={passwordRef}
+        />
+        </Grid>
+        <Grid pt={5} item xs={12}>
+          <Button style ={{width: '40%', fontSize: 20}} variant="contained" 
             // href="profile"
             type="submit"
-            // name="commit"
-          >
+            // name="commit" 
+            href="profile" onClick={() => {navigate("/user")}}>
             Login
           </Button>
         </Grid>
-      </Box>
-      {/* </form> */}
-      {/* )} */}
-      <p>
-        Don't have an account? <Link to="/signup">Sign Up</Link>
-      </p>
-    </div>
+        </Grid>
+        </div>
+        </div>
+      </section>
   );
 }
 

@@ -69,8 +69,9 @@ export default function TransitionsModal() {
         }}
       >
         <Fade in={open}>
-          <Box sx={style}>
+          <Box pl={4} sx={style}>
             <Typography id="transition-modal-title" variant="h6" component="h2">
+             Share your experience with us!
             <div id='grid'>
             <textarea id="item1"
               placeholder="Title"

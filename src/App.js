@@ -28,31 +28,27 @@ function App(props) {
     <Router>
       <div>
         <div id="left">
-          <Typography
+        <a id="links" href="/" onClick={resetCountryData}> 
+       <Typography
             variant="h4"
             noWrap
             component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          >
-            {/* home page */}
-            <a id="links" href="/" onClick={resetCountryData}>
-              TravelNotes
-              <DoubleArrowIcon />
-            </a>
+            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block', fontFamily: "Ruda" } }}> 
+                {/* home page */}
+                TravelNotes<DoubleArrowIcon />
           </Typography>
+                 </a>
+          </div>
+          <div id="right"></div>
         </div>
-        <div id="right"></div>
-      </div>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <NavBar />
-              <Home countryData={countryData} setCountryData={setCountryData} />
-            </>
-          }
+        <Route path="/" element={
+          <>
+        <NavBar/>
+        <Home countryData={countryData} setCountryData={setCountryData}
         />
+        </>
+      }/>
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
         <Route path="dashboard" element={<Dashboard />} />
