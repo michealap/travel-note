@@ -9,13 +9,13 @@ export default function BasicStats({ countryStats }) {
   }
   
   return (
-    <Box sx={{ width: "90%", m: "5%", }}>
+    <Box sx={{ width: "90%", m: "5%", }} textAlign="center">
       <h2>Common Knowledge</h2>
       <Divider />
       <Typography variant="h5" pt={1}>
       {countryStats.name}'s capital city is {countryStats.capital} <br></br>
-      And the region it can be found in is {countryStats.region}<br></br>
-      {countryStats.name}'s has a population of {countryStats.population}
+      The region it can be found in is {countryStats.region}<br></br>
+      {countryStats.name}'s has a population of {countryStats.population / 1000} million
       </Typography>
       <Divider />
     </Box>

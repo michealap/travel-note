@@ -1,0 +1,14 @@
+.stack {
+    border-left: 20px solid darkblue;
+    background: linear-gradient(#40d1de,#f0c64a);
+}
+
+.stats-form {
+    border-left: 20px solid darkblue;
+    background: linear-gradient(#40d1de,#f0c64a);
+}
+
+.video-form {
+    margin-top: 20px;
+    background: linear-gradient(#40d1de,#f0c64a);
+}

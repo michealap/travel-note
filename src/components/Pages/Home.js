@@ -27,6 +27,9 @@ import { purple } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
+//CSS
+import "./Home.css"
+
 
 function Home(props) {
   const { countryData, setCountryData } = props;
@@ -97,11 +100,13 @@ function Home(props) {
         // subheader={Date.now()}
       />
       <Stack 
-        sx={{ width: '100%', mb:1, pl:10 }}
+        sx={{ width: '100%', mb:1, pl:10, pt: 7 }}
         direction="row"
         alignItems="flex-start"
-        columnGap={2}>
-          <Flag flag={countryData}/>
+        columnGap={2}
+        className="stack"
+        >
+          <Flag flag={countryData} />
           <div width="100%"></div>
           <Weather sx={{display:'flex', justifyContent: 'right'}} weatherStats={weatherData} countryStats={countryData} />
         </Stack>
@@ -117,7 +122,7 @@ function Home(props) {
         </ExpandMore>
       </CardActions>
 
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
+      <Collapse in={expanded} timeout="auto" unmountOnExit className="stats-form">
       <BasicStats countryStats={countryData} />
       <Currency currency={currencyData} />
       <NewsDetail />
@@ -129,9 +134,10 @@ function Home(props) {
         direction="row"
         alignItems="flex-start"
         columnGap={1}
+        className="video-form"
       >
         <VideoDetail video={selectedVideo}/>
-        <VideoList sx={{}} videos={videosData} setSelectedVideo={setSelectedVideo}/>
+        <VideoList sx={{}} videos={videosData} setSelectedVideo={setSelectedVideo} />
         </Stack>
         <hr />
         <h1>Destination Notes</h1>
