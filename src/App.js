@@ -13,6 +13,8 @@ import Login from "./components/Pages/Login";
 import Logout from "./components/Pages/Logout";
 import Notes from "./components/Pages/Notes";
 import SignUp from "./components/Pages/SignUp";
+import { Dashboard } from "./components/Pages/Dashboard";
+
 import ErrorPage from "./components/Pages/ErrorPage";
 import Profile from "./components/Pages/Profile";
 
@@ -53,7 +55,7 @@ function App(props) {
         />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
-        <Route path="profile" element={<Profile />} />
+        <Route path="dashboard" element={<Dashboard />} />
 
         <Route path="/user" element={<User />}></Route>
 

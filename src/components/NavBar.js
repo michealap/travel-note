@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { authContext } from "../providers/AuthProvider.js";
 import React, { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -7,13 +6,25 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import SearchIcon from "@mui/icons-material/Search";
 import Button from "@mui/material/Button";
+import { useAuth } from "../providers/Auth";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 export default function NavBar(props) {
   const [userInput, setUserInput] = useState("");
-  const { auth, logout } = useContext(authContext);
+  // const { useAuth } = useContext(useAuth);
   // console.log(props.match);
   // console.log(props.match.path);
-  console.log("auth:", auth);
+  // console.log("auth:", auth);
+  const { user, signOut } = useAuth();
+  let navigate = useNavigate();
+  async function handleSignOut() {
+    // Ends user session
+    await signOut();
+
+    // Redirects the user to Login page
+    // navigate("/login");
+  }
 
   const handleChange = (e) => {
     setUserInput(e.target.value);
@@ -54,17 +65,16 @@ export default function NavBar(props) {
             component="div"
             sx={{ flexGrow: 0, display: { xs: "none", sm: "block" } }}
           >
-            {!auth && (
-              <a id="links" href="login">
+            {!user ? (
+              <Link to="/login" id="links">
                 {" "}
                 Login{" "}
-              </a>
-            )}
-            {auth && (
-              <a id="links" href="logout">
+              </Link>
+            ) : (
+              <Link to="/logout" id="links" onClick={handleSignOut}>
                 {" "}
                 Logout{" "}
-              </a>
+              </Link>
             )}
           </Typography>
           <Box
