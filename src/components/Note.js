@@ -3,11 +3,12 @@ import { supabase } from "../client";
 import "./Note.css";
 // Material UI icons
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import ArrowCircleUpIcon from "@mui/icons-material/ArrowCircleUp";
-import ArrowCircleDownIcon from "@mui/icons-material/ArrowCircleDown";
+
 import CircularProgress from "@mui/material/CircularProgress";
 import { useAuth } from "../providers/Auth";
 import Upvote from "../components/Upvote";
+import Downvote from "../components/Downvote";
+
 export default function Note() {
   const { user } = useAuth();
 
@@ -71,22 +72,6 @@ export default function Note() {
   //   setUpvotesCount(updatedNotesCount);
   // };
 
-  const downVote = async (noteId) => {
-    let currentNotesCount = await fetchNotesCount(noteId);
-
-    console.log("noteId:", noteId);
-    let updatedNotesCount = parseInt(currentNotesCount) - 1;
-    console.log("currentNotesCount:", currentNotesCount);
-    console.log("updatedNotesCount:", updatedNotesCount);
-
-    const { data, error } = await supabase
-      .from("notes")
-      .update({ upvotes: `${updatedNotesCount}` })
-      .match({ id: `${noteId}` });
-
-    setDownvotesCount(updatedNotesCount);
-  };
-
   return (
     <div className="App">
       <div className="allNotes">
@@ -105,14 +90,17 @@ export default function Note() {
                   >
                     <ArrowCircleUpIcon />
                   </button> */}
-                  {downvotesCount}
-                  <button
+                  <Downvote
+                    downvoteCount={note.downvotes}
+                    downvoteId={note.id}
+                  ></Downvote>{" "}
+                  {/* <button
                     onClick={() => {
                       downVote(note.id);
                     }}
                   >
                     <ArrowCircleDownIcon />
-                  </button>
+                  </button> */}
                   <button onClick={() => deleteNote(note.id)}>
                     <DeleteOutlineIcon />
                   </button>
