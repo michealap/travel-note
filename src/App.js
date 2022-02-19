@@ -14,6 +14,7 @@ import Logout from "./components/Pages/Logout";
 import Notes from "./components/Pages/Notes";
 import SignUp from "./components/Pages/SignUp";
 import ErrorPage from "./components/Pages/ErrorPage";
+import About from "./components/Pages/About";
 
 function App(props) {
   const [countryData, setCountryData] = useState();
@@ -57,6 +58,7 @@ function App(props) {
 
         <Route path="logout" element={<Logout />} />
         <Route path="*" element={<ErrorPage />} />
+        <Route path="about" element={<About />} />
       </Routes>
     </Router>
   );

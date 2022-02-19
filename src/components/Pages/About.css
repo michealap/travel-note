@@ -1,0 +1,26 @@
+.about-title {
+    margin-top: 5px;
+    text-decoration: underline;
+    margin-left: 45%;
+}
+
+.about-paragraph {
+    margin-top: 25px;
+    margin-left: 30%;
+    font-size: 18px;
+}
+
+.about {
+    background-image: url("../../images/background_beach_v2.png");
+    padding-bottom: 300px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.about-tools {
+    margin-left: 40%;
+}
+
+#left {
+    top: 0px;
+}
