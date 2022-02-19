@@ -21,14 +21,13 @@ export default function Weather({ weatherStats, countryStats }) {
   if(!weatherStats) { //starting state is false
     return <></>;
   }
-  //console.log("weather stats", weatherStats);
   let weatherCondition = weatherStats.condition;
   
   return (
     <Grid container spacing={1} >
       
       {[lightTheme].map((theme, index) => (
-        <Grid item xs={10} key={index}>
+        <Grid item xs={11} key={index}>
           <h2>Capital - {countryStats.capital}</h2>
           <h2>Current Weather </h2>
           
@@ -49,10 +48,10 @@ export default function Weather({ weatherStats, countryStats }) {
             It's {weatherCondition.text} outside today
             </Item>
             <Item key={2} elevation={2}>
-            The temperature is {weatherStats.temp_c} C / {weatherStats.temp_f} F
+            The temperature is {weatherStats.temp_c} &#176;C / {weatherStats.temp_f} &#176;F
             </Item>
             <Item key={3} elevation={4}>
-            But it feels more like {weatherStats.feelslike_c} C / {weatherStats.feelslike_f} F with the wind
+            But it feels more like {weatherStats.feelslike_c} &#176;C / {weatherStats.feelslike_f} &#176;F with the wind
             </Item>
             <Item key={4} elevation={6}>
             The humidity is {weatherStats.humidity} 

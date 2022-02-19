@@ -97,7 +97,7 @@ function Home(props) {
         // subheader={Date.now()}
       />
       <Stack 
-        sx={{ width: '100%', mb:1, pl:15 }}
+        sx={{ width: '100%', mb:1, pl:10 }}
         direction="row"
         alignItems="flex-start"
         columnGap={2}>
