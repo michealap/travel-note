@@ -67,9 +67,9 @@ export default function SignUp() {
       </div>
       <div className="right-half">
         {/* <div id="form" autoComplete="off" type="submit" onSubmit={handleSubmit}>{" "} */}
-        <Grid container spacing={3} p={5} pt={10} pl={20}>
-          <div>
-            <div>
+        <div id="form">
+        <Grid container spacing={2} p={5} pt={10} pl={20}>
+          <div id="header">
               <Typography pb={5} variant="h3">
                 Create Account
               </Typography>
@@ -79,11 +79,11 @@ export default function SignUp() {
                   alt="google"
                   width="20px"
                 ></img>
-                <Typography pl={2} variant="h6" justifyContent="center">
+                <Typography pl={1} variant="h6" justifyContent="center">
                   Continue with Google
                 </Typography>
               </Button>
-            </div>
+            
             <Typography mt={2} variant="h6" justifyContent="center">
               <hr className="hr-text" data-content="OR" />{" "}
             </Typography>
@@ -92,7 +92,7 @@ export default function SignUp() {
             component="form"
             type="submit"
             onSubmit={handleSubmit}
-            sx={{ width: "150%" }}
+            sx={{ width: "100%" }}
           >
             <Grid item xs={12}>
               <TextField
@@ -158,6 +158,7 @@ export default function SignUp() {
             </Grid>
           </Box>
         </Grid>
+        </div>
         <Typography pl={20} variant="h6">
           Already have an account? <Link to="/login">Log In</Link>
         </Typography>
