@@ -25,16 +25,16 @@ function App(props) {
     <Router>
       <div>
         <div id="left">
+        <a id="links" href="/" onClick={resetCountryData}> 
        <Typography
             variant="h4"
             noWrap
             component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}> 
+            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block', fontFamily: "Ruda" } }}> 
                 {/* home page */}
-                <a id="links" href="/" onClick={resetCountryData}> 
                 TravelNotes<DoubleArrowIcon />
-                 </a>
           </Typography>
+                 </a>
           </div>
           <div id="right"></div>
         </div>
@@ -42,7 +42,8 @@ function App(props) {
         <Route path="/" element={
           <>
         <NavBar/>
-        <Home countryData={countryData} setCountryData={setCountryData}/>
+        <Home countryData={countryData} setCountryData={setCountryData}
+        />
         </>
       }/>
         <Route path="login" element={<Login />} />
