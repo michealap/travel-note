@@ -1,13 +1,52 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Grid from '@mui/material/Grid';
-import Typography from "@mui/material/Typography";
+import { useNavigate, Link } from "react-router-dom";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import Grid from "@mui/material/Grid";
+import { useState } from "react";
+import { useAuth } from "../../providers/Auth";
+import { useContext } from "react";
+import { useRef } from "react";
 import "./Auth.css"
 
 function Login() {
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
+  // Get signUp function from the auth context
+  const { signIn } = useAuth();
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    // @TODO: add login logic
+    // Get email and password input values
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+
+    console.log(email, password);
+    // Calls `signIn` function from the context
+    const { error } = await signIn({ email, password });
+
+    if (error) {
+      alert("error signing in");
+    } else {
+      // Redirect user to Dashboard
+      navigate("/");
+    }
+  }
+
   let navigate = useNavigate();
+  // const { auth } = useContext(authContext);
+  // const { login } = useContext(authContext);
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+
+  // const onSubmit = function (event) {
+  //   event.preventDefault();
+  //   email && login(email, password);
+  //   navigate("/profile");
+  // };
 
   return (
     <section className="container">
@@ -18,10 +57,15 @@ function Login() {
           </Typography>
       </div>
       <div className="right-half">
-        <div id="form">
+        <div id="form" 
+        autoComplete="off"
+        type="submit"
+        onSubmit={handleSubmit}>
         <Grid container spacing={3} p={5} pt={25} pl={20}>
           <div>
           <div>
+           {/* {!auth && ( */}
+          {/* <form onSubmit={handleSubmit}> */}
           <Typography pb={5} variant="h3">Login</Typography>
           <Button variant="outlined">
             <img src="https://d3bz3ebxl8svne.cloudfront.net/production/static/svg/icon-google.svg" alt="google" width="20px"></img>
@@ -36,8 +80,11 @@ function Login() {
           style ={{width: '40%'}}
           required
           id="outlined-required"
-          label="username"
+          label="Email"
           defaultValue=""
+          type="email"
+          name="email"
+          inputRef={emailRef}
           inputProps={{style: {fontSize: 20}}} // font size of input text
           InputLabelProps={{style: {fontSize: 20}}} // font size of input label
         />
@@ -53,10 +100,15 @@ function Login() {
           type="password"
           defaultValue=""
           autoComplete="current-password"
+          inputRef={passwordRef}
         />
         </Grid>
         <Grid pt={5} item xs={12}>
-          <Button style ={{width: '40%', fontSize: 20}} variant="contained" href="user" onClick={() => {navigate("/user")}}>
+          <Button style ={{width: '40%', fontSize: 20}} variant="contained" 
+            // href="profile"
+            type="submit"
+            // name="commit" 
+            href="profile" onClick={() => {navigate("/user")}}>
             Login
           </Button>
         </Grid>

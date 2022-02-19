@@ -1,13 +1,51 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Grid from"@mui/material/Grid";
+import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import "./Auth.css"
+import "./Auth.css";
+import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { useAuth } from "../../providers/Auth";
+import Box from "@mui/material/Box";
 
 export default function SignUp() {
   let navigate = useNavigate();
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const firstNameRef = useRef();
+  const lastNameRef = useRef();
+
+  // Get signUp function from the auth context
+  const { signUp } = useAuth();
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    // @TODO: add sign up logic
+    // Get email and password input values
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+    const firstName = firstNameRef.current.value;
+    const lastName = lastNameRef.current.value;
+    console.log(email, password, firstName, lastName);
+
+    // Calls `signUp` function from the context
+    const { error } = await signUp({
+      email,
+      password,
+      firstName,
+      lastName,
+    });
+
+    if (error) {
+      alert("error signing in");
+    } else {
+      // Redirect user to Dashboard
+      navigate("/");
+    }
+  }
 
   return (
     <section className="container">
@@ -19,6 +57,7 @@ export default function SignUp() {
       </div>
       <div className="right-half">
         <div id="form">
+           {" "}
         <Grid container spacing={3} p={5} pt={10} pl={20}>
           <div>
           <div>
@@ -36,9 +75,10 @@ export default function SignUp() {
           inputProps={{style: {fontSize: 20}}} 
           InputLabelProps={{style: {fontSize: 20}}} 
           required
-          id="outlined-required"
+          id="outlined-required-firstname-input"
           label="First Name"
           defaultValue=""
+          inputRef={firstNameRef}
           />
           </Grid>
           <Grid item xs={12}>
@@ -47,9 +87,10 @@ export default function SignUp() {
             inputProps={{style: {fontSize: 20}}} 
             InputLabelProps={{style: {fontSize: 20}}} 
             required
-            id="outlined-required"
+            id="outlined-required-lastname-input"
             label="Last Name"
             defaultValue=""
+            inputRef={lastNameRef}
           />
           </Grid>
           <Grid item xs={12}>
@@ -58,9 +99,10 @@ export default function SignUp() {
             inputProps={{style: {fontSize: 20}}} 
             InputLabelProps={{style: {fontSize: 20}}} 
             required
-            id="outlined-required"
-            label="Username"
+            id="outlined-required-email-input"
+            label="Email"
             defaultValue=""
+            inputRef={emailRef}
           />
           </Grid>
           <Grid item xs={12}>
@@ -73,20 +115,22 @@ export default function SignUp() {
             label="Password"
             type="password"
             defaultValue=""
-            autoComplete="current-password"
+            inputRef={passwordRef}
           />
           <Grid pt={5} item xs={12}>
-          <Button  style ={{width: '40%', fontSize: 18}} variant="contained" href="profile" onClick={() => {navigate("/user")}}>
+          <Button  style ={{width: '40%', fontSize: 18}} variant="contained" href="profile" onClick={() => {navigate("/user")}}
+            type="submit">
             Create New Account
           </Button>
-          </Grid>
+          </Grid>{" "}
           </Grid>
           </Grid>
       </div>
         <Typography pl={20} variant="h6">
-          Do you already have an account? Then <a href="/login">Sign in</a>
+          Already have an account? <Link to="/login">Log In</Link>
           </Typography>
         </div>
-      </section>
-  )
+      </div>
+    </section>
+  );
 }
