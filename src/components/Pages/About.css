@@ -1,24 +1,42 @@
 .about-title {
     margin-top: 5px;
     text-decoration: underline;
-    margin-left: 45%;
+    text-align: center;
 }
 
 .about-paragraph {
     margin-top: 25px;
-    margin-left: 30%;
     font-size: 18px;
+    text-align: center;
 }
 
 .about {
     background-image: url("../../images/background_beach_v2.png");
-    padding-bottom: 300px;
+    padding-bottom: 150px;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .about-tools {
-    margin-left: 40%;
+    text-align: center;
+}
+
+.about-tools > a {
+    margin: 15px;
+}
+
+.about-tools-title {
+    text-align: center;
+    text-decoration: underline;
+}
+
+.react-class {
+    border-radius: 10px;
+}
+
+.react-class:last-of-type {
+    margin-left: 40px;
+    margin-right: 40px;
 }
 
 #left {
