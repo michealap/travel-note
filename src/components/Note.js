@@ -7,12 +7,15 @@ import ArrowCircleUpIcon from "@mui/icons-material/ArrowCircleUp";
 import ArrowCircleDownIcon from "@mui/icons-material/ArrowCircleDown";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useAuth } from "../providers/Auth";
-
+import Upvote from "../components/Upvote";
 export default function Note() {
   const { user } = useAuth();
 
   const [loading, setLoading] = useState(true);
   const [notes, setNotes] = useState([]);
+  // const [upvotesCount, setUpvotesCount] = useState(note.upvote);
+  // const [downvotesCount, setDownvotesCount] = useState(note.downvote);
+  const [downvotesCount, setDownvotesCount] = useState(0);
 
   useEffect(() => {
     fetchNotes();
@@ -52,19 +55,21 @@ export default function Note() {
     return data[0].upvotes;
   }
 
-  const upVote = async (noteId) => {
-    let currentNotesCount = await fetchNotesCount(noteId);
+  // const upVote = async (noteId) => {
+  //   let currentNotesCount = await fetchNotesCount(noteId);
 
-    console.log("noteId:", noteId);
-    let updatedNotesCount = parseInt(currentNotesCount) + 1;
-    console.log("currentNotesCount:", currentNotesCount);
-    console.log("updatedNotesCount:", updatedNotesCount);
+  //   // console.log("noteId:", noteId);
+  //   let updatedNotesCount = parseInt(currentNotesCount) + 1;
+  //   // console.log("currentNotesCount:", currentNotesCount);
+  //   // console.log("updatedNotesCount:", updatedNotesCount);
 
-    const { data, error } = await supabase
-      .from("notes")
-      .update({ upvotes: `${updatedNotesCount}` })
-      .match({ id: `${noteId}` });
-  };
+  //   const { data, error } = await supabase
+  //     .from("notes")
+  //     .update({ upvotes: `${updatedNotesCount}` })
+  //     .match({ id: `${noteId}` });
+
+  //   setUpvotesCount(updatedNotesCount);
+  // };
 
   const downVote = async (noteId) => {
     let currentNotesCount = await fetchNotesCount(noteId);
@@ -78,6 +83,8 @@ export default function Note() {
       .from("notes")
       .update({ upvotes: `${updatedNotesCount}` })
       .match({ id: `${noteId}` });
+
+    setDownvotesCount(updatedNotesCount);
   };
 
   return (
@@ -90,15 +97,15 @@ export default function Note() {
               <p>{note.content}</p>
               {user && (
                 <>
-                  {note.upvotes}
-                  <button
+                  <Upvote upvoteCount={note.upvotes} upvoteId={note.id} />
+                  {/* <button
                     onClick={() => {
                       upVote(note.id);
                     }}
                   >
                     <ArrowCircleUpIcon />
-                  </button>
-                  {note.downvotes}
+                  </button> */}
+                  {downvotesCount}
                   <button
                     onClick={() => {
                       downVote(note.id);
