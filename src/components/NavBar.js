@@ -58,7 +58,7 @@ return (
           variant="h6"
           component="div"
           sx={{ flexGrow: 0, display: { xs: 'none', sm: 'block' } }}>
-           <Link id="links" to="about">
+           <Link id="links" to="/about">
               {" "}
               About{" "}
             </Link>
@@ -104,7 +104,7 @@ return (
               }}
             >
               <Button>
-                <Link to="signup" id="links">
+                <Link to="/signup" id="links">
                   {" "}
                   Create an account{" "}
                 </Link>

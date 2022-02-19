@@ -8,10 +8,10 @@ export default function Currency({ currency }) {
     return <></>;
   }
   return (
-    <Box sx={{ width: "90%", m: "5%", }}>
+    <Box sx={{ width: "90%", m: "5%", }} textAlign="center">
         <h2>Currency conversion from CAD</h2>
         <Divider />
-        <Typography variant="h5" pt={1}>Every 1 CAD dollar will be worth {currency.new_amount}{currency.new_currency}</Typography>
+        <Typography variant="h5" pt={1}>Every 1 CAD dollar will be worth {currency.new_amount} {currency.new_currency}</Typography>
         <Divider />
     </Box>
   )

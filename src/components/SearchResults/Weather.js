@@ -36,14 +36,13 @@ export default function Weather({ weatherStats, countryStats }) {
               sx={{
                 p: 2,
                 width: "100%",
-                bgcolor: 'background.default',
                 display: 'grid',
                 gridTemplateColumns: { md: '1fr 1fr' },
                 gap: 2,
               }}
             >
      
-        <img src={weatherCondition.icon} alt="" width="100" height="100" float="right" />
+        <img src={weatherCondition.icon} alt="" width="100" height="100" />
           <Item key={1} elevation={2}>
             It's {weatherCondition.text} outside today
             </Item>
@@ -51,7 +50,7 @@ export default function Weather({ weatherStats, countryStats }) {
             The temperature is {weatherStats.temp_c} &#176;C / {weatherStats.temp_f} &#176;F
             </Item>
             <Item key={3} elevation={4}>
-            But it feels more like {weatherStats.feelslike_c} &#176;C / {weatherStats.feelslike_f} &#176;F with the wind
+            With wind chill it {weatherStats.feelslike_c} &#176;C / {weatherStats.feelslike_f} &#176;F 
             </Item>
             <Item key={4} elevation={6}>
             The humidity is {weatherStats.humidity} 
