@@ -90,11 +90,20 @@ export default function Note() {
               <p>{note.content}</p>
               {user && (
                 <>
-                  <button onClick={() => upVote(note.id)}>
+                  {note.upvotes}
+                  <button
+                    onClick={() => {
+                      upVote(note.id);
+                    }}
+                  >
                     <ArrowCircleUpIcon />
                   </button>
-
-                  <button onClick={() => downVote(note.id)}>
+                  {note.downvotes}
+                  <button
+                    onClick={() => {
+                      downVote(note.id);
+                    }}
+                  >
                     <ArrowCircleDownIcon />
                   </button>
                   <button onClick={() => deleteNote(note.id)}>
