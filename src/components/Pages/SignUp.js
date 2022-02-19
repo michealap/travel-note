@@ -5,10 +5,11 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import "./Auth.css";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../providers/Auth";
-import Box from "@mui/material/Box";
+// import { useState } from "react";
+// import Box from "@mui/material/Box";
 
 export default function SignUp() {
   let navigate = useNavigate();
@@ -52,11 +53,15 @@ export default function SignUp() {
       <div className="left-half">
       <Typography sx={{ width: "80%", m: "10%",
         backgroundColor: "transparent", fontFamily: "Ruda"}} variant="h4">
-          <i>Your direct</i> information source <i>for</i> common knowledge<i> and </i>current affairs<i> by </i>location. <i>Your next adventure starts here.</i>
-          </Typography>
+          <i>Your direct</i> information source <i>for</i> common knowledge<i> and </i>current affairs<i> by </i>location.<br></br><i>Your next adventure starts here.</i>
+      </Typography>
       </div>
       <div className="right-half">
-        <div id="form">
+        <div id="form"
+        autoComplete="off"
+        type="submit"
+        onSubmit={handleSubmit}
+        >    
            {" "}
         <Grid container spacing={3} p={5} pt={10} pl={20}>
           <div>
@@ -126,10 +131,9 @@ export default function SignUp() {
           </Grid>
           </Grid>
       </div>
-        <Typography pl={20} variant="h6">
-          Already have an account? <Link to="/login">Log In</Link>
-          </Typography>
-        </div>
+      <Typography pl={20} variant="h6">
+        Already have an account? <Link to="/login">Log In</Link>
+      </Typography>
       </div>
     </section>
   );

@@ -1,11 +1,12 @@
 import { useNavigate, Link } from "react-router-dom";
-import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
-import { useState } from "react";
+// import Box from "@mui/material/Box";
+// import { useState } from "react";
+// import { useContext } from "react";
 import { useAuth } from "../../providers/Auth";
-import { useContext } from "react";
 import { useRef } from "react";
 import "./Auth.css"
 
@@ -53,7 +54,7 @@ function Login() {
       <div className="left-half">
       <Typography sx={{ width: "80%", m: "10%",
        backgroundColor: "transparent", fontFamily: "Ruda"}} variant="h4">
-          <i>Your direct</i> information source <i>for</i> common knowledge<i> and </i>current affairs<i> by </i>location. <i>Your next adventure starts here.</i>
+          <i>Your direct</i> information source <i>for</i> common knowledge<i> and </i>current affairs<i> by </i>location.<br></br><i>Your next adventure starts here.</i>
           </Typography>
       </div>
       <div className="right-half">
@@ -108,12 +109,16 @@ function Login() {
             // href="profile"
             type="submit"
             // name="commit" 
-            href="profile" onClick={() => {navigate("/user")}}>
+            // href="profile" 
+            onClick={() => {navigate("/user")}}>
             Login
           </Button>
         </Grid>
         </Grid>
         </div>
+        <Typography pl={20} variant="h6">
+          Don't have an account? <Link to="/signup">Sign Up</Link>
+          </Typography>
         </div>
       </section>
   );

@@ -17,7 +17,6 @@ import { Dashboard } from "./components/Pages/Dashboard";
 
 import ErrorPage from "./components/Pages/ErrorPage";
 import About from "./components/Pages/About";
-import Profile from "./components/Pages/Profile";
 
 function App(props) {
   const [countryData, setCountryData] = useState();

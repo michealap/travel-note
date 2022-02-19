@@ -1,4 +1,4 @@
-import { useContext } from "react";
+// import { useContext } from "react";
 import React, { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -8,7 +8,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import Button from "@mui/material/Button";
 import { useAuth } from "../providers/Auth";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router";
+// import { useNavigate } from "react-router";
 import "./NavBar.css"
 
 
@@ -19,7 +19,7 @@ export default function NavBar(props) {
   // console.log(props.match.path);
   // console.log("auth:", auth);
   const { user, signOut } = useAuth();
-  let navigate = useNavigate();
+  // let navigate = useNavigate();
   async function handleSignOut() {
     // Ends user session
     await signOut();
@@ -29,6 +29,7 @@ export default function NavBar(props) {
   }
 
   const handleChange = (e) => {
+    console.log(e.target.value);
     setUserInput(e.target.value);
   };
 
@@ -48,7 +49,7 @@ return (
           placeholder="Search ..."
           value={userInput}
           onChange={handleChange}
-          onSubmit={navSearch}
+          onSubmit={() => navSearch()}
         />
         </form>
          
@@ -57,10 +58,10 @@ return (
           variant="h6"
           component="div"
           sx={{ flexGrow: 0, display: { xs: 'none', sm: 'block' } }}>
-           <a id="links" href="about">
+           <Link id="links" to="about">
               {" "}
               About{" "}
-            </a>
+            </Link>
         </Typography>
 
           <Typography
