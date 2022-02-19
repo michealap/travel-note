@@ -1,21 +1,21 @@
 import React from "react";
 import NewsArticle from "./NewsArticle";
 import Paper from "@mui/material/Paper";
-import List from "@mui/material/List";
 import Box from '@mui/material/Box';
+import Divider from '@mui/material/Divider';
 
 export default function NewsList({ newsList, setSelectedArticle }) {
   
   const news = newsList && newsList.map((article) => {
     return (
-    <NewsArticle key={article.title} article={article.url} setSelectedArticle={()=> setSelectedArticle(article)} />
+    <NewsArticle key={article.title} article={article} />
   )})
     return (
       <Box sx={{ width: "90%", m: "5%", }}>
-      <Paper style={{maxHeight: 500, overflow: 'auto'}}>
-      <List component="nav" aria-label="secondary mailbox folder" color="text.primary">
+        <h2>Current News</h2>
+        <Divider />
+      <Paper style={{ maxHeight: 500, overflow: 'auto'}}>
         {news}
-      </List>
       </Paper>
       </Box>
 

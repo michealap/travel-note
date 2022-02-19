@@ -5,6 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import SearchIcon from '@mui/icons-material/Search';
 import Button from '@mui/material/Button';
+import "./NavBar.css";
 
 export default function NavBar(props) {
   const [userInput, setUserInput] = useState("");
@@ -19,17 +20,17 @@ export default function NavBar(props) {
   }
 
 return (
-<Box sx={{ flexGrow: 1 }}>
-    
+    <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" color="" >
         <Toolbar sx={{ justifyContent: 'space-evenly'}}>
-        <form onSubmit={navSearch}>
+        <form id="nav-form">
         <SearchIcon/>
         <input
-          id="clear"
+          id="nav-input"
           placeholder="Search ..."
           value={userInput}
           onChange={handleChange}
+          onSubmit={navSearch}
         />
         </form>
          
@@ -51,11 +52,11 @@ return (
           <Box
           sx={{
           display: 'flex',
-          m:1.5,
+          m:0,
           flexGrow: -1,
           alignItems: 'center',
           width: 'fit-content',
-          border: (theme) => `8px solid ${theme.palette.divider}`,
+          border: (theme) => `4px solid ${theme.palette.divider}`,
           padding: '5px',
           borderRadius: 1,
           color: 'text.white',
@@ -67,9 +68,11 @@ return (
             mx: 0.5,
           },
           }}>
-        <Button>
-        <a id="links" href="signup"> Create an account </a>
+          <a id="links" href="signup" >
+        <Button style={{backgroundColor: '#eb8200', color: '#FFFFFF'}}>
+         Create an account 
          </Button>
+         </a>
          </Box>
         </Toolbar>
       </AppBar>
