@@ -1,0 +1,44 @@
+.about-title {
+    margin-top: 5px;
+    text-decoration: underline;
+    text-align: center;
+}
+
+.about-paragraph {
+    margin-top: 25px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.about {
+    background-image: url("../../images/background_beach_v2.png");
+    padding-bottom: 150px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.about-tools {
+    text-align: center;
+}
+
+.about-tools > a {
+    margin: 15px;
+}
+
+.about-tools-title {
+    text-align: center;
+    text-decoration: underline;
+}
+
+.react-class {
+    border-radius: 10px;
+}
+
+.react-class:last-of-type {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+#left {
+    top: 0px;
+}

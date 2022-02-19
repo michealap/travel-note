@@ -16,6 +16,7 @@ import SignUp from "./components/Pages/SignUp";
 import { Dashboard } from "./components/Pages/Dashboard";
 
 import ErrorPage from "./components/Pages/ErrorPage";
+import About from "./components/Pages/About";
 import Profile from "./components/Pages/Profile";
 
 function App(props) {
@@ -62,6 +63,7 @@ function App(props) {
 
         <Route path="logout" element={<Logout />} />
         <Route path="*" element={<ErrorPage />} />
+        <Route path="about" element={<About />} />
       </Routes>
     </Router>
   );
