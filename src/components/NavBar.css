@@ -1,0 +1,10 @@
+#nav-input{
+  font-size: x-large;
+  font-weight: normal;
+  padding-left: 8px;
+}
+
+#nav-form {
+  display: flex;
+  margin-left: 20%;
+}
