@@ -11,6 +11,7 @@ export default function VideoList({ videos, setSelectedVideo }) {
   )})
     return (
       <Paper style={{maxHeight: 500, overflow: 'auto'}}>
+        <h2>This Week's Popular Videos</h2>
       <List component="nav" aria-label="secondary mailbox folder">
         {renderedVideos}
       </List>
