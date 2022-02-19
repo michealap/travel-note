@@ -1,9 +1,11 @@
 import { useState } from "react";
 import "./Search.css";
+import CircularProgress from '@mui/material/CircularProgress';
 import SearchIcon from '@mui/icons-material/Search';
 
 export default function Search (props) {
-  
+  const { loading } = props;
+  console.log("inside search:", props)
   const [userInput, setUserInput] = useState("");
 
   const handleChange = (e) => {
@@ -27,9 +29,9 @@ export default function Search (props) {
           onChange={handleChange}
           //onSubmit={setUserInput}
         />
-        <button type="button" onClick={() => onSearch()}>
+        {loading === true ? (<CircularProgress color="success" style={{padding: "10px"}}/>): (<button type="button" onClick={() => onSearch()}>
         <SearchIcon id="button" />
-        </button>
+        </button>)}
         </div>
       </div>
       <div className="logo"></div>

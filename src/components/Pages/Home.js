@@ -15,7 +15,6 @@ import Currency from "../SearchResults/Currency";
 
 // Material UI
 import { styled } from '@mui/material/styles';
-import CircularProgress from '@mui/material/CircularProgress';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import Stack from '@mui/material/Stack';
@@ -26,9 +25,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { purple } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
 
 
 function Home(props) {
@@ -39,14 +36,17 @@ function Home(props) {
   const [videosData, setVideosData] = useState();
   const [selectedVideo, setSelectedVideo] = useState();
   const [newsListData, setNewsListData] = useState();
-  const [selectedArticle, setSelectedArticle] = useState();
   const [loading, setLoading] = useState(false);
   
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+  const handleFavorite = () => {
+    console.log("Added to Favorite");
+  }
 
   async function search(userInput) {
+    setLoading(true);
     let { countryStats, weatherStats, videos, currencyConvert, newsList } = await getSearchResult(userInput);
     setCountryData(countryStats);
     setWeatherData(weatherStats);
@@ -56,11 +56,6 @@ function Home(props) {
     setCurrencyData(currencyConvert);
     setLoading(false);
 }
-
-  // If Loading
-  if (loading) {
-    return <div><CircularProgress color="success" /></div>;
-  }
   const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
     return <IconButton {...other} />;
@@ -76,7 +71,7 @@ function Home(props) {
   return (
     <div>
       {!countryData && <div>
-      <Search placeholder="Adventure starts here..." search={search} />
+      <Search placeholder="Adventure starts here..." search={search} loading={loading} />
       <Note />
       </div>
       }
@@ -90,16 +85,19 @@ function Home(props) {
             {countryData.name.charAt(0).toUpperCase()}
           </Avatar>
         }
-        // action={
-        //   <IconButton rubik-label="settings">
-        //     <MoreVertIcon />
-        //   </IconButton>
-        // }
+        action={
+          <IconButton aria-label="add to favorites"  onClick={handleFavorite}>
+          <FavoriteIcon />
+          </IconButton>
+        // <IconButton aria-label="share">
+        //   <ShareIcon />
+        // </IconButton>
+        }
         title={countryData.name}
         // subheader={Date.now()}
       />
       <Stack 
-        sx={{ width: '100%', mb:1 }}
+        sx={{ width: '100%', mb:1, pl:15 }}
         direction="row"
         alignItems="flex-start"
         columnGap={2}>
@@ -107,13 +105,8 @@ function Home(props) {
           <div width="100%"></div>
           <Weather sx={{display:'flex', justifyContent: 'right'}} weatherStats={weatherData} countryStats={countryData} />
         </Stack>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
+      
+    <CardActions>        
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
@@ -123,13 +116,14 @@ function Home(props) {
           <ExpandMoreIcon />
         </ExpandMore>
       </CardActions>
+
       <Collapse in={expanded} timeout="auto" unmountOnExit>
       <BasicStats countryStats={countryData} />
       <Currency currency={currencyData} />
-      <NewsDetail article={selectedArticle} />
-      <NewsList newsList={newsListData} setSelectedArticle={setSelectedArticle}/>
+      <NewsDetail />
+      <NewsList newsList={newsListData} />
       </Collapse>
-      <h2>This Week's Popular Videos</h2>
+
       <Stack
         sx={{ width: '100%', mb: 1 }}
         direction="row"
@@ -137,7 +131,6 @@ function Home(props) {
         columnGap={1}
       >
         <VideoDetail video={selectedVideo}/>
-      
         <VideoList sx={{}} videos={videosData} setSelectedVideo={setSelectedVideo}/>
         </Stack>
         <hr />

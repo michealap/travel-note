@@ -1,7 +1,7 @@
 import "./App.css";
 // Navigation bar styles
 import React, { useState } from "react";
-import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
+import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
 import Typography from "@mui/material/Typography";
 
 import "./components/Search.css";
@@ -13,7 +13,11 @@ import Login from "./components/Pages/Login";
 import Logout from "./components/Pages/Logout";
 import Notes from "./components/Pages/Notes";
 import SignUp from "./components/Pages/SignUp";
+import { Dashboard } from "./components/Pages/Dashboard";
+
 import ErrorPage from "./components/Pages/ErrorPage";
+import About from "./components/Pages/About";
+import Profile from "./components/Pages/Profile";
 
 function App(props) {
   const [countryData, setCountryData] = useState();
@@ -25,16 +29,16 @@ function App(props) {
     <Router>
       <div>
         <div id="left">
+        <a id="links" href="/" onClick={resetCountryData}> 
        <Typography
             variant="h4"
             noWrap
             component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}> 
+            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block', fontFamily: "Ruda" } }}> 
                 {/* home page */}
-                <a id="links" href="/" onClick={resetCountryData}> 
                 TravelNotes<DoubleArrowIcon />
-                 </a>
           </Typography>
+                 </a>
           </div>
           <div id="right"></div>
         </div>
@@ -42,12 +46,14 @@ function App(props) {
         <Route path="/" element={
           <>
         <NavBar/>
-        <Home countryData={countryData} setCountryData={setCountryData}/>
+        <Home countryData={countryData} setCountryData={setCountryData}
+        />
         </>
       }/>
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
-          
+        <Route path="dashboard" element={<Dashboard />} />
+
         <Route path="/user" element={<User />}></Route>
 
         <Route
@@ -57,6 +63,7 @@ function App(props) {
 
         <Route path="logout" element={<Logout />} />
         <Route path="*" element={<ErrorPage />} />
+        <Route path="about" element={<About />} />
       </Routes>
     </Router>
   );

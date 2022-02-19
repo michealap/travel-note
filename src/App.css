@@ -4,9 +4,9 @@
 
 #links:hover {
   text-decoration: 'none';
-  color: rgb(255, 160, 160);
+  color: #eb8200;
 }
-#links:focus, #links:active, #links {
+#links {
   text-decoration: none;
   color: inherit;
 }
