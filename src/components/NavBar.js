@@ -77,33 +77,35 @@ export default function NavBar(props) {
               </Link>
             )}
           </Typography>
-          <Box
-            sx={{
-              display: "flex",
-              m: 1.5,
-              flexGrow: -1,
-              alignItems: "center",
-              width: "fit-content",
-              border: (theme) => `8px solid ${theme.palette.divider}`,
-              padding: "5px",
-              borderRadius: 1,
-              color: "text.white",
-              fontSize: "20px",
-              "& svg": {
-                m: 2,
-              },
-              "& hr": {
-                mx: 0.5,
-              },
-            }}
-          >
-            <Button>
-              <a id="links" href="signup">
-                {" "}
-                Create an account{" "}
-              </a>
-            </Button>
-          </Box>
+          {!user && (
+            <Box
+              sx={{
+                display: "flex",
+                m: 1.5,
+                flexGrow: -1,
+                alignItems: "center",
+                width: "fit-content",
+                border: (theme) => `8px solid ${theme.palette.divider}`,
+                padding: "5px",
+                borderRadius: 1,
+                color: "text.white",
+                fontSize: "20px",
+                "& svg": {
+                  m: 2,
+                },
+                "& hr": {
+                  mx: 0.5,
+                },
+              }}
+            >
+              <Button>
+                <Link to="signup" id="links">
+                  {" "}
+                  Create an account{" "}
+                </Link>
+              </Button>
+            </Box>
+          )}
         </Toolbar>
       </AppBar>
     </Box>
