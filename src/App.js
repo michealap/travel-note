@@ -1,8 +1,10 @@
 import "./App.css";
 // Navigation bar styles
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
 import Typography from "@mui/material/Typography";
+
 
 import "./components/Search.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -26,9 +28,9 @@ function App(props) {
 
   return (
     <Router>
+      <Link id="links" to="/" onClick={resetCountryData}> 
       <div>
         <div id="left">
-        <a id="links" href="/" onClick={resetCountryData}> 
        <Typography
             variant="h4"
             noWrap
@@ -37,14 +39,14 @@ function App(props) {
                 {/* home page */}
                 TravelNotes<DoubleArrowIcon />
           </Typography>
-                 </a>
           </div>
           <div id="right"></div>
         </div>
+      </Link>
       <Routes>
         <Route path="/" element={
-          <>
-        <NavBar/>
+        <>
+        <NavBar resetCountryData={()=> resetCountryData()}/>
         <Home countryData={countryData} setCountryData={setCountryData}
         />
         </>

@@ -1,10 +1,10 @@
-// import { useContext } from "react";
-import React, { useState } from "react";
+// import { useState } from "react";
+import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import SearchIcon from "@mui/icons-material/Search";
+// import SearchIcon from "@mui/icons-material/Search";
 import Button from "@mui/material/Button";
 import { useAuth } from "../providers/Auth";
 import { Link } from "react-router-dom";
@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import "./NavBar.css";
 
 export default function NavBar(props) {
-  const [userInput, setUserInput] = useState("");
+  const { resetCountryData } = props;
   // const { useAuth } = useContext(useAuth);
   // console.log(props.match);
   // console.log(props.match.path);
@@ -22,26 +22,26 @@ export default function NavBar(props) {
   async function handleSignOut() {
     // Ends user session
     await signOut();
-
+    
     // Redirects the user to Login page
     // navigate("/login");
   }
+  
+  // const [userInput, setUserInput] = useState("");
+  // const handleChange = (e) => {
+  //   console.log(e.target.value);
+  //   setUserInput(e.target.value);
+  // };
 
-  const handleChange = (e) => {
-    console.log(e.target.value);
-    setUserInput(e.target.value);
-  };
-
-  function navSearch() {
-    props.search(userInput);
-    setUserInput("");
-  }
+  // function navSearch() {
+  //   props.search(userInput);
+  //   setUserInput("");
+  // }
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" color="">
         <Toolbar sx={{ justifyContent: "space-evenly" }}>
-          <form id="nav-form">
+          {/* <form id="nav-form">
             <SearchIcon />
             <input
               id="nav-input"
@@ -50,14 +50,24 @@ export default function NavBar(props) {
               onChange={handleChange}
               onSubmit={() => navSearch()}
             />
-          </form>
+          </form> */}
+           <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 0, display: { xs: "none", sm: "block" } }}
+          >
+            <Link id="links" to="/" onClick={resetCountryData}>
+              {" "}
+              Home{" "}
+            </Link>
+          </Typography>
 
           <Typography
             variant="h6"
             component="div"
             sx={{ flexGrow: 0, display: { xs: "none", sm: "block" } }}
           >
-            <Link id="links" to="about">
+            <Link id="links" to="about" onClick={resetCountryData}>
               {" "}
               About{" "}
             </Link>
@@ -69,7 +79,7 @@ export default function NavBar(props) {
             sx={{ flexGrow: 0, display: { xs: "none", sm: "block" } }}
           >
             {!user ? (
-              <Link to="/login" id="links">
+              <Link to="/login" id="links" onClick={resetCountryData}>
                 {" "}
                 Login{" "}
               </Link>
@@ -112,6 +122,5 @@ export default function NavBar(props) {
           )}
         </Toolbar>
       </AppBar>
-    </Box>
   );
 }
