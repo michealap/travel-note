@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -12,7 +12,7 @@ import { useAuth } from "../../providers/Auth";
 import Box from "@mui/material/Box";
 
 export default function SignUp() {
-  let navigate = useNavigate();
+  // let navigate = useNavigate();
   const emailRef = useRef();
   const passwordRef = useRef();
   const firstNameRef = useRef();
@@ -68,7 +68,7 @@ export default function SignUp() {
       <div className="right-half">
         {/* <div id="form" autoComplete="off" type="submit" onSubmit={handleSubmit}>{" "} */}
         <div id="form">
-        <Grid container spacing={2} p={5} pt={10} pl={20}>
+        <Grid container p={5} pt={10} pl={20}>
           <div id="header">
               <Typography pb={5} variant="h3">
                 Create Account
@@ -84,7 +84,7 @@ export default function SignUp() {
                 </Typography>
               </Button>
             
-            <Typography mt={2} variant="h6" justifyContent="center">
+            <Typography mt={2} pb={3} variant="h6" justifyContent="center">
               <hr className="hr-text" data-content="OR" />{" "}
             </Typography>
           </div>
@@ -93,10 +93,11 @@ export default function SignUp() {
             type="submit"
             onSubmit={handleSubmit}
             sx={{ width: "100%" }}
+            spacing={3}
           >
             <Grid item xs={12}>
               <TextField
-                style={{ width: "40%" }}
+                style={{ width: "60%" }}
                 inputProps={{ style: { fontSize: 20 } }}
                 InputLabelProps={{ style: { fontSize: 20 } }}
                 required
@@ -108,7 +109,7 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                style={{ width: "40%" }}
+                style={{ width: "60%" }}
                 inputProps={{ style: { fontSize: 20 } }}
                 InputLabelProps={{ style: { fontSize: 20 } }}
                 required
@@ -120,7 +121,7 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                style={{ width: "40%" }}
+                style={{ width: "60%" }}
                 inputProps={{ style: { fontSize: 20 } }}
                 InputLabelProps={{ style: { fontSize: 20 } }}
                 required
@@ -130,9 +131,9 @@ export default function SignUp() {
                 inputRef={emailRef}
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid pb={2} item xs={12}>
               <TextField
-                style={{ width: "40%" }}
+                style={{ width: "60%" }}
                 inputProps={{ style: { fontSize: 20 } }}
                 InputLabelProps={{ style: { fontSize: 20 } }}
                 required
@@ -144,7 +145,7 @@ export default function SignUp() {
               />
               <Grid pt={5} item xs={12}>
                 <Button
-                  style={{ width: "40%", fontSize: 18 }}
+                  style={{ width: "60%", fontSize: 18 }}
                   variant="contained"
                   // href="profile"
                   // onClick={() => {
@@ -157,11 +158,11 @@ export default function SignUp() {
               </Grid>{" "}
             </Grid>
           </Box>
-        </Grid>
-        </div>
-        <Typography pl={20} variant="h6">
+        <Typography pt={3} variant="h6">
           Already have an account? <Link to="/login">Log In</Link>
         </Typography>
+        </Grid>
+        </div>
       </div>
     </section>
   );

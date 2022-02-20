@@ -73,7 +73,7 @@ function Login() {
           type="submit"
           onSubmit={handleSubmit}
         >
-          <Grid container spacing={3} p={4} pt={15} pl={20}>
+          <Grid container spacing={2} p={4} pt={15} pl={20}>
             <div>
               <div>
                 {/* {!auth && ( */}
@@ -87,7 +87,7 @@ function Login() {
                     alt="google"
                     width="20px"
                   ></img>
-                  <Typography pl={2} variant="h6" justifyContent="center">
+                  <Typography pl={3} pr={3} variant="h6" justifyContent="center">
                     Sign in with Google
                   </Typography>
                 </Button>
@@ -98,7 +98,7 @@ function Login() {
             </div>
             <Grid item xs={12}>
               <TextField
-                style={{ width: "40%" }}
+                style={{ width: "50%" }}
                 required
                 id="outlined-required"
                 label="Email"
@@ -112,12 +112,12 @@ function Login() {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                style={{ width: "40%" }}
+                style={{ width: "50%" }}
                 inputProps={{ style: { fontSize: 20 } }}
                 InputLabelProps={{ style: { fontSize: 20 } }}
                 required
                 id="outlined-password-input"
-                label="password"
+                label="Password"
                 type="password"
                 defaultValue=""
                 autoComplete="current-password"
@@ -126,7 +126,7 @@ function Login() {
             </Grid>
             <Grid pt={5} item xs={12}>
               <Button
-                style={{ width: "40%", fontSize: 20 }}
+                style={{ width: "50%", fontSize: 20 }}
                 variant="contained"
                 // href="profile"
                 type="submit"
@@ -137,11 +137,11 @@ function Login() {
                 Login
               </Button>
             </Grid>
-          </Grid>
-        </form>
-        <Typography pl={20} variant="h6">
+        <Typography pt={4} variant="h6">
           Don't have an account? <Link to="/signup">Sign Up</Link>
         </Typography>
+          </Grid>
+        </form>
       </div>
     </section>
   );

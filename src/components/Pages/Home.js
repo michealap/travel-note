@@ -33,6 +33,7 @@ import "./Home.css"
 
 function Home(props) {
   const { countryData, setCountryData } = props;
+  console.log("in home:", countryData);
   const [weatherData, setWeatherData] = useState();
   const [expanded, setExpanded] = React.useState(true);
   const [currencyData, setCurrencyData] = useState();
@@ -140,11 +141,13 @@ function Home(props) {
         <VideoList sx={{}} videos={videosData} setSelectedVideo={setSelectedVideo} />
         </Stack>
         <hr />
+        <div id="last">
         <h1>Destination Notes</h1>
           <Note />
           <Typography variant="h5" color="text.secondary">
           Visited here? Please share your experience<NoteModal />
         </Typography>
+        </div>
       </Card>
       }
     </div>
