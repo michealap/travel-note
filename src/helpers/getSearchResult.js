@@ -88,7 +88,7 @@ export default async function getSearchResult(countryName) {
         access_key: news_api_key,
         languages: 'en',
         limit: 5,
-        categories: 'general',
+        categories: 'general,entertainment,-science',
         countries: country,
         sort: 'published_desc'
       };
@@ -128,7 +128,7 @@ export default async function getSearchResult(countryName) {
       console.log("lng:", lng);
 
       // working trip call
-      let trip_api_call =`https://api.opentripmap.com/0.1/en/places/radius?radius=1000&lon=${lng}&lat=${lat}&kinds=architecture%2Ccultural&limit=10&apikey=${trip_api_key}`;
+      let trip_api_call =`https://api.opentripmap.com/0.1/en/places/radius?radius=1000&lon=${lng}&lat=${lat}&kinds=architecture%2Ccultural&limit=5&apikey=${trip_api_key}`;
       // https://api.opentripmap.com/0.1/en/places/radius?radius=1000&lon=-76.7928128&lat=17.9712148&kinds=architecture%2Ccultural&limit=10&apikey=
   
       const tripRes = await axios
