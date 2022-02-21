@@ -72,7 +72,7 @@ export default function Search(props) {
               <CircularProgress color="success" style={{ padding: "10px" }} />
             ) : (
               <button type="button" onClick={() => onSearch()}>
-                )
+                
                 <SearchIcon id="button" />
               </button>
             )}
