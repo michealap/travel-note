@@ -4,7 +4,6 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-// import SearchIcon from "@mui/icons-material/Search";
 import Button from "@mui/material/Button";
 import { useAuth } from "../providers/Auth";
 import { Link } from "react-router-dom";
@@ -26,35 +25,14 @@ export default function NavBar(props) {
     // Redirects the user to Login page
     // navigate("/login");
   }
-  
-  // const [userInput, setUserInput] = useState("");
-  // const handleChange = (e) => {
-  //   console.log(e.target.value);
-  //   setUserInput(e.target.value);
-  // };
-
-  // function navSearch() {
-  //   props.search(userInput);
-  //   setUserInput("");
-  // }
 
   return (
       <AppBar position="static" color="">
         <Toolbar sx={{ justifyContent: "space-evenly" }}>
-          {/* <form id="nav-form">
-            <SearchIcon />
-            <input
-              id="nav-input"
-              placeholder="Search ..."
-              value={userInput}
-              onChange={handleChange}
-              onSubmit={() => navSearch()}
-            />
-          </form> */}
            <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 0, display: { xs: "none", sm: "block" } }}
+            sx={{ pl: "10%", flexGrow: 0, display: { xs: "none", sm: "block" } }}
           >
             <Link id="links" to="/" onClick={resetCountryData}>
               {" "}

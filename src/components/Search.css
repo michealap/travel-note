@@ -1,30 +1,33 @@
-.searchbarandbutton {
-  width: device-width, initial-scale=0.9, user-scalable=no;
+.logoandsearch {
+  display: flex;
+  width: device-width, initial-scale=1, user-scalable=no;
   margin: 0px;
-  height: 500px;
+  height: 520px;
   background-image: url("../images/background_beach.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  display: flex;
   justify-content: center;
   align-items: center;
   border: none;
 }
 .searchbar {
-  transform: scale(2);
+  transform: scale(1);
+  width: 100%;
+  padding-top: 5%;
+  padding-bottom: 9%;
 }
+
 .logo {
-  /* display: flex; */
   display: flex;
   flex-direction: row;
   position: absolute;
   background-image: url("../images/logo.png");
   transform: scale(0.5);
-  width: 500px;
+  width: 520px;
   height: 800px;
   background-repeat: no-repeat;
-  /* background-position: bottom 10px left 10px; */
+  background-position: bottom 2px left 10px;
   left: 0px;
   top: 0px;
   z-index: 1;
@@ -37,22 +40,32 @@ button {
 
 #search {
   display:inline-flex;
-  padding:10px 10px;
   border: none;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: white;
+  opacity: 0.9;
+  padding-left: 10%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  height: 100%;
+  width: 100%;
+  margin-left: 10%;
 }
 
-#button:hover{
+#button {
+  font-size: 40px;
+}
+
+#button:hover {
   color:#eb8200;
 }
 
 input {
   border: none;
-  padding-right:30px;
+  width: 80%; 
+  font-size: 25px;
 }
 
 input:focus {
   outline: none;
 }
-

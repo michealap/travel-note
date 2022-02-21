@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../client";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
 import "./Note.css";
+
 // Material UI icons
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
@@ -16,7 +21,7 @@ export default function Note() {
   const [notes, setNotes] = useState([]);
   // const [upvotesCount, setUpvotesCount] = useState(note.upvote);
   // const [downvotesCount, setDownvotesCount] = useState(note.downvote);
-  const [downvotesCount, setDownvotesCount] = useState(0);
+  // const [downvotesCount, setDownvotesCount] = useState(0);
 
   useEffect(() => {
     fetchNotes();
@@ -74,6 +79,36 @@ export default function Note() {
 
   return (
     <div className="App">
+      <Box
+        sx={{
+          display: "flex",
+          width: "44%",
+          ml: "28%",
+          mr: "28%",
+          flexGrow: 1,
+          justifyContent: "center",
+          border: (theme) => `6px solid ${theme.palette.divider}`,
+          p: "5px",
+          borderRadius: 1,
+          color: "text.white",
+          fontSize: "20px",
+          "& svg": {
+            m: 2,
+          },
+          "& hr": {
+            mx: 0.5,
+          },
+        }}
+      >
+        
+        <Button>
+          <Link to="/signup" id="links">
+            {" "}
+            <Typography variant="h5" color="gray" fontFamily="Ruda">Join our travel community and share your experience</Typography>
+            {" "}
+          </Link>
+        </Button>
+      </Box>
       <div className="allNotes">
         {notes &&
           notes.map((note) => (

@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import getSearchResult from "../../helpers/getSearchResult";
 import Note from "../Note";
+import Footer from "../Footer";
 import NoteModal from "../NoteModal";
 import Search from "../Search";
 import BasicStats from "../SearchResults/BasicStats";
@@ -29,7 +30,6 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 //CSS
 import "./Home.css"
-
 
 function Home(props) {
   const { countryData, setCountryData } = props;
@@ -74,10 +74,12 @@ function Home(props) {
 
   return (
     <div>
-      {!countryData && <div>
+      {!countryData && <>
       <Search placeholder="Adventure starts here..." search={search} loading={loading} />
+      {/* <Service /> */}
       <Note />
-      </div>
+      <Footer />
+      </>
       }
       
       {/* if country Data is present render the following */}
@@ -93,12 +95,8 @@ function Home(props) {
           <IconButton aria-label="add to favorites"  onClick={handleFavorite}>
           <FavoriteIcon />
           </IconButton>
-        // <IconButton aria-label="share">
-        //   <ShareIcon />
-        // </IconButton>
         }
         title={countryData.name}
-        // subheader={Date.now()}
       />
       <Stack 
         sx={{ width: '100%', mb:1, pl:10, pt: 7 }}

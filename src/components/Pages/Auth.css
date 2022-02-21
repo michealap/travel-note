@@ -5,7 +5,7 @@ section {
 
 .container {
   display: grid;
-  width: 90%;
+  width: 100%;
 }
 
 .left-half {
