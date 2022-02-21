@@ -2,9 +2,8 @@ import React from "react";
 import NewsArticle from "./NewsArticle";
 import Paper from "@mui/material/Paper";
 import Box from '@mui/material/Box';
-import Divider from '@mui/material/Divider';
 
-export default function NewsList({ newsList, setSelectedArticle }) {
+export default function NewsList({ newsList }) {
   
   const news = newsList && newsList.map((article) => {
     return (
@@ -12,12 +11,10 @@ export default function NewsList({ newsList, setSelectedArticle }) {
   )})
     return (
       <Box sx={{ width: "90%", m: "5%", }}>
-        <h2>Current News</h2>
-        <Divider />
+      <h2 style={{textAlign: "center"}}>Current News</h2>
       <Paper style={{ maxHeight: 500, overflow: 'auto'}}>
         {news}
       </Paper>
       </Box>
-
     );
 }

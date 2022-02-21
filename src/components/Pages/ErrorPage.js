@@ -16,13 +16,13 @@ function ErrorPage() {
         </li>
         <li>
           Noya
-          <a className="linkedin" href="#">
+          <a className="linkedin" href="https://www.linkedin.com/in/noya-o/">
             <LinkedInIcon style={{fontSize: 30}} />
           </a>
         </li>
         <li>
           Matthew
-          <a className="linkedin" href="#">
+          <a className="linkedin" href="https://www.linkedin.com/in/matthewwoods1991/">
             <LinkedInIcon style={{fontSize: 30}}/>
           </a>
         </li>
