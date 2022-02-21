@@ -6,6 +6,7 @@ import Footer from "../Footer";
 import NoteModal from "../NoteModal";
 import Search from "../Search";
 import BasicStats from "../SearchResults/BasicStats";
+import Places from "../SearchResults/Places";
 import Weather from "../SearchResults/Weather";
 import Flag from '../SearchResults/Flag';
 import VideoList from "../SearchResults/VideoList";
@@ -39,6 +40,7 @@ function Home(props) {
   const [videosData, setVideosData] = useState();
   const [selectedVideo, setSelectedVideo] = useState();
   const [newsListData, setNewsListData] = useState();
+  const [placesData, setPlacesData] = useState();
   const [loading, setLoading] = useState(false);
   
   const handleExpandClick = () => {
@@ -50,13 +52,14 @@ function Home(props) {
 
   async function search(userInput) {
     setLoading(true);
-    let { countryStats, weatherStats, videos, currencyConvert, newsList } = await getSearchResult(userInput);
+    let { countryStats, weatherStats, videos, currencyConvert, newsList, places } = await getSearchResult(userInput);
     setCountryData(countryStats);
     setWeatherData(weatherStats);
-    setVideosData(videos);
-    setNewsListData(newsList);
-    setSelectedVideo(videos[0]);
     setCurrencyData(currencyConvert);
+    setNewsListData(newsList);
+    setVideosData(videos);
+    setSelectedVideo(videos[0]);
+    setPlacesData(places);
     setLoading(false);
 }
   const ExpandMore = styled((props) => {
@@ -122,6 +125,7 @@ function Home(props) {
 
       <Collapse in={expanded} timeout="auto" unmountOnExit className="stats-form">
       <BasicStats countryStats={countryData} />
+      <Places places={placesData} />
       <Currency currency={currencyData} />
       <NewsDetail />
       <NewsList newsList={newsListData} />

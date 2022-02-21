@@ -9,11 +9,16 @@ export default async function getSearchResult(countryName) {
   const weather_api_key = process.env.REACT_APP_WEATHER_KEY;
   const youtube_api_key = process.env.REACT_APP_YOUTUBE_API_KEY;
   const news_api_key = process.env.REACT_APP_NEWS_API_KEY;
+  const trip_api_key = process.env.REACT_APP_TRIP_API_KEY;
   
   let countryStats = {};
   let weatherStats = {};
   let videos = [];
   let newsList = {};
+  let lat = {};
+  let lng = {};
+  let places = [];
+
   let currencyConvert = {};
   
 
@@ -105,15 +110,43 @@ export default async function getSearchResult(countryName) {
       .then((res) => {
         currencyConvert = res.data;
       })
+
+      // open trip needs coordinates - first use api ninja geocoding
+      let name = countryStats.name;
+      let coordinates = `https://api.api-ninjas.com/v1/geocoding?city=${city}&country=${name}`;
+      const coordRes = await axios
+      .get(coordinates, {
+        headers: {
+          "X-Api-Key": ninja_api_key,
+        },
+      })
+      console.log("coordinates:", coordRes);
+
+      lat = coordRes.data[0].latitude;
+      console.log("lat:", lat);
+      lng = coordRes.data[0].longitude;
+      console.log("lng:", lng);
+
+      // working trip call
+      let trip_api_call =`https://api.opentripmap.com/0.1/en/places/radius?radius=1000&lon=${lng}&lat=${lat}&kinds=architecture%2Ccultural&limit=10&apikey=${trip_api_key}`;
+      // https://api.opentripmap.com/0.1/en/places/radius?radius=1000&lon=-76.7928128&lat=17.9712148&kinds=architecture%2Ccultural&limit=10&apikey=
+  
+      const tripRes = await axios
+      .get(trip_api_call)
+
+      console.log("Trip results:",tripRes);
+      places = tripRes.data.features;
     }
-      
+    
+    
+      console.log("places array:", places);
       console.log("News list", newsList);
       console.log("Currency convert", currencyConvert);
       console.log("country stats", countryStats);
       console.log("Weather stats", weatherStats);
       console.log('Video List', videos);
       if(countryStats && weatherStats && videos && currencyConvert && newsList) {
-        return {countryStats, weatherStats, videos, currencyConvert, newsList}; 
+        return {countryStats, weatherStats, videos, currencyConvert, newsList, places}; 
       }
-    
+
 }
