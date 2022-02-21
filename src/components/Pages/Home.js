@@ -24,7 +24,6 @@ import CardActions from '@mui/material/CardActions';
 import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import { purple } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -145,9 +144,7 @@ function Home(props) {
         <div id="last">
         <h1>Destination Notes</h1>
           <Note />
-          <Typography variant="h5" color="text.secondary">
-          Visited here? Please share your experience<NoteModal />
-        </Typography>
+          <NoteModal />
         </div>
       </Card>
       }

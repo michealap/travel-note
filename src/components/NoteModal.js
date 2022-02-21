@@ -56,7 +56,10 @@ export default function TransitionsModal() {
 
   return (
     <div>
+      <Typography variant="h5" color="text.secondary">
+          Visited here? Please share your experience
       <Button id="note-modal" onClick={handleOpen}><BorderColorIcon /></Button>
+      </Typography>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
