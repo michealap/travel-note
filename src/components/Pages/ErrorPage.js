@@ -10,19 +10,19 @@ function ErrorPage() {
       Want to collaborate? Contact us
         <li>
           Micheala
-          <a class="linkedin" href="https://www.linkedin.com/in/micheala-palmer/">
+          <a className="linkedin" href="https://www.linkedin.com/in/micheala-palmer/">
             <LinkedInIcon style={{fontSize: 30}}/>
           </a>
         </li>
         <li>
           Noya
-          <a class="linkedin" href="#">
+          <a className="linkedin" href="#">
             <LinkedInIcon style={{fontSize: 30}} />
           </a>
         </li>
         <li>
           Matthew
-          <a class="linkedin" href="#">
+          <a className="linkedin" href="#">
             <LinkedInIcon style={{fontSize: 30}}/>
           </a>
         </li>

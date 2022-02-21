@@ -33,7 +33,6 @@ import "./Home.css"
 
 function Home(props) {
   const { countryData, setCountryData } = props;
-  console.log("in home:", countryData);
   const [weatherData, setWeatherData] = useState();
   const [expanded, setExpanded] = React.useState(true);
   const [currencyData, setCurrencyData] = useState();
@@ -75,8 +74,8 @@ function Home(props) {
   return (
     <div>
       {!countryData && <>
-      <Search placeholder="Adventure starts here..." search={search} loading={loading} />
-      {/* <Service /> */}
+      <div id="alert"></div>
+      <Search placeholder="Adventure starts here..." search={search} loading={loading}/>
       <Note />
       <Footer />
       </>
