@@ -77,7 +77,7 @@ function Home(props) {
     <div>
       {!countryData && <>
       <div id="alert"></div>
-      <Search placeholder="Adventure starts here..." search={search} loading={loading}/>
+      <Search placeholder="Adventure starts..." search={search} loading={loading}/>
       <Note />
       <Footer />
       </>
