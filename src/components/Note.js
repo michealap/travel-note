@@ -19,9 +19,6 @@ export default function Note() {
 
   const [loading, setLoading] = useState(true);
   const [notes, setNotes] = useState([]);
-  // const [upvotesCount, setUpvotesCount] = useState(note.upvote);
-  // const [downvotesCount, setDownvotesCount] = useState(note.downvote);
-  // const [downvotesCount, setDownvotesCount] = useState(0);
 
   useEffect(() => {
     fetchNotes();
@@ -51,31 +48,6 @@ export default function Note() {
       console.log("error", error);
     }
   };
-
-  async function fetchNotesCount(noteId) {
-    const { data, error } = await supabase
-      .from("notes")
-      .select("upvotes")
-      .eq("id", noteId);
-
-    return data[0].upvotes;
-  }
-
-  // const upVote = async (noteId) => {
-  //   let currentNotesCount = await fetchNotesCount(noteId);
-
-  //   // console.log("noteId:", noteId);
-  //   let updatedNotesCount = parseInt(currentNotesCount) + 1;
-  //   // console.log("currentNotesCount:", currentNotesCount);
-  //   // console.log("updatedNotesCount:", updatedNotesCount);
-
-  //   const { data, error } = await supabase
-  //     .from("notes")
-  //     .update({ upvotes: `${updatedNotesCount}` })
-  //     .match({ id: `${noteId}` });
-
-  //   setUpvotesCount(updatedNotesCount);
-  // };
 
   return (
     <div className="App">
