@@ -43,7 +43,8 @@ button {
   border: none;
   border-radius: 5px;
   background-color: white;
-  opacity: 0.9;
+  /* opacity: 0.9; */
+  z-index: -1;
   padding-left: 10%;
   padding-top: 5%;
   padding-bottom: 5%;
@@ -62,6 +63,7 @@ button {
 
 input {
   border: none;
+  background-color: white;
   width: 80%; 
   font-size: 25px;
 }
