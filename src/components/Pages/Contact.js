@@ -3,10 +3,9 @@ import Stack from "@mui/material/Stack";
 import "./About.css";
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
-function ErrorPage() {
+function Contact() {
   return (
     <Stack pt={10} pl={5}>
-      Oops! You made a wrong turn. Since you're here ...
       <ul class="social-icons">
       Want to collaborate? Contact us
         <li>
@@ -32,4 +31,4 @@ function ErrorPage() {
   );
 }
 
-export default ErrorPage;
+export default Contact;

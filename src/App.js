@@ -17,7 +17,7 @@ import Notes from "./components/Pages/Notes";
 import SignUp from "./components/Pages/SignUp";
 import { Dashboard } from "./components/Pages/Dashboard";
 
-import ErrorPage from "./components/Pages/ErrorPage";
+import Contact from "./components/Pages/Contact";
 import About from "./components/Pages/About";
 
 function App(props) {
@@ -63,7 +63,7 @@ function App(props) {
         ></Route>
 
         <Route path="logout" element={<Logout />} />
-        <Route path="*" element={<ErrorPage />} />
+        <Route path="*" element={<Contact />} />
         <Route path="about" element={<About />} />
       </Routes>
     </Router>
