@@ -113,9 +113,9 @@ export default async function getSearchResult(countryName) {
 
       // open trip needs coordinates - first use api ninja geocoding
       let name = countryStats.name;
-      let coordinates = `https://api.api-ninjas.com/v1/geocoding?city=${city}&country=${name}`;
+      let coordinates_api_call = `https://api.api-ninjas.com/v1/geocoding?city=${city}&country=${name}`;
       const coordRes = await axios
-      .get(coordinates, {
+      .get(coordinates_api_call, {
         headers: {
           "X-Api-Key": ninja_api_key,
         },
@@ -133,8 +133,6 @@ export default async function getSearchResult(countryName) {
   
       const tripRes = await axios
       .get(trip_api_call)
-
-      console.log("Trip results:",tripRes);
       places = tripRes.data.features;
     }
     
