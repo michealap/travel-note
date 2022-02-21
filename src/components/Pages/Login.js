@@ -73,7 +73,7 @@ function Login() {
           type="submit"
           onSubmit={handleSubmit}
         >
-          <Grid container spacing={2} p={4} pt={15} pl={20}>
+          <Grid container spacing={2} p={4} pt={15} pl={20} pr={10}>
             <div>
               <div>
                 {/* {!auth && ( */}
@@ -87,7 +87,7 @@ function Login() {
                     alt="google"
                     width="20px"
                   ></img>
-                  <Typography pl={3} pr={3} variant="h6" justifyContent="center">
+                  <Typography ml={5} pr={3} variant="h6" justifyContent="center">
                     Sign in with Google
                   </Typography>
                 </Button>
@@ -98,7 +98,7 @@ function Login() {
             </div>
             <Grid item xs={12}>
               <TextField
-                style={{ width: "50%" }}
+                style={{ width: "50%"}}
                 required
                 id="outlined-required"
                 label="Email"

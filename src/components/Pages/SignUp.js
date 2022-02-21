@@ -97,7 +97,7 @@ export default function SignUp() {
           >
             <Grid item xs={12}>
               <TextField
-                style={{ width: "60%" }}
+                style={{ width: "50%" }}
                 inputProps={{ style: { fontSize: 20 } }}
                 InputLabelProps={{ style: { fontSize: 20 } }}
                 required
@@ -109,7 +109,7 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                style={{ width: "60%" }}
+                style={{ width: "50%" }}
                 inputProps={{ style: { fontSize: 20 } }}
                 InputLabelProps={{ style: { fontSize: 20 } }}
                 required
@@ -121,7 +121,7 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                style={{ width: "60%" }}
+                style={{ width: "50%" }}
                 inputProps={{ style: { fontSize: 20 } }}
                 InputLabelProps={{ style: { fontSize: 20 } }}
                 required
@@ -133,7 +133,7 @@ export default function SignUp() {
             </Grid>
             <Grid pb={2} item xs={12}>
               <TextField
-                style={{ width: "60%" }}
+                style={{ width: "50%" }}
                 inputProps={{ style: { fontSize: 20 } }}
                 InputLabelProps={{ style: { fontSize: 20 } }}
                 required
@@ -145,7 +145,7 @@ export default function SignUp() {
               />
               <Grid pt={5} item xs={12}>
                 <Button
-                  style={{ width: "60%", fontSize: 18 }}
+                  style={{ width: "50%", fontSize: 18 }}
                   variant="contained"
                   // href="profile"
                   // onClick={() => {
