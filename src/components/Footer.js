@@ -21,13 +21,13 @@ export default function Footer() {
         <ul class="footer-links">
           <h6>Quick Links</h6>
           <li>
-            <a href="/about">The Team</a>
+            <a href="about">The Team</a>
           </li>
           <li>
             <a href="*">Contact Us</a>
           </li>
           <li>
-            <a href="/signup">Join Us</a>
+            <a href="signup">Join Us</a>
           </li>
         </ul>
       </Stack>

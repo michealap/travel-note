@@ -42,3 +42,33 @@
 #left {
     top: 0px;
 }
+
+ul {
+text-decoration: none;
+}
+
+.social-icons a
+{
+  width:40px;
+  /* height:100px; */
+  line-height:40px;
+  margin-left:6px;
+  margin-right:0;
+  border-radius:5%;
+  color:#33353d;
+}
+
+.social-icons a.linkedin:hover
+{
+  color:#007bb6
+}
+.social-icons li.title
+{
+  display:block;
+  margin-right:0;
+  font-weight:600
+}
+
+.social-icons {
+    font-size: 30px;
+}
