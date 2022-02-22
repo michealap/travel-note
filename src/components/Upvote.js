@@ -33,18 +33,18 @@ function Upvote(props) {
       return true;
     }
     return false;
-    // let userHasDownvoted =
   };
 
   const upVote = async (noteId) => {
     setDisabledIcon(true);
     let upvotedIsTrue = await checkIfUpvoted(user, noteId);
-    let currentNotesCount = await fetchNotesCount(noteId);
     // console.log("user: ", user);
     console.log("upvotedIsTrue:", upvotedIsTrue);
     if (upvotedIsTrue) {
       return;
     }
+
+    let currentNotesCount = await fetchNotesCount(noteId);
 
     const { data1, error1 } = await supabase.from("activities").insert([
       {
@@ -86,7 +86,7 @@ function Upvote(props) {
           onClick={() => {
             upVote(props.upvoteId);
           }}
-          style={{ color: "red" }}
+          style={{ color: "green" }}
         >
           <ArrowCircleUpIcon />
         </button>
