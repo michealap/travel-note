@@ -35,12 +35,31 @@ function Upvote(props) {
     return false;
   };
 
+  const checkIfDownvoted = async function (user, noteId) {
+    console.log("user.id:", user.id);
+    console.log("noteId:", noteId);
+
+    const userDownvotedTheNote = await supabase
+      .from("activities")
+      .select()
+      .match({ downvoted_by: `${user.id}`, note_id: `${noteId}` });
+
+    console.log("userDownvotedTheNote:", userDownvotedTheNote.data[0]);
+    if (userDownvotedTheNote.data[0]) {
+      return true;
+    }
+    return false;
+  };
+
   const upVote = async (noteId) => {
-    setDisabledIcon(true);
     let upvotedIsTrue = await checkIfUpvoted(user, noteId);
+    let downvotedIsTrue = await checkIfDownvoted(user, noteId);
+
     // console.log("user: ", user);
     console.log("upvotedIsTrue:", upvotedIsTrue);
-    if (upvotedIsTrue) {
+    if (upvotedIsTrue || downvotedIsTrue) {
+      setDisabledIcon(true);
+
       return;
     }
 
@@ -54,7 +73,6 @@ function Upvote(props) {
     ]);
     // console.log("data1:", data1);
     // console.log("error1:", error1);
-    console.log("check if upvoted", checkIfUpvoted(user, noteId));
     // console.log("noteId:", noteId);
     let updatedNotesCount = parseInt(currentNotesCount) + 1;
     // console.log("currentNotesCount:", currentNotesCount);
@@ -82,12 +100,7 @@ function Upvote(props) {
         </button>
       )}
       {disabledIcon && (
-        <button
-          onClick={() => {
-            upVote(props.upvoteId);
-          }}
-          style={{ color: "green" }}
-        >
+        <button style={{ color: "green" }}>
           <ArrowCircleUpIcon />
         </button>
       )}

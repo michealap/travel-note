@@ -19,6 +19,22 @@ function Downvote(props) {
     return data[0].downvotes;
   }
 
+  const checkIfUpvoted = async function (user, noteId) {
+    console.log("user.id:", user.id);
+    console.log("noteId:", noteId);
+
+    const userUpvotedTheNote = await supabase
+      .from("activities")
+      .select()
+      .match({ upvoted_by: `${user.id}`, note_id: `${noteId}` });
+
+    console.log("userUpvotedTheNote:", userUpvotedTheNote.data[0]);
+    if (userUpvotedTheNote.data[0]) {
+      return true;
+    }
+    return false;
+  };
+
   const checkIfDownvoted = async function (user, noteId) {
     console.log("user.id:", user.id);
     console.log("noteId:", noteId);
@@ -37,9 +53,11 @@ function Downvote(props) {
 
   const downVote = async (noteId) => {
     setDisabledIcon(true);
+    let upvotedIsTrue = await checkIfUpvoted(user, noteId);
     let downvotedIsTrue = await checkIfDownvoted(user, noteId);
     console.log("DownvotedIsTrue:", downvotedIsTrue);
-    if (downvotedIsTrue) {
+    if (upvotedIsTrue || downvotedIsTrue) {
+      setDisabledIcon(true);
       return;
     }
 
@@ -50,7 +68,6 @@ function Downvote(props) {
         note_id: `${noteId}`,
       },
     ]);
-    console.log("check if downvoted", checkIfDownvoted(user, noteId));
 
     // console.log("noteId:", noteId);
     let updatedNotesCount = parseInt(currentNotesCount) + 1;
@@ -79,12 +96,7 @@ function Downvote(props) {
         </button>
       )}
       {disabledIcon && (
-        <button
-          onClick={() => {
-            downVote(props.downvoteId);
-          }}
-          style={{ color: "red" }}
-        >
+        <button style={{ color: "red" }}>
           <ArrowCircleDownIcon />{" "}
         </button>
       )}
