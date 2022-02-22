@@ -35,6 +35,7 @@ export function AuthProvider({ children }) {
     signOut: () => supabase.auth.signOut(),
     user,
   };
+  // console.log("value in auth.js:", value);
 
   return (
     <AuthContext.Provider value={value}>
