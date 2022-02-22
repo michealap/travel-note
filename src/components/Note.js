@@ -39,6 +39,15 @@ export default function Note() {
       </div>
     );
   }
+  async function checkIfVoted(userId, noteId) {
+    const { data, error } = await supabase.from("activities").select(`
+      upvoted_by,
+      user: id ( id ),
+      note: id ( id )
+    `);
+
+    console.log("data incheckIfVoted: ", data);
+  }
 
   const deleteNote = async (noteId) => {
     try {
@@ -72,12 +81,12 @@ export default function Note() {
           },
         }}
       >
-        
         <Button>
           <Link to="/signup" id="links">
             {" "}
-            <Typography variant="h5" color="gray" fontFamily="Ruda">Join our travel community and share your experience</Typography>
-            {" "}
+            <Typography variant="h5" color="gray" fontFamily="Ruda">
+              Join our travel community and share your experience
+            </Typography>{" "}
           </Link>
         </Button>
       </Box>

@@ -7,6 +7,7 @@ import { supabase } from "../../client";
 import Upvote from "../../components/Upvote";
 import Downvote from "../../components/Downvote";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import CircularProgress from "@mui/material/CircularProgress";
 
 export function Dashboard() {
   const { user, signOut } = useAuth();
@@ -31,6 +32,13 @@ export function Dashboard() {
     setNotes(data);
     setLoading(false);
     // console.log("data: ", data);
+    if (loading) {
+      return (
+        <div>
+          <CircularProgress color="success" />
+        </div>
+      );
+    }
   }
   const deleteNote = async (noteId) => {
     try {
@@ -78,7 +86,7 @@ export function Dashboard() {
             </div>
           ))}
       </div>
-      <button onClick={handleSignOut}>Sign out</button>
+      {/* <button onClick={handleSignOut}>Sign out</button> */}
     </div>
   );
 }
