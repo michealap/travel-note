@@ -7,23 +7,16 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { useAuth } from "../providers/Auth";
 import { Link } from "react-router-dom";
-// import { useNavigate } from "react-router";
+import Avatar from "@mui/material/Avatar";
 import "./NavBar.css";
 
 export default function NavBar(props) {
   const { resetCountryData } = props;
-  // const { useAuth } = useContext(useAuth);
-  // console.log(props.match);
-  // console.log(props.match.path);
-  // console.log("auth:", auth);
   const { user, signOut } = useAuth();
-  // let navigate = useNavigate();
   async function handleSignOut() {
     // Ends user session
     await signOut();
-    
-    // Redirects the user to Login page
-    // navigate("/login");
+    // Redirects the user to Logout page
   }
 
   return (
@@ -62,6 +55,10 @@ export default function NavBar(props) {
                 Login{" "}
               </Link>
             ) : (
+              <Link to="/dashboard" id="links">
+                {" "}
+                <Button><Avatar /></Button>{" "}
+              </Link> &&
               <Link to="/logout" id="links" onClick={handleSignOut}>
                 {" "}
                 Logout{" "}

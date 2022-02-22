@@ -5,13 +5,12 @@ import { useState } from "react";
 import { useAuth } from "../providers/Auth";
 
 function Downvote(props) {
-  // let [disabledIcon, setDisabledIcon] = useState(props.voteClicked);
   const { user } = useAuth();
 
   const [downvotesCount, setDownvotesCount] = useState(props.downvoteCount);
 
   async function fetchNotesCount(noteId) {
-    const { data, error } = await supabase
+    const { data } = await supabase
       .from("notes")
       .select("downvotes")
       .eq("id", noteId);
@@ -61,7 +60,7 @@ function Downvote(props) {
     }
 
     let currentNotesCount = await fetchNotesCount(noteId);
-    const { data1, error1 } = await supabase.from("activities").insert([
+    const { data1 } = await supabase.from("activities").insert([
       {
         downvoted_by: `${user.id}`,
         note_id: `${noteId}`,
@@ -73,7 +72,7 @@ function Downvote(props) {
     // console.log("currentNotesCount:", currentNotesCount);
     // console.log("updatedNotesCount:", updatedNotesCount);
 
-    const { data, error } = await supabase
+    const { data } = await supabase
       .from("notes")
       .update({ downvotes: `${updatedNotesCount}` })
       .match({ id: `${noteId}` });

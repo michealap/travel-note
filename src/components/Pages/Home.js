@@ -47,6 +47,8 @@ function Home(props) {
   };
   const handleFavorite = () => {
     console.log("Added to Favorite");
+    const faveSearch = countryData;
+    console.log(faveSearch);
   }
 
   async function search(userInput) {

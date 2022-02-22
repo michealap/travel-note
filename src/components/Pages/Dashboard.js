@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router";
 import { useAuth } from "../../providers/Auth";
 import Typography from "@mui/material/Typography";
 import NavBar from "../../components/NavBar";
@@ -10,7 +9,7 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import CircularProgress from "@mui/material/CircularProgress";
 
 export function Dashboard() {
-  const { user, signOut } = useAuth();
+  const { user } = useAuth();
   const [loading, setLoading] = useState(true);
   const [notes, setNotes] = useState([]);
 
@@ -22,7 +21,7 @@ export function Dashboard() {
   let firstName = user.user_metadata.first_name;
   let lastName = user.user_metadata.last_name;
   let name = firstName + " " + lastName;
-  const navigate = useNavigate();
+  console.log(name);
   // console.log("user.id:", user.id);
   async function fetchNotesForUser(userId) {
     const { data } = await supabase
@@ -31,7 +30,6 @@ export function Dashboard() {
       .match({ created_by: user.id });
     setNotes(data);
     setLoading(false);
-    // console.log("data: ", data);
     if (loading) {
       return (
         <div>
@@ -49,20 +47,10 @@ export function Dashboard() {
     }
   };
 
-  async function handleSignOut() {
-    // Ends user session
-    await signOut();
-
-    // Redirects the user to Login page
-    navigate("/login");
-  }
-
-  // console.log(user.user_metadata.first_name);
-
   return (
     <div>
       <NavBar />{" "}
-      <Typography variant="h5" pt={10}>
+      <Typography variant="h5" pl={10} pt={10}>
         Welcome, {firstName}!{/* {user?.id} */}
       </Typography>
       <div className="allNotes">

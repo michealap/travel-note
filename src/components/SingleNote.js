@@ -2,8 +2,10 @@ import React from "react";
 import Upvote from "./Upvote";
 import Downvote from "./Downvote";
 import { useState } from "react";
+import Stack from "@mui/material/Stack";
 // Material UI icons
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+
 
 export default function SingleNote(props) {
   const { note, user, deleteNote } = props;
@@ -17,6 +19,7 @@ export default function SingleNote(props) {
     <div className="note" key={note.id}>
       <h3>{note.title}</h3>
       <p>{note.content}</p>
+      <Stack direction="row" spacing={1}>
       {user && (
         <>
           <Upvote
@@ -25,31 +28,18 @@ export default function SingleNote(props) {
             handleClick={handleVoteClicked}
             voteClicked={voteClicked}
           />
-          {/* <button
-          onClick={() => {
-            upVote(note.id);
-          }}
-        >
-          <ArrowCircleUpIcon />
-        </button> */}
           <Downvote
             downvoteCount={note.downvotes}
             downvoteId={note.id}
             handleClick={handleVoteClicked}
             voteClicked={voteClicked}
           ></Downvote>{" "}
-          {/* <button
-          onClick={() => {
-            downVote(note.id);
-          }}
-        >
-          <ArrowCircleDownIcon />
-        </button> */}
           <button onClick={() => deleteNote(note.id)}>
             <DeleteOutlineIcon />
           </button>
         </>
       )}
+      </Stack>
     </div>
   );
 }
