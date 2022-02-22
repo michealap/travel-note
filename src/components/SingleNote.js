@@ -34,9 +34,11 @@ export default function SingleNote(props) {
             handleClick={handleVoteClicked}
             voteClicked={voteClicked}
           ></Downvote>{" "}
+          {user.id === note.user_id && (
           <button onClick={() => deleteNote(note.id)}>
             <DeleteOutlineIcon />
           </button>
+          )}
         </>
       )}
       </Stack>
