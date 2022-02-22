@@ -33,7 +33,7 @@ function Login() {
       alert("error signing in");
     } else {
       // Redirect user to Dashboard
-      navigate("/user");
+      navigate("/dashboard");
     }
   }
 
@@ -87,7 +87,12 @@ function Login() {
                     alt="google"
                     width="20px"
                   ></img>
-                  <Typography ml={5} pr={3} variant="h6" justifyContent="center">
+                  <Typography
+                    ml={5}
+                    pr={3}
+                    variant="h6"
+                    justifyContent="center"
+                  >
                     Sign in with Google
                   </Typography>
                 </Button>
@@ -98,7 +103,7 @@ function Login() {
             </div>
             <Grid item xs={12}>
               <TextField
-                style={{ width: "50%"}}
+                style={{ width: "50%" }}
                 required
                 id="outlined-required"
                 label="Email"
@@ -137,9 +142,9 @@ function Login() {
                 Login
               </Button>
             </Grid>
-        <Typography pt={4} variant="h6">
-          Don't have an account? <Link to="/signup">Sign Up</Link>
-        </Typography>
+            <Typography pt={4} variant="h6">
+              Don't have an account? <Link to="/signup">Sign Up</Link>
+            </Typography>
           </Grid>
         </form>
       </div>
