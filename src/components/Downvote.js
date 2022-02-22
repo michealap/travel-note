@@ -51,7 +51,6 @@ function Downvote(props) {
   };
 
   const downVote = async (noteId) => {
-    // setDisabledIcon(true);
     let upvotedIsTrue = await checkIfUpvoted(user, noteId);
     let downvotedIsTrue = await checkIfDownvoted(user, noteId);
     console.log("DownvotedIsTrue:", downvotedIsTrue);

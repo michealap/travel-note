@@ -74,7 +74,6 @@ export function Dashboard() {
             </div>
           ))}
       </div>
-      {/* <button onClick={handleSignOut}>Sign out</button> */}
     </div>
   );
 }
