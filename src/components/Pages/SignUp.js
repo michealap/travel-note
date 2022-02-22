@@ -7,8 +7,6 @@ import Typography from "@mui/material/Typography";
 import "./Auth.css";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../providers/Auth";
-// import { useState } from "react";
 import Box from "@mui/material/Box";
 import { supabase } from "../../client";
 
@@ -19,26 +17,17 @@ export default function SignUp() {
   const firstNameRef = useRef();
   const lastNameRef = useRef();
 
-  // Get signUp function from the auth context
-  const { signUp } = useAuth();
-
   async function handleSubmit(e) {
     e.preventDefault();
 
-    // @TODO: add sign up logic
     // Get email and password input values
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
     const first_name = firstNameRef.current.value;
     const last_name = lastNameRef.current.value;
-    console.log(email, password, first_name, last_name);
-
-    // Calls `signUp` function from the context
-    // const { data, error } = await signUp(
-    // { email, password },
-    // { data: { first_name, last_name } }
-
-    let { user, error } = await supabase.auth.signUp(
+  
+    // Calls supabase `signUp` function   
+    let { error } = await supabase.auth.signUp(
       { email: email, password: password },
       {
         data: {
@@ -47,17 +36,6 @@ export default function SignUp() {
         },
       }
     );
-
-    // const { user_update, errorUpdate } = await supabase.auth.update({
-    //   data: {
-    //     first_name: first_name,
-    //     last_name: last_name,
-    //   },
-    // });
-    console.log("user:", user);
-    // console.log("user_update:", user_update);
-    // if (error || errorUpdate) {
-    // console.log("data: ", data);
     if (error) {
       alert("error signing in");
     } else {
@@ -84,7 +62,6 @@ export default function SignUp() {
         </Typography>
       </div>
       <div className="right-half">
-        {/* <div id="form" autoComplete="off" type="submit" onSubmit={handleSubmit}>{" "} */}
         <div id="form">
           <Grid container p={5} pt={10} pl={20}>
             <div id="header">
@@ -110,8 +87,7 @@ export default function SignUp() {
               component="form"
               type="submit"
               onSubmit={handleSubmit}
-              sx={{ width: "100%" }}
-              spacing={3}
+              sx={{ width: "100%", lineHeight: "10%" }}
             >
               <Grid item xs={12}>
                 <TextField
@@ -165,10 +141,6 @@ export default function SignUp() {
                   <Button
                     style={{ width: "50%", fontSize: 18 }}
                     variant="contained"
-                    // href="profile"
-                    // onClick={() => {
-                    //   navigate("/user");
-                    // }}
                     type="submit"
                   >
                     Create New Account
