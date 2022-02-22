@@ -4,15 +4,11 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
+import SingleNote from "../components/SingleNote";
 import "./Note.css";
-
-// Material UI icons
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
 import CircularProgress from "@mui/material/CircularProgress";
 import { useAuth } from "../providers/Auth";
-import Upvote from "../components/Upvote";
-import Downvote from "../components/Downvote";
 
 export default function Note() {
   const { user } = useAuth();
@@ -38,6 +34,15 @@ export default function Note() {
         <CircularProgress color="success" />
       </div>
     );
+  }
+  async function checkIfVoted(userId, noteId) {
+    const { data, error } = await supabase.from("activities").select(`
+      upvoted_by,
+      user: id ( id ),
+      note: id ( id )
+    `);
+
+    console.log("data incheckIfVoted: ", data);
   }
 
   const deleteNote = async (noteId) => {
@@ -72,49 +77,22 @@ export default function Note() {
           },
         }}
       >
-        
         <Button>
           <Link to="/signup" id="links">
             {" "}
-            <Typography variant="h5" color="gray" fontFamily="Ruda">Join our travel community and share your experience</Typography>
-            {" "}
+            <Typography variant="h5" color="gray" fontFamily="Ruda">
+              Join our travel community and share your experience
+            </Typography>{" "}
           </Link>
         </Button>
       </Box>
       <div className="allNotes">
         {notes &&
-          notes.map((note) => (
-            <div className="note" key={note.id}>
-              <h3>{note.title}</h3>
-              <p>{note.content}</p>
-              {user && (
-                <>
-                  <Upvote upvoteCount={note.upvotes} upvoteId={note.id} />
-                  {/* <button
-                    onClick={() => {
-                      upVote(note.id);
-                    }}
-                  >
-                    <ArrowCircleUpIcon />
-                  </button> */}
-                  <Downvote
-                    downvoteCount={note.downvotes}
-                    downvoteId={note.id}
-                  ></Downvote>{" "}
-                  {/* <button
-                    onClick={() => {
-                      downVote(note.id);
-                    }}
-                  >
-                    <ArrowCircleDownIcon />
-                  </button> */}
-                  <button onClick={() => deleteNote(note.id)}>
-                    <DeleteOutlineIcon />
-                  </button>
-                </>
-              )}
-            </div>
-          ))}
+          notes.map((note) => {
+            return (
+              <SingleNote note={note} user={user} deleteNote={deleteNote} />
+            );
+          })}
       </div>
     </div>
   );
