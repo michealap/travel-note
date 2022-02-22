@@ -5,7 +5,10 @@ import { useState } from "react";
 import { useAuth } from "../providers/Auth";
 
 function Upvote(props) {
-  let [disabledIcon, setDisabledIcon] = useState(false);
+  // console.log("here", props.handleClick);
+  // console.log("here props.voteClicked", props.voteClicked);
+
+  // let [disabledIcon, setDisabledIcon] = useState(props.voteClicked);
   const { user } = useAuth();
 
   const [upvotesCount, setUpvotesCount] = useState(props.upvoteCount);
@@ -52,14 +55,14 @@ function Upvote(props) {
   };
 
   const upVote = async (noteId) => {
+    // setDisabledIcon(true);
+
     let upvotedIsTrue = await checkIfUpvoted(user, noteId);
     let downvotedIsTrue = await checkIfDownvoted(user, noteId);
 
     // console.log("user: ", user);
     console.log("upvotedIsTrue:", upvotedIsTrue);
     if (upvotedIsTrue || downvotedIsTrue) {
-      setDisabledIcon(true);
-
       return;
     }
 
@@ -82,25 +85,25 @@ function Upvote(props) {
       .from("notes")
       .update({ upvotes: `${updatedNotesCount}` })
       .match({ id: `${noteId}` });
-
     setUpvotesCount(updatedNotesCount);
   };
 
-  console.log("props.upvoteCount: ", props.upvoteCount);
+  // console.log("props.upvoteCount: ", props.upvoteCount);
   return (
     <div>
       {upvotesCount}
-      {!disabledIcon && (
+      {!props.voteClicked && (
         <button
           onClick={() => {
             upVote(props.upvoteId);
+            props.handleClick();
           }}
         >
           <ArrowCircleUpIcon />
         </button>
       )}
-      {disabledIcon && (
-        <button style={{ color: "green" }}>
+      {props.voteClicked && (
+        <button style={{ color: "green" }} disabled>
           <ArrowCircleUpIcon />
         </button>
       )}

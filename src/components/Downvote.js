@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useAuth } from "../providers/Auth";
 
 function Downvote(props) {
-  let [disabledIcon, setDisabledIcon] = useState(false);
+  // let [disabledIcon, setDisabledIcon] = useState(props.voteClicked);
   const { user } = useAuth();
 
   const [downvotesCount, setDownvotesCount] = useState(props.downvoteCount);
@@ -52,12 +52,11 @@ function Downvote(props) {
   };
 
   const downVote = async (noteId) => {
-    setDisabledIcon(true);
+    // setDisabledIcon(true);
     let upvotedIsTrue = await checkIfUpvoted(user, noteId);
     let downvotedIsTrue = await checkIfDownvoted(user, noteId);
     console.log("DownvotedIsTrue:", downvotedIsTrue);
     if (upvotedIsTrue || downvotedIsTrue) {
-      setDisabledIcon(true);
       return;
     }
 
@@ -82,21 +81,22 @@ function Downvote(props) {
     setDownvotesCount(updatedNotesCount);
   };
 
-  console.log("props.downvoteCount:", props.downvoteCount);
+  // console.log("props.downvoteCount:", props.downvoteCount);
   return (
     <div>
       {downvotesCount}
-      {!disabledIcon && (
+      {!props.voteClicked && (
         <button
           onClick={() => {
             downVote(props.downvoteId);
+            props.handleClick();
           }}
         >
           <ArrowCircleDownIcon />{" "}
         </button>
       )}
-      {disabledIcon && (
-        <button style={{ color: "red" }}>
+      {props.voteClicked && (
+        <button disabled style={{ color: "red" }}>
           <ArrowCircleDownIcon />{" "}
         </button>
       )}
