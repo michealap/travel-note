@@ -7,7 +7,7 @@ export default function NewsList({ newsList }) {
   
   const news = newsList && newsList.map((article) => {
     return (
-    <NewsArticle key={article.title} article={article} />
+    <NewsArticle key={article.url} article={article} />
   )})
     return (
       <Box sx={{ width: "90%", m: "5%", }}>
