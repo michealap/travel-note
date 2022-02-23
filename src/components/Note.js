@@ -24,7 +24,6 @@ export default function Note() {
     const { data } = await supabase.from("notes").select();
     setNotes(data);
     setLoading(false);
-    console.log("data: ", data);
   }
 
   // If Loading
@@ -35,15 +34,15 @@ export default function Note() {
       </div>
     );
   }
-  async function checkIfVoted(userId, noteId) {
-    const { data, error } = await supabase.from("activities").select(`
-      upvoted_by,
-      user: id ( id ),
-      note: id ( id )
-    `);
+  // async function checkIfVoted(userId, noteId) {
+  //   const { data, error } = await supabase.from("activities").select(`
+  //     upvoted_by,
+  //     user: id ( id ),
+  //     note: id ( id )
+  //   `);
 
-    console.log("data incheckIfVoted: ", data);
-  }
+  //   console.log("data incheckIfVoted: ", data);
+  // }
 
   const deleteNote = async (noteId) => {
     try {
@@ -90,7 +89,7 @@ export default function Note() {
         {notes &&
           notes.map((note) => {
             return (
-              <SingleNote note={note} user={user} deleteNote={deleteNote} key={1}/>
+              <SingleNote note={note} user={user} deleteNote={deleteNote} key={note.id}/>
             );
           })}
       </div>

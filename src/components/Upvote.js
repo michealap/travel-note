@@ -5,16 +5,12 @@ import { useState } from "react";
 import { useAuth } from "../providers/Auth";
 
 function Upvote(props) {
-  // console.log("here", props.handleClick);
-  // console.log("here props.voteClicked", props.voteClicked);
-
-  // let [disabledIcon, setDisabledIcon] = useState(props.voteClicked);
   const { user } = useAuth();
 
   const [upvotesCount, setUpvotesCount] = useState(props.upvoteCount);
 
   async function fetchNotesCount(noteId) {
-    const { data, error } = await supabase
+    const { data } = await supabase
       .from("notes")
       .select("upvotes")
       .eq("id", noteId);
@@ -55,12 +51,9 @@ function Upvote(props) {
   };
 
   const upVote = async (noteId) => {
-    // setDisabledIcon(true);
-
     let upvotedIsTrue = await checkIfUpvoted(user, noteId);
     let downvotedIsTrue = await checkIfDownvoted(user, noteId);
 
-    // console.log("user: ", user);
     console.log("upvotedIsTrue:", upvotedIsTrue);
     if (upvotedIsTrue || downvotedIsTrue) {
       return;
@@ -74,12 +67,8 @@ function Upvote(props) {
         note_id: `${noteId}`,
       },
     ]);
-    // console.log("data1:", data1);
-    // console.log("error1:", error1);
-    // console.log("noteId:", noteId);
+    
     let updatedNotesCount = parseInt(currentNotesCount) + 1;
-    // console.log("currentNotesCount:", currentNotesCount);
-    // console.log("updatedNotesCount:", updatedNotesCount);
 
     const { data, error } = await supabase
       .from("notes")
@@ -88,7 +77,6 @@ function Upvote(props) {
     setUpvotesCount(updatedNotesCount);
   };
 
-  // console.log("props.upvoteCount: ", props.upvoteCount);
   return (
     <div>
       {upvotesCount}

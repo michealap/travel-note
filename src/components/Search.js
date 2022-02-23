@@ -5,7 +5,7 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Alert from "@mui/material/Alert";
 import Modal from "@mui/material/Modal";
-import CircularProgress from "@mui/material/CircularProgress";
+import LoadingModal from "./LoadingModal";
 import SearchIcon from "@mui/icons-material/Search";
 
 export default function Search(props) {
@@ -56,7 +56,7 @@ export default function Search(props) {
         direction="row"
         spacing={20}
         pl={50}
-        sx={{ justifyContent: "space-evenly", width: "100%" }}
+        sx={{ justifyContent: "space-evenly", width: 3/3 }}
       >
         <div className="logo"></div>
         <div className="searchbar">
@@ -66,13 +66,11 @@ export default function Search(props) {
               placeholder={props.placeholder}
               value={userInput}
               onChange={handleChange}
-              // onSubmit={() => onSearch()}
             />
             {loading === true ? (
-              <CircularProgress color="success" style={{ padding: "10px" }} />
+              <LoadingModal />
             ) : (
               <button type="button" onClick={() => onSearch()}>
-                
                 <SearchIcon id="button" />
               </button>
             )}
@@ -91,10 +89,9 @@ export default function Search(props) {
           <i>
             <b>Instant access</b> to possible{" "}
             <b>
-              places to see, weather, information about the country, community
-              travel notes, travel videos
+              places to see, weather, country information, news, community
+              notes and travel videos.
             </b>{" "}
-            and more.
           </i>
         </Typography>
       </Stack>

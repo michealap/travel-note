@@ -10,32 +10,28 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
+  bgcolor: "transparent",
   boxShadow: 24,
-  p: 4,
+  p: 2,
   justifyContent: "center",
 };
 
 
 export default function LoadingModal() {
-  const [open, setOpen] = React.useState(false);
-  // const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [open] = React.useState(true);
   return (
     <Modal
       aria-labelledby="transition-modal-"
       aria-describedby="transition"
       open={open}
-      onClose={handleClose}
       closeAfterTransition
       BackdropComponent={Backdrop}
       BackdropProps={{
-        timeout: 500,
+        timeout: 600,
       }}
     >
       <Fade in={open}>
-        <Box pl={4} sx={style}>
+        <Box sx={style}>
         <iframe src="https://giphy.com/embed/aZg5FJVAHdB3G" width="100%" height="100%" frameBorder="0" className="giphy-embed" title="travel" allowFullScreen></iframe>
         </Box>
       </Fade>

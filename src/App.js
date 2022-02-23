@@ -10,16 +10,14 @@ import "./components/Search.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Pages/Home";
 import NavBar from "./components/NavBar";
-import User from "./components/Pages/User";
 import Login from "./components/Pages/Login";
 import Logout from "./components/Pages/Logout";
 import SignUp from "./components/Pages/SignUp";
 import { Dashboard } from "./components/Pages/Dashboard";
-
 import Contact from "./components/Pages/Contact";
 import About from "./components/Pages/About";
 
-function App(props) {
+function App() {
   const [countryData, setCountryData] = useState();
   function resetCountryData() {
     setCountryData();
@@ -53,8 +51,6 @@ function App(props) {
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
         <Route path="dashboard" element={<Dashboard resetCountryData={()=> resetCountryData()}/>} />
-
-        <Route path="/user" element={<User />}></Route>
         <Route path="logout" element={<Logout />} />
         <Route path="*" element={<Contact />} />
         <Route path="about" element={<About />} />

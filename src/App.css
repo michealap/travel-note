@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-#links:hover {
+#links, button:hover {
   text-decoration: 'none';
   color: #eb8200;
 }
@@ -10,4 +10,3 @@
   text-decoration: none;
   color: inherit;
 }
-

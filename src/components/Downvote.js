@@ -92,7 +92,7 @@ function Downvote(props) {
         </button>
       )}
       {props.voteClicked && (
-        <button disabled style={{ color: "red" }}>
+        <button disabled style={{ color: "gray" }}>
           <ArrowCircleDownIcon />{" "}
         </button>
       )}
