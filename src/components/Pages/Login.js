@@ -81,7 +81,7 @@ function Login() {
                 </Button>
               </div>
               <Typography mt={2} variant="h6" justifyContent="center">
-                <hr class="hr-text" data-content="OR" />
+                <hr className="hr-text" data-content="OR" />
               </Typography>
             </div>
             <Grid item xs={12}>

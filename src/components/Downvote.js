@@ -66,7 +66,6 @@ function Downvote(props) {
       },
     ]);
 
-    // console.log("noteId:", noteId);
     let updatedNotesCount = parseInt(currentNotesCount) + 1;
     // console.log("currentNotesCount:", currentNotesCount);
     // console.log("updatedNotesCount:", updatedNotesCount);
@@ -79,7 +78,6 @@ function Downvote(props) {
     setDownvotesCount(updatedNotesCount);
   };
 
-  // console.log("props.downvoteCount:", props.downvoteCount);
   return (
     <div>
       {downvotesCount}

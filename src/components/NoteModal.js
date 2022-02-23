@@ -36,8 +36,8 @@ export default function TransitionsModal() {
   const [note, setNote] = useState({
     title: "",
     content: "",
-    upvotes: 1,
-    downvotes: 1,
+    upvotes: 0,
+    downvotes: 0,
   });
 
   const { title, content } = note;

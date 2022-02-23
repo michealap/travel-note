@@ -34,7 +34,7 @@ p {
   /* background: #ffc; */
   background: #d6ed00;
   display: block;
-  height: 12em;
+  /* height: 12em; */
   width: 12em;
   padding: 1em;
   box-shadow: 5px 5px 7px rgba(33, 33, 33, 0.7);
@@ -70,8 +70,4 @@ p {
 
 .note {
   margin: 1em;
-}
-
-button:hover {
-  color: white;
 }

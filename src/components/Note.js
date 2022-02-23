@@ -90,7 +90,7 @@ export default function Note() {
         {notes &&
           notes.map((note) => {
             return (
-              <SingleNote note={note} user={user} deleteNote={deleteNote} />
+              <SingleNote note={note} user={user} deleteNote={deleteNote} key={1}/>
             );
           })}
       </div>

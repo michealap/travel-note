@@ -13,7 +13,6 @@ import NavBar from "./components/NavBar";
 import User from "./components/Pages/User";
 import Login from "./components/Pages/Login";
 import Logout from "./components/Pages/Logout";
-import Notes from "./components/Pages/Notes";
 import SignUp from "./components/Pages/SignUp";
 import { Dashboard } from "./components/Pages/Dashboard";
 
@@ -53,15 +52,9 @@ function App(props) {
       }/>
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
-        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="dashboard" element={<Dashboard resetCountryData={()=> resetCountryData()}/>} />
 
         <Route path="/user" element={<User />}></Route>
-
-        <Route
-          path={"/users/:userId/notes/:noteId"}
-          element={<Notes />}
-        ></Route>
-
         <Route path="logout" element={<Logout />} />
         <Route path="*" element={<Contact />} />
         <Route path="about" element={<About />} />
