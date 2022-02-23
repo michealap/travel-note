@@ -26,7 +26,7 @@ const style = {
   justifyContent: "center",
 };
 
-export default function TransitionsModal() {
+export default function NoteModal() {
   const { user } = useAuth();
 
   const [open, setOpen] = React.useState(false);
@@ -72,8 +72,8 @@ export default function TransitionsModal() {
         </Button>
       </Typography>
       <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
+        aria-labelledby="transition-title"
+        aria-describedby="transition-description"
         open={open}
         onClose={handleClose}
         closeAfterTransition
@@ -84,7 +84,7 @@ export default function TransitionsModal() {
       >
         <Fade in={open}>
           <Box pl={4} sx={style}>
-            <Typography id="transition-modal-title" variant="h6" component="h2">
+            <Typography variant="h6" component="h2">
               Share your experience with us!
               <div id="grid">
                 <textarea
@@ -112,7 +112,7 @@ export default function TransitionsModal() {
               </div>
             </Typography>
             <Typography
-              id="transition-modal-description"
+              id="transition-description"
               sx={{ mt: 2 }}
             ></Typography>
           </Box>

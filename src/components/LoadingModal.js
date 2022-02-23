@@ -21,7 +21,7 @@ export default function LoadingModal() {
   const [open] = React.useState(true);
   return (
     <Modal
-      aria-labelledby="transition-modal-"
+      aria-labelledby="transition-modal"
       aria-describedby="transition"
       open={open}
       closeAfterTransition
