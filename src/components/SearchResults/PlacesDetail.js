@@ -11,7 +11,7 @@ export default function PlacesDetail({ poi }) {
 
   return(
       <Box sx={{ width: "90%", m: "5%"}}>
-      <Typography component="div" variant="h5" lineHeight="50%">
+      <Typography component="div" variant="h5" lineHeight="10%">
         {onePlace.name}
       </Typography>
       </Box>

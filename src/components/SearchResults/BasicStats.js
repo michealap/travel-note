@@ -15,7 +15,7 @@ export default function BasicStats({ countryStats }) {
       <Typography variant="h5" pt={1}>
       {countryStats.name}'s capital city is {countryStats.capital} <br></br>
       The region it can be found in is {countryStats.region}<br></br>
-      {countryStats.name}'s has a population of {countryStats.population / 1000} million
+      {countryStats.name} has a population of {countryStats.population / 1000} million and welcomes {countryStats.tourists} tourists.
       </Typography>
       <Divider />
     </Box>

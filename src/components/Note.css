@@ -45,7 +45,7 @@ p {
   transform: rotate(4deg);
   position: relative;
   top: 5px;
-  background: #eb8200;
+  background: #e4912c;
 }
 .note:nth-child(3n) {
   transform: rotate(-3deg);
