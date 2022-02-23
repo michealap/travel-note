@@ -15,6 +15,10 @@
 
 - Supabase built on Postgres
 
+### Perform a search
+
+![Alt Text](src/images/delete-note.gif)
+
 ### Login
 
 ![Alt Text](src/images/login.gif)
