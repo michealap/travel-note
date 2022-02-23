@@ -137,6 +137,7 @@ export function Dashboard() {
           <Grid container spacing={4} p={2} pl={5} pr={5}>
             <Grid item xs={12}>
               <hr className="text" data-content="Your Contributions" />
+              <Stack direction="row">
               {notes &&
                 notes.map((note) => (
                   <div className="note" key={note.id}>
@@ -161,6 +162,7 @@ export function Dashboard() {
                     )}
                   </div>
                 ))}
+                </Stack>
             </Grid>
             <Grid item xs={12}>
               {user && (

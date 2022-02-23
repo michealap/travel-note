@@ -52,12 +52,6 @@ export default function NoteModal() {
       // clearing the input field
       setNote({ title: "", content: "" });
       fetchNotes();
-      // add create_by to activities table
-      // await supabase
-      //   .from("activities")
-      //   .insert([{ created_by: user.id }])
-      //   // returns one row
-      //   .single();
     } catch (error) {
       console.log("error", error);
     }
