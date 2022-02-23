@@ -36,8 +36,8 @@ export default function NoteModal() {
   const [note, setNote] = useState({
     title: "",
     content: "",
-    upvotes: 0,
-    downvotes: 0,
+    upvotes: 1,
+    downvotes: 1,
   });
 
   const { title, content } = note;
@@ -112,7 +112,7 @@ export default function NoteModal() {
               </div>
             </Typography>
             <Typography
-              id="transition-description"
+              id="description"
               sx={{ mt: 2 }}
             ></Typography>
           </Box>
