@@ -17,7 +17,7 @@
 
 ### Perform a search
 
-![Alt Text](src/images/delete-note.gif)
+![Alt Text](src/images/search.gif)
 
 ### Login
 
