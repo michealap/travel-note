@@ -44,8 +44,8 @@ Travel Notes is a compilation of data sources to give users at least an introduc
 ![Delete Note](src/images/delete-note.gif)
 
 ### Upvote and Downvote reflect count upon user selection
-![Before vote](src/images/before_vote.png)
-![After vote](src/images/after_vote.png)
+![Before vote](src/images/before_votes.png)
+![After vote](src/images/after_votes.png)
 
 ### Differed Home for user vs registered user
 ![Home for all users](src/images/home.png)
