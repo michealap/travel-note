@@ -32,8 +32,6 @@ Travel Notes is a compilation of data sources to give users at least an introduc
 ### Login
 
 ![Alt Text](src/images/login.gif)
-![Login Page](src/images/login.png)
-![User Dashboard](src/images/user_dashboard.png)
 
 ### Add a note
 
